@@ -1,0 +1,32 @@
+
+.card-post-m {
+
+		&__link {
+      display: flex;
+      flex-direction: column;
+		}
+
+		&__thumb {
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+		}
+
+		&__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+		}
+
+		&__content {
+		}
+
+		&__title {
+      font-size: 20px;
+      margin: 12px 0 8px;
+      font-family: $font-sub;
+		}
+
+		&__meta {
+      opacity: .7;
+		}
+}

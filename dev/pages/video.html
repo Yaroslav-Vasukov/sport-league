@@ -1,0 +1,153 @@
+{% extends "../layouts/_base.html" %} {% block title %}video — Basketball
+Today{% endblock %} {% block active_nav %}video{% endblock %} {% block
+body_class %}page page--video{% endblock %} {% block head_extra %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>{% endblock %} {% block content %} {% include
+"../components/page-first/page-first.twig" with { title: "Top 10 scoring
+performances from 2024-25 season", crumbs: [ { label: "videos", url: "/news" },
+{ label: "Top 10 scoring performances from 2024-25 season" } ] } %}
+
+  {% include "../components/video-hub/video-hub.twig" with {
+    main_href:  "/video/123",
+    main_thumb: "/assets/images/img14.webp",
+    main_title: "Top 10 scoring performances from 2024-25 season",
+    main_duration: "07:02",
+
+    s1_href:  "/video/201",
+    s1_thumb: "/assets/images/img15.webp",
+    s1_title: "Top 100 Plays of 2024-25 season",
+    s1_duration: "47:57",
+
+    s2_href:  "/video/202",
+    s2_thumb: "/assets/images/img6.webp",
+    s2_title: "USAB Exhibition Scrimmages",
+    s2_duration: "01:13",
+
+    s3_href:  "/video/203",
+    s3_thumb: "/assets/images/img7.webp",
+    s3_title: "Mic’d Up: Training Camp",
+    s3_duration: "09:18",
+
+    s4_href:  "/video/204",
+    s4_thumb: "/assets/images/img8.webp",
+    s4_title: "All-Star Highlights",
+    s4_duration: "12:31"
+  } %}
+
+
+
+
+
+{% set moments = [
+  {
+    href: "/videos/123",
+    thumb: "/assets/images/img4.webp",
+    title: "Make Your Picks 🏀",
+    published_at: "2024-11-12"
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img3.webp",
+    title: "Get Ready for the Action❗️",
+    published_at: "2024-12-12"
+  },
+  {
+    href: "/videos/125",
+    thumb: "/assets/images/img5.webp",
+    title: "Cup Play Underway 🏆",
+    published_at: "2024-03-21"
+  },
+  {
+    href: "/videos/123",
+    thumb: "/assets/images/img7.webp",
+    title: "Make Your Picks 🏀",
+    published_at: "2024-11-12"
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img35.webp",
+    title: "Get Ready for the Action❗️",
+    published_at: "2024-12-12"
+  },
+  {
+    href: "/videos/125",
+    thumb: "/assets/images/img32.webp",
+    title: "Cup Play Underway 🏆",
+    published_at: "2024-03-21"
+  },
+  {
+    href: "/videos/123",
+    thumb: "/assets/images/img31.webp",
+    title: "Make Your Picks 🏀",
+    published_at: "2024-11-12"
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img30.webp",
+    title: "Get Ready for the Action❗️",
+    published_at: "2024-12-12"
+  },
+  {
+    href: "/videos/125",
+    thumb: "/assets/images/img25.webp",
+    title: "Cup Play Underway 🏆",
+    published_at: "2024-03-21"
+  },
+  {
+    href: "/videos/126",
+    thumb: "/assets/images/img11.webp",
+    title: "Weekly League Pass Watch Guide 📚",
+    published_at: "2024-03-21"
+  }
+] %}
+
+<section class="section section--moments">
+  <div class="container">
+    <div class="section__inner moments__inner">
+      {% include "../components/section-head/section-head.twig" with {
+        title: "Another Videos",
+        tag: "h2"
+      } %}
+
+      <div class="swiper moments-swiper" data-swiper>
+        <div class="swiper-wrapper">
+          {% for v in moments %}
+            <div class="swiper-slide">
+              {% include "../components/video/video.twig" with {
+                href: v.href,
+                thumb: v.thumb,
+                thumb_alt: v.thumb_alt|default('video thumbnail'),
+                title: v.title,
+                published_at: v.published_at
+              } %}
+            </div>
+          {% else %}
+            <div class="swiper-slide">
+              <p class="moments__empty">No moments yet.</p>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination moments-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %} {% block scripts %}
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+></script>
+{% endblock %}

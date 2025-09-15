@@ -1,0 +1,64 @@
+{# Входные:
+  title        (string)   — заголовок блока
+  icon         (string)   optional — material icon
+  logo         (string)   optional — картинка вместо иконки
+  leagues      (array)    optional — [{ name, url, logo }]
+  teams        (array)    optional — [{ name, url, logo }]
+  players      (array)    optional — [{ name, url, avatar }]
+  limit        (int)      optional — ограничение кол-ва
+  cols         (int)      optional — кол-во колонок
+  extra_class  (string)   optional — модификатор блока
+#}
+
+{% set _title = title|default('Popular List') %}
+{% set _cols  = cols|default(1) %}
+
+{# выбираем источник данных #}
+{% if leagues is defined %}
+  {% set _items = leagues %}
+{% elseif teams is defined %}
+  {% set _items = teams %}
+{% elseif players is defined %}
+  {% set _items = players %}
+{% else %}
+  {% set _items = [] %}
+{% endif %}
+
+{% if limit is defined %}
+  {% set _data = _items|slice(0, limit) %}
+{% else %}
+  {% set _data = _items %}
+{% endif %}
+
+<section class="block list {{ extra_class|default('') }}">
+  <div class="block__inner list__inner">
+
+    {% include "../section-head/section-head.twig" with {
+      title: _title,
+      icon: icon is defined ? icon : null,
+      logo: logo is defined ? logo : null,
+      link_url: link_url|default(null),
+      link_label: link_label|default('See all')
+    } %}
+
+    {% if _data|length %}
+      <ul class="list__grid list__grid--cols-{{ _cols }}">
+        {% for item in _data %}
+          <li class="list__item">
+            <a href="{{ item.url|default('#') }}" class="list__link" aria-label="{{ item.name|default('Item') }}">
+              {% if item.logo is defined %}
+                <img src="{{ item.logo }}" alt="{{ item.name|default('logo') }}" class="list__logo">
+              {% elseif item.avatar is defined %}
+                <img src="{{ item.avatar }}" alt="{{ item.name|default('avatar') }}" class="list__logo">
+              {% endif %}
+              <h3 class="list__title">{{ item.name|default('Information') }}</h3>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="list__empty">No information yet</p>
+    {% endif %}
+
+  </div>
+</section>

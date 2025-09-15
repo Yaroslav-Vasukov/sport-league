@@ -1,0 +1,88 @@
+/* Fonts */
+$font-title: 'Anton', sans-serif;
+$font-sub: 'Oswald', sans-serif;
+$font-body: 'Open Sans', sans-serif;
+
+/* Colors */
+$color-primary: #00C853;
+$color-primary-dark: #007E33;
+$color-primary-light: #69F0AE;
+
+$color-dark: #1C1C1C;
+$color-dark-gray: #2A2A2A;
+$color-light: #FFFFFF;
+$color-gray: #E0E0E0;
+
+$color-accent-orange: #FF6B00;
+$color-accent-blue: #1DA1F2;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Anton", sans-serif;
+  font-weight: 400; /* у Anton один вес */
+  text-transform: uppercase; /* можно сделать капслок для спортивного стиля */
+}
+
+body,
+p,
+a,
+li,
+span  {
+  font-weight: 400;
+  line-height: 1.6;
+}
+a {
+  font-family: $font-sub;
+}
+body {
+  background-color: $color-gray;
+  font-family: $font-body;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex-grow: 1;
+}
+.material-symbols-outlined { vertical-align: middle; line-height: 1; }
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+.section {
+  margin-bottom: 50px;
+  position: relative;
+    &__inner {
+    position: relative;
+    z-index: 2;
+  }
+  }
+
+
+.block {
+  background-color: $color-light;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 0 4px  rgba(0, 0, 0, 0.35);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+[hidden] { display: none !important; }

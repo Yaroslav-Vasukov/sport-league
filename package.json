@@ -1,0 +1,34 @@
+{
+  "name": "manarify_project_17",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && node deploy.js",
+    "dev:purged": "cross-env USE_PURGED=1 vite",
+    "build:purged": "cross-env USE_PURGED=1 vite build"
+  },
+  "devDependencies": {
+    "@fulcrumsaas/vite-plugin-twig": "^2.2.1",
+    "cross-env": "^10.0.0",
+    "fast-glob": "^3.3.3",
+    "glob-all": "^3.3.1",
+    "postcss-pxtorem": "^6.1.0",
+    "purgecss": "^7.0.2",
+    "sass": "^1.89.2",
+    "sharp": "^0.34.3",
+    "vite": "^5.4.19",
+    "vite-plugin-imagemin": "^0.6.1",
+    "vite-plugin-static-copy": "^3.1.1",
+    "vite-plugin-webp-compress": "^1.1.4"
+  },
+  "dependencies": {
+    "basic-ftp": "^5.0.5",
+    "dotenv": "^17.2.1",
+    "glob": "^11.0.3",
+    "twig": "^1.17.1"
+  }
+}

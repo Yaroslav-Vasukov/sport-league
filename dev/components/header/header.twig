@@ -1,0 +1,111 @@
+{# входные данные без изменений #}
+{% set logo = logo|default({ href: '/', src: '/assets/images/logo.png', alt: 'Sports News' }) %}
+{% set sports = sports|default([]) %}
+
+<header class="header" data-module="header">
+  <div class="container header__row">
+    <a class="header__logo" href="{{ logo.href }}">
+      <img src="{{ logo.src }}" alt="{{ logo.alt }}" class="header__logo-img">
+    </a>
+
+    <button class="header__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+      <span class="header__burger-bar" aria-hidden="true"></span>
+      <span class="header__burger-bar" aria-hidden="true"></span>
+      <span class="header__burger-bar" aria-hidden="true"></span>
+    </button>
+
+    <nav id="main-nav" class="nav" role="navigation" aria-label="Primary">
+      <ul class="nav__list" role="menubar">
+        {% for s in sports %}
+          {% set panel_id = 'panel-' ~ s.key %}
+          <li class="nav__item" role="none">
+            <button
+              class="nav__link"
+              role="menuitem"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="{{ panel_id }}"
+              data-sport="{{ s.key }}"
+            >
+              {% if s.icon %}<span class="material-symbols-outlined nav__icon" aria-hidden="true">{{ s.icon }}</span>{% endif %}
+              <span class="nav__label">{{ s.label }}</span>
+              <span class="material-symbols-outlined nav__chev" aria-hidden="true">expand_more</span>
+            </button>
+
+            <div id="{{ panel_id }}" class="mega" role="group" aria-label="{{ s.label }} menu" hidden>
+              <div class="mega__inner">
+                {% if s.panel.featured is defined and s.panel.featured|length %}
+                  <section class="mega__col">
+                    <h3 class="mega__title">Featured</h3>
+                    <ul class="mega__list">
+                      {% for i in s.panel.featured %}
+                        <li class="mega__item"><a class="mega__link" href="{{ i.url }}">{{ i.label }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </section>
+                {% endif %}
+
+                {% if s.panel.leagues is defined and s.panel.leagues|length %}
+                  <section class="mega__col">
+                    <h3 class="mega__title">Leagues</h3>
+                    <ul class="mega__list">
+                      {% for i in s.panel.leagues %}
+                        <li class="mega__item"><a class="mega__link" href="{{ i.url }}">{{ i.label }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </section>
+                {% endif %}
+
+                {% if s.panel.teams is defined and s.panel.teams|length %}
+                  <section class="mega__col">
+                    <h3 class="mega__title">Teams</h3>
+                    <ul class="mega__list">
+                      {% for i in s.panel.teams %}
+                        <li class="mega__item"><a class="mega__link" href="{{ i.url }}">{{ i.label }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </section>
+                {% endif %}
+
+                {% if s.panel.news is defined and s.panel.news|length %}
+                  <section class="mega__col">
+                    <h3 class="mega__title">News</h3>
+                    <ul class="mega__list">
+                      {% for i in s.panel.news %}
+                        <li class="mega__item"><a class="mega__link" href="{{ i.url }}">{{ i.label }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </section>
+                  
+                {% endif %}
+                {% set mediaList = attribute(s.panel, 'media') ?? attribute(s.panel, 'Media') ?? [] %}
+{% if mediaList|length %}
+  <section class="mega__col">
+    <h3 class="mega__title">Media</h3>
+    <ul class="mega__list">
+      {% for i in mediaList %}
+        <li class="mega__item"><a class="mega__link" href="{{ i.url }}">{{ i.label }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endif %}
+
+{% set contactList = attribute(s.panel, 'contact') ?? attribute(s.panel, 'Contact') ?? [] %}
+{% if contactList|length %}
+  <section class="mega__col">
+    <h3 class="mega__title">Contact</h3>
+    <ul class="mega__list">
+      {% for i in contactList %}
+        <li class="mega__item"><a class="mega__link" href="{{ i.url }}">{{ i.label }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endif %}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

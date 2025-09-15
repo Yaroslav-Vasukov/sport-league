@@ -1,0 +1,506 @@
+{% extends "../layouts/_base.html" %} {% block
+title %}Team — Basketball Today{% endblock %} {% block active_nav
+%}team{% endblock %} {% block body_class %}page page--team{% endblock %}
+{% block head_extra %} 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>{% endblock %} 
+{% block content %}
+
+
+{% include "../assets/styles/pages/team/team-header.twig" with {
+  bg: "/assets/images/team6.webp",
+  logo: "/assets/images/team6.webp",
+  name: "Boston Celtics",
+  record: "61 - 21",
+  standing: "2nd in Eastern",
+  ppg_label: "PPG",   ppg_rank: "8th",  ppg_value: "115.3",
+  rpg_label: "RPG",   rpg_rank: "8th",  rpg_value: "45.3",
+  apg_label: "APG",   apg_rank: "16th", apg_value: "26.1",
+  oppg_label: "OPPG", oppg_rank: "2nd", oppg_value: "107.2"
+} %}
+
+
+
+
+
+
+<section class="section stat-table section--decor section--decor-1">
+  <div class="container">
+    <div class="section__inner stat-table__inner">
+      {% include "../components/section-head/section-head.twig" with {
+        title: "Boston Celtics — Roster",
+        tag: "h2"
+      } %}
+
+      {% include "../components/roster/roster.twig" with {
+  team:  "celtics",
+  rows: [
+    {
+      name: "Hayden Gray",
+      number: "",       
+      pos: "G",
+      height: "6-4",
+      weight: "190 lbs",
+      birthdate: "2003-05-11",  
+      age: 22,
+      exp: "R",
+      school: "California-San Diego",
+      acquired: "Signed on 2025-07-20",
+      href: "/players/hayden-gray"
+    },
+    {
+      name: "Hayden Gray",
+      number: "",  
+      pos: "G",
+      height: "6-4",
+      weight: "190 lbs",
+      birthdate: "2003-05-11", 
+      age: 22,
+      exp: "R",
+      school: "California-San Diego",
+      acquired: "Signed on 2025-07-20",
+      href: "/players/hayden-gray"
+    },
+    {
+      name: "Hayden Gray",
+      number: "",     
+      pos: "G",
+      height: "6-4",
+      weight: "190 lbs",
+      birthdate: "2003-05-11", 
+      age: 22,
+      exp: "R",
+      school: "California-San Diego",
+      acquired: "Signed on 2025-07-20",
+      href: "/players/hayden-gray"
+    },
+    {
+      name: "Hayden Gray",
+      number: "",          
+      pos: "G",
+      height: "6-4",
+      weight: "190 lbs",
+      birthdate: "2003-05-11",   
+      age: 22,
+      exp: "R",
+      school: "California-San Diego",
+      acquired: "Signed on 2025-07-20",
+      href: "/players/hayden-gray"
+    },
+    {
+      name: "Hayden Gray",
+      number: "",           
+      pos: "G",
+      height: "6-4",
+      weight: "190 lbs",
+      birthdate: "2003-05-11",   
+      age: 22,
+      exp: "R",
+      school: "California-San Diego",
+      acquired: "Signed on 2025-07-20",
+      href: "/players/hayden-gray"
+    },
+    {
+      name: "Hayden Gray",
+      number: "",            
+      pos: "G",
+      height: "6-4",
+      weight: "190 lbs",
+      birthdate: "2003-05-11",   
+      age: 22,
+      exp: "R",
+      school: "California-San Diego",
+      acquired: "Signed on 2025-07-20",
+      href: "/players/hayden-gray"
+    },
+    {
+      name: "Hayden Gray",
+      number: "",           
+      pos: "G",
+      height: "6-4",
+      weight: "190 lbs",
+      birthdate: "2003-05-11",   
+      age: 22,
+      exp: "R",
+      school: "California-San Diego",
+      acquired: "Signed on 2025-07-20",
+      href: "/players/hayden-gray"
+    },
+    {
+      name: "Hayden Gray",
+      number: "",            
+      pos: "G",
+      height: "6-4",
+      weight: "190 lbs",
+      birthdate: "2003-05-11",   
+      age: 22,
+      exp: "R",
+      school: "California-San Diego",
+      acquired: "Signed on 2025-07-20",
+      href: "/players/hayden-gray"
+    },
+    {
+      name: "Hayden Gray",
+      number: "",            
+      pos: "G",
+      height: "6-4",
+      weight: "190 lbs",
+      birthdate: "2003-05-11",   
+      age: 22,
+      exp: "R",
+      school: "California-San Diego",
+      acquired: "Signed on 2025-07-20",
+      href: "/players/hayden-gray"
+    }
+    
+  ]
+} %}
+
+    </div>
+  </div>
+</section>
+
+
+{% set lives = lives|default([
+  {
+    stage: "Preseason",
+    event: "NBA Abu Dhabi Game",
+    home: { url: "/teams/76ers", logo: "/assets/images/team7.webp", tag: "76ers", stat: "0-0" },
+    away: { url: "/teams/celtics", logo: "/assets/images/team8.webp", tag: "Celtics", stat: "0-0" },
+    tip_time: "18:00",
+    tip_date: "2025-12-24",   
+    venue: "Neutral site",
+    btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
+  },
+  {
+    stage: "Preseason",
+    event: "NBA Abu Dhabi Game",
+    home: { url: "/teams/76ers", logo: "/assets/images/team4.webp", tag: "76ers", stat: "0-0" },
+    away: { url: "/teams/celtics", logo: "/assets/images/team5.webp", tag: "Celtics", stat: "0-0" },
+    tip_time: "18:00",
+    tip_date: "2025-12-24",
+    venue: "Neutral site",
+    btn: { text: "Live Broadcast", href: "/live/124", extra_class: "button--small" }
+  },
+  {
+    stage: "Preseason",
+    event: "NBA Abu Dhabi Game",
+    home: { url: "/teams/76ers", logo: "/assets/images/team3.webp", tag: "76ers", stat: "0-0" },
+    away: { url: "/teams/celtics", logo: "/assets/images/team1.webp", tag: "Celtics", stat: "0-0" },
+    tip_time: "18:00",
+    tip_date: "2025-12-24",
+    venue: "Neutral site",
+    btn: { text: "Live Broadcast", href: "/live/125", extra_class: "button--small" }
+  },
+  {
+    stage: "Preseason",
+    event: "NBA Abu Dhabi Game",
+    home: { url: "/teams/76ers", logo: "/assets/images/team7.webp", tag: "76ers", stat: "0-0" },
+    away: { url: "/teams/celtics", logo: "/assets/images/team8.webp", tag: "Celtics", stat: "0-0" },
+    tip_time: "18:00",
+    tip_date: "2025-12-24",   
+    venue: "Neutral site",
+    btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
+  },
+  {
+    stage: "Preseason",
+    event: "NBA Abu Dhabi Game",
+    home: { url: "/teams/76ers", logo: "/assets/images/team4.webp", tag: "76ers", stat: "0-0" },
+    away: { url: "/teams/celtics", logo: "/assets/images/team5.webp", tag: "Celtics", stat: "0-0" },
+    tip_time: "18:00",
+    tip_date: "2025-12-24",
+    venue: "Neutral site",
+    btn: { text: "Live Broadcast", href: "/live/124", extra_class: "button--small" }
+  },
+  {
+    stage: "Preseason",
+    event: "NBA Abu Dhabi Game",
+    home: { url: "/teams/76ers", logo: "/assets/images/team3.webp", tag: "76ers", stat: "0-0" },
+    away: { url: "/teams/celtics", logo: "/assets/images/team1.webp", tag: "Celtics", stat: "0-0" },
+    tip_time: "18:00",
+    tip_date: "2025-12-24",
+    venue: "Neutral site",
+    btn: { text: "Live Broadcast", href: "/live/125", extra_class: "button--small" }
+  }
+]) %}
+
+<section class="section section--lives">
+  <div class="container">
+    <div class="section__inner lives__inner">
+      {% include "../components/section-head/section-head.twig" with {
+        title: "Upcoming lives",
+        tag: "h2",
+        link: "#",
+        btn_text: "More lives"
+      } %}
+
+      <div class="swiper lives-swiper" data-swiper="lives">
+        <div class="swiper-wrapper">
+          {% for g in lives %}
+            <div class="swiper-slide" data-game-date="{{ g.tip_date }}" data-game-time="{{ g.tip_time }}">
+              {% include "../components/live-card/live-card.twig" with g %}
+            </div>
+          {% else %}
+            <div class="swiper-slide">
+              <p class="lives__empty">No upcoming games.</p>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination lives-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section section--biography ">
+  <div class="container">
+    <div class="section__inner biography__inner">
+      {% include "../components/section-head/section-head.twig" with {
+        title: "Team history",
+        tag: "h2"
+      } %}
+      {% include "../components/player/player-biography.twig" with {
+  sections: [
+    {
+      title: "Founded",
+      paragraphs: [
+        "023-24 (CHICAGO): Appeared in 76 games (74 starts) and tallied clips of 17.1 ppg, 10.5 rpg and 2.8 apg in 31.4 mpg … shot .495 from the field, .341 from three-point range and .768 from the free-throw line … ranked seventh in the NBA in double-doubles (45), while also finishing the season eighth in Bulls history in total double-doubles (158) … recorded 14 points and 10 rebounds in the first half at LAC (3/9), marking the 22nd occurrence with Chicago – Vucevic became the only Bull with 20-plus such halves … moved past Mickey Johson (80) for fifth on the Bulls 20-point/10-rebound list … led all active NBA centers in career double-doubles (514) … ranked fourth among active NBA players in total rebounds (9,435) … recorded six games of 20-plus plus points and 15-plus rebounds … tallied a season-high 31 points and 11 rebounds at GSW (3/7) … scored his 15,000th career point at UTA (3/6) … recorded his 500th career double double with 22 points and 13 rebounds at NOP (2/25) … posted a season-high four blocks alongside 24 points vs. MIN (2/6) … secured his 9,000th career rebound at SAS (1/13) … grabbed a season-high 20 rebounds en route to his first 20-point/20-rebound game with the Bulls at DAL (11/1)",
+        "– this marked Vucevic’s second-straight game with at least 15 points and 15 rebounds (10/29-11/1) as he was one of 14 players in the 2023-24 season with consecutive 15-point/15-rebound games … missed four games due to left adductor strain and one game due to a left adductor contusion … 2024 NBA PLAY-IN TOURNAMENT: Played and started in Chicago’s two NBA Play-In games, averaging 20.0 ppg, 13.0 rpg, 3.5 apg, 1.0 spg and 0.5 bpg in 36.2 mpg. CAREER: Enters the 2024-25 season ranked fourth among active NBA players in total rebounds (9,435)"
+      ],
+      gallery: [
+        "/assets/images/img2.webp",
+        "/assets/images/img4.webp",
+        "/assets/images/img12.webp"
+      ]
+    },
+    {
+      title: "Now",
+      paragraphs: [
+        "... Has recorded at least 25 double-doubles in a season for 12 consecutive seasons and at least 40 double-doubles in six-straight seasons ... Ranked in the top-10 in rebounding in each of his first six seasons ... Secured his 9,000th career rebound at SAS (1/13) ... Two-time All Star (2019, 2021) Has appeared in 899 regular season games (836 starts) during his NBA career with Philadelphia, Orlando and Chicago and averaged 17.1 ppg, 10.5 rpg and 2.8 apg in 31.4 mpg … has shot .495 from the field, .341 from three and .768 from the free-throw line … in the postseason has played in 16 career playoff games (15 starts), averaging 18.4 ppg, 9.9 rpg and 3.2",
+        "apg in 32.3 mpg … shot .448 from the field, .348 from three and .813 from the free-throw line … has recorded 25-plus double-doubles for 12 consecutive seasons (2012-13 to present), the longest active streak in the NBA; the only other active player to have had 25-plus double-doubles in ten straight seasons is Dwight Howard (2004-05 to 2013-14) … one of five active players with 9,000-plus rebounds."
+      ]
+    }
+  ]
+} %}
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+{% set teams = teams|default([
+  {
+    team_name: "Charlotte Hornets",
+    team_href: "/teams/charlotte-hornets",
+    team_logo: "/assets/images/team1.webp",
+    rank_text: "3rd in Eastern",
+    stats: [
+      {label:"PPG", value:"111.6"},
+      {label:"RPG", value:"44.1"},
+      {label:"APG", value:"25.7"},
+      {label:"FG%", value:".471"}
+    ],
+    btn: { text:"Team page", href:"/teams/charlotte-hornets" }
+  },
+  {
+    team_name: "Atlanta Hawks",
+    team_href: "/teams/atlanta-hawks",
+    team_logo: "/assets/images/team5.webp",
+    rank_text: "2nd in Western",
+    stats: [
+      {label:"PPG", value:"111.6"},
+      {label:"RPG", value:"44.1"},
+      {label:"APG", value:"25.7"},
+      {label:"FG%", value:".471"}
+    ],
+    btn: { text:"Team page", href:"/teams/atlanta-hawks" }
+  },
+  {
+    team_name: "Boston Celtics",
+    team_href: "/teams/boston-celtics",
+    team_logo: "/assets/images/team4.webp",
+    rank_text: "4th in Eastern",
+    stats: [
+      {label:"PPG", value:"111.6"},
+      {label:"RPG", value:"44.1"},
+      {label:"APG", value:"25.7"},
+      {label:"FG%", value:".471"}
+    ],
+    btn: { text:"Team page", href:"/teams/boston-celtics" }
+  },
+  {
+    team_name: "Brooklyn Nets",
+    team_href: "/teams/brooklyn-nets",
+    team_logo: "/assets/images/team3.webp",
+    rank_text: "5th in Eastern",
+    stats: [
+      {label:"PPG", value:"111.6"},
+      {label:"RPG", value:"44.1"},
+      {label:"APG", value:"25.7"},
+      {label:"FG%", value:".471"}
+    ],
+    btn: { text:"Team page", href:"/teams/brooklyn-nets" }
+  }
+]) %}
+
+
+
+
+
+
+
+
+<section class="section section--teams section--decor section--decor-2">
+  <div class="container">
+    <div class="section__inner teams__inner">
+      {% include "../components/section-head/section-head.twig" with {
+        title: "Popular teams", tag: "h2", link: "#", btn_text: "See more teams"
+      } %}
+
+      <div class="swiper teams-swiper" data-swiper="teams">
+        <div class="swiper-wrapper swiper-wrapper__teams">
+          {% for t in teams %}
+            <div class="swiper-slide swiper-slide__teams">
+              {% include "../components/team-card/team-card.twig" with t %}
+            </div>
+          {% else %}
+            <div class="swiper-slide"><p class="teams__empty">No teams yet.</p></div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination teams-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% set moments = [
+  {
+    href: "/videos/123",
+    thumb: "/assets/images/img4.webp",
+    title: "Make Your Picks 🏀",
+    published_at: "2024-11-12"
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img3.webp",
+    title: "Get Ready for the Action❗️",
+    published_at: "2024-12-12"
+  },
+  {
+    href: "/videos/125",
+    thumb: "/assets/images/img5.webp",
+    title: "Cup Play Underway 🏆",
+    published_at: "2024-03-21"
+  },
+  {
+    href: "/videos/123",
+    thumb: "/assets/images/img7.webp",
+    title: "Make Your Picks 🏀",
+    published_at: "2024-11-12"
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img35.webp",
+    title: "Get Ready for the Action❗️",
+    published_at: "2024-12-12"
+  },
+  {
+    href: "/videos/125",
+    thumb: "/assets/images/img32.webp",
+    title: "Cup Play Underway 🏆",
+    published_at: "2024-03-21"
+  },
+  {
+    href: "/videos/123",
+    thumb: "/assets/images/img31.webp",
+    title: "Make Your Picks 🏀",
+    published_at: "2024-11-12"
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img30.webp",
+    title: "Get Ready for the Action❗️",
+    published_at: "2024-12-12"
+  },
+  {
+    href: "/videos/125",
+    thumb: "/assets/images/img25.webp",
+    title: "Cup Play Underway 🏆",
+    published_at: "2024-03-21"
+  },
+  {
+    href: "/videos/126",
+    thumb: "/assets/images/img11.webp",
+    title: "Weekly League Pass Watch Guide 📚",
+    published_at: "2024-03-21"
+  }
+] %}
+
+<section class="section section--moments">
+  <div class="container">
+    <div class="section__inner moments__inner">
+      {% include "../components/section-head/section-head.twig" with {
+        title: "Top moments",
+        tag: "h2"
+      } %}
+
+      <div class="swiper moments-swiper" data-swiper>
+        <div class="swiper-wrapper">
+          {% for v in moments %}
+            <div class="swiper-slide">
+              {% include "../components/video/video.twig" with {
+                href: v.href,
+                thumb: v.thumb,
+                thumb_alt: v.thumb_alt|default('video thumbnail'),
+                title: v.title,
+                published_at: v.published_at
+              } %}
+            </div>
+          {% else %}
+            <div class="swiper-slide">
+              <p class="moments__empty">No moments yet.</p>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination moments-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+{% endblock %} {% block scripts %}
+  <script
+  defer
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+></script>  {% endblock %}
+
+
+
+
+
+
+
+
+

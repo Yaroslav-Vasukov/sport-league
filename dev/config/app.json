@@ -1,0 +1,23 @@
+{
+  "name": "football-masters.cz",
+  "domain": "football-masters.cz",
+  "main_lang": "cs",
+  "langs": [
+    "cs"
+  ],
+  "csrf": true,
+  "session": true,
+  "debug": true,
+  "timezone": "UTC",
+  "translation": {
+    "cookie_save": true,
+    "cookie_timelife": 3600,
+    "cookie_name": "mnrfy_locale"
+  },
+  "limits": {
+    "upload_max_size": "20M",
+    "request_timeout": 30,
+    "max_requests_per_second": 7,
+    "max_requests_per_minute": 100
+  }
+}

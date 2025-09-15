@@ -1,0 +1,158 @@
+{% extends "../layouts/_base.html" %} {% block
+title %}teams — Basketball Today{% endblock %} {% block active_nav
+%}teams{% endblock %} {% block body_class %}page page--teams{% endblock %}
+{% block head_extra %} {% endblock %} 
+{% block content %}
+
+{% include "../components/page-first/page-first.twig" with {
+  title: "NBA teams",
+  crumbs: [
+    { label: "teams" }  
+  ]
+} %}
+{% set teams = [
+  {
+  team_name: "Bombardilo",
+  team_href: "/teams/charlotte-hornets",
+  team_logo: "/assets/images/team2.webp",
+  rank_text: "3rd in Eastern",
+  tags: ["west","southeast"],
+  stats: [
+    {label:"PPG", value:"111.6"},
+    {label:"RPG", value:"44.1"},
+    {label:"APG", value:"25.7"},
+    {label:"FG%", value:".471"}
+  ],
+  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
+},
+  {
+  team_name: "Lucky strikes",
+  team_href: "/teams/charlotte-hornets",
+  team_logo: "/assets/images/team3.webp",
+  rank_text: "3rd in Eastern",
+  tags: ["west","southeast"],
+  stats: [
+    {label:"PPG", value:"111.6"},
+    {label:"RPG", value:"44.1"},
+    {label:"APG", value:"25.7"},
+    {label:"FG%", value:".471"}
+  ],
+  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
+},
+  {
+  team_name: "Kunkes",
+  team_href: "/teams/charlotte-hornets",
+  team_logo: "/assets/images/team4.webp",
+  rank_text: "3rd in Eastern",
+  tags: ["east","southeast"],
+  stats: [
+    {label:"PPG", value:"111.6"},
+    {label:"RPG", value:"44.1"},
+    {label:"APG", value:"25.7"},
+    {label:"FG%", value:".471"}
+  ],
+  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
+},
+  {
+  team_name: "Rajastan Boys",
+  team_href: "/teams/charlotte-hornets",
+  team_logo: "/assets/images/team5.webp",
+  rank_text: "3rd in Eastern",
+  tags: ["east","southeast"],
+  stats: [
+    {label:"PPG", value:"111.6"},
+    {label:"RPG", value:"44.1"},
+    {label:"APG", value:"25.7"},
+    {label:"FG%", value:".471"}
+  ],
+  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
+},
+  {
+  team_name: "Lucky strikes",
+  team_href: "/teams/charlotte-hornets",
+  team_logo: "/assets/images/team6.webp",
+  rank_text: "3rd in Eastern",
+  tags: ["east","southeast"],
+  stats: [
+    {label:"PPG", value:"111.6"},
+    {label:"RPG", value:"44.1"},
+    {label:"APG", value:"25.7"},
+    {label:"FG%", value:".471"}
+  ],
+  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
+},
+  {
+  team_name: "Charlotte Hornets",
+  team_href: "/teams/charlotte-hornets",
+  team_logo: "/assets/images/team7.webp",
+  rank_text: "3rd in Eastern",
+  tags: ["east","southeast"],
+  stats: [
+    {label:"PPG", value:"111.6"},
+    {label:"RPG", value:"44.1"},
+    {label:"APG", value:"25.7"},
+    {label:"FG%", value:".471"}
+  ],
+  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
+},
+  {
+  team_name: "Bombardilo",
+  team_href: "/teams/charlotte-hornets",
+  team_logo: "/assets/images/team8.webp",
+  rank_text: "3rd in Eastern",
+  tags: ["east","southeast"],
+  stats: [
+    {label:"PPG", value:"111.6"},
+    {label:"RPG", value:"44.1"},
+    {label:"APG", value:"25.7"},
+    {label:"FG%", value:".471"}
+  ],
+  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
+},
+  {
+  team_name: "Lucky strikes",
+  team_href: "/teams/charlotte-hornets",
+  team_logo: "/assets/images/team1.webp",
+  rank_text: "3rd in Eastern",
+  tags: ["east","southeast"],
+  stats: [
+    {label:"PPG", value:"111.6"},
+    {label:"RPG", value:"44.1"},
+    {label:"APG", value:"25.7"},
+    {label:"FG%", value:".471"}
+  ],
+  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
+},
+  {
+  team_name: "Rajastan Boys",
+  team_href: "/teams/charlotte-hornets",
+  team_logo: "/assets/images/team9.webp",
+  rank_text: "3rd in Eastern",
+  tags: ["east","southeast"],
+  stats: [
+    {label:"PPG", value:"111.6"},
+    {label:"RPG", value:"44.1"},
+    {label:"APG", value:"25.7"},
+    {label:"FG%", value:".471"}
+  ],
+  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
+}
+    ]%}
+
+  {% include "../components/team-card/teams-list.twig" with {
+    teams: teams,
+    per_page: 8,
+    show_filters: true   
+  } %}
+
+
+{% endblock %} {% block scripts %} {% endblock %}
+
+
+
+
+
+
+
+
+

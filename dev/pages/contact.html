@@ -1,0 +1,23 @@
+{% extends "../layouts/_base.html" %} {% block
+title %}Contact — Basketball Today{% endblock %} {% block active_nav
+%}contact{% endblock %} {% block body_class %}page page--Contact{% endblock %}
+{% block head_extra %} {% endblock %} 
+{% block content %}
+
+{% include "../components/page-first/page-first.twig" with {
+  title: "Contact us",
+  crumbs: [
+    { label: "Contact" }  
+  ]
+} %}
+  {% include "../components/contact/contact.twig" with {
+  description: "Свяжитесь с нами по любому удобному каналу:",
+  items: [
+    { href: "mailto:help@nba-basketball.pt", title: "email", text: "help@nba-basketball.pt" },
+    { href: "tel:+1234123456789", title: "phone", text: "+1 (234) 123 - 456 - 789" },
+    { href: "#", title: "location", text: "Rua da Prata 96, 1100-420 Lisboa, Portugal" }
+  ]
+} %}
+
+
+{% endblock %} {% block scripts %} {% endblock %}

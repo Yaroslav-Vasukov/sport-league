@@ -1,0 +1,14 @@
+.ui-date {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .875rem;
+  line-height: 1;
+
+  &__icon {
+    font-size: 1.1em; 
+  }
+
+  &--long { font-size: .9rem; }
+  &--ago  { opacity: .8; }
+}

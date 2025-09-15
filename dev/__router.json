@@ -1,0 +1,87 @@
+[
+  {
+    "file": "pages/home.html",
+    "name": "Home",
+    "pin": "",
+    "url": "",
+    "isHome": true
+  },
+  {
+    "file": "pages/contact.html",
+    "name": "contact",
+    "pin": "",
+    "url": "contact"
+  },
+  {
+    "file": "pages/calendar.html",
+    "name": "calendar",
+    "pin": "",
+    "url": "calendar"
+  },
+  {
+    "file": "pages/history.html",
+    "name": "History",
+    "pin": "",
+    "url": "history"
+  },
+  {
+    "file": "pages/lives.html",
+    "name": "lives",
+    "pin": "",
+    "url": "lives"
+  },
+  {
+    "file": "pages/news.html",
+    "name": "news",
+    "pin": "",
+    "url": "news"
+  },
+  {
+    "file": "pages/player.html",
+    "name": "player",
+    "pin": "",
+    "url": "player"
+  },
+  {
+    "file": "pages/post.html",
+    "name": "post",
+    "pin": "",
+    "url": "post"
+  },
+  {
+    "file": "pages/review.html",
+    "name": "review",
+    "pin": "",
+    "url": "review"
+  },
+  {
+    "file": "pages/team.html",
+    "name": "team",
+    "pin": "",
+    "url": "team"
+  },
+  {
+    "file": "pages/standings.html",
+    "name": "standings",
+    "pin": "",
+    "url": "standings"
+  },
+  {
+    "file": "pages/teams.html",
+    "name": "teams",
+    "pin": "",
+    "url": "teams"
+  },
+  {
+    "file": "pages/video.html",
+    "name": "video",
+    "pin": "",
+    "url": "video"
+  },
+  {
+    "file": "pages/videos.html",
+    "name": "videos",
+    "pin": "",
+    "url": "videos"
+  }
+]

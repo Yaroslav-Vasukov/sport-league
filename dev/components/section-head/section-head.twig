@@ -1,0 +1,51 @@
+{# входные:
+  title (string)       – заголовок секции
+  link_url (string)    – ссылка "see all"
+  link_label (string)  – текст ссылки
+  icon (string)        – название material-symbol (опц.)
+  logo (string)        – путь к картинке (опц.)
+  logo_alt (string)    – alt для картинки
+#}
+
+<div class="section-head">
+  <div class="section-head__wrap">
+    
+    {% if icon is defined %}
+      <span class="material-symbols-outlined section-head__icon">
+        {{ icon }}
+      </span>
+    {% elseif logo is defined %}
+      <img src="{{ logo }}" alt="{{ logo_alt|default(title) }}" class="section-head__logo">
+    {% endif %}
+
+    <h2 class="section-head__title">{{ title }}</h2>
+  </div>
+
+{% if link_url is not empty %}
+  <a href="{{ link_url }}" class="section-head__link">
+    {{ link_label|default('See all') }}
+  </a>
+{% endif %}
+</div>
+
+
+
+
+
+{#
+
+<!-- {% include "components/section-head/section-head.twig" with {
+  title: "Latest News",
+  icon: "news",
+  link_url: "/news",
+  link_label: "All news"
+} %} -->
+
+
+<!-- {% include "components/section-head/section-head.twig" with {
+  title: "Serie A",
+  logo: "/assets/images/serie-a-logo.webp",
+  logo_alt: "Serie A logo",
+  link_url: "/league/serie-a",
+  link_label: "All matches"
+} %} -->  #}

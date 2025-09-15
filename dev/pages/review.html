@@ -1,0 +1,84 @@
+{% extends "../layouts/_base.html" %}
+
+{% block title %}review — Basketball Today{% endblock %}
+{% block active_nav %}review{% endblock %}
+{% block body_class %}page page--review{% endblock %}
+{% block head_extra %}{% endblock %}
+
+{% block content %}
+
+  {% include "../assets/styles/pages/review/review-header.twig" with {
+    home:  { tag: "Bulls", logo: "/assets/images/team1.webp", href: "/teams/bulls" },
+    away:  { tag: "76ers", logo: "/assets/images/team2.webp", href: "/teams/76ers" },
+    score: { home: 92, away: 122, info: "FINAL" },
+    btn:   { text: "video review", href: "/games/123/box" }
+  } %}  
+
+
+
+
+{% set players = [
+  { 'name': 'J. Freeman-Liberty', 'img': '/assets/images/player1.webp', 'score': '22 pts', 'href': '#' },
+  { 'name': 'M. Pereira',         'img': '/assets/images/player2.webp', 'score': '21 pts', 'href': '#' },
+  { 'name': 'Y. Kawamura',        'img': '/assets/images/player3.webp', 'score': '20 pts', 'href': '#' }
+] %}
+
+{% set videos = [
+  { 'href': '/videos/123', 'thumb': '/assets/images/img2.webp', 'title': 'Make Your Picks 🏀',          'published_at': '2024-11-12' },
+  { 'href': '/videos/124', 'thumb': '/assets/images/img3.webp', 'title': 'Get Ready for the Action❗️', 'published_at': '2024-12-12' }
+] %}
+
+{% include "../assets/styles/pages/review/review-center.twig" with {
+  'title_players': 'Best players',
+  'players': players,
+  'title_videos': 'Highlights',
+  'videos': videos
+} %}
+
+{% include "../assets/styles/pages/review/review-content.twig" with {
+  title: "Text review",
+  t1: "Start match",
+  p1: "Thomas Smith is an Argentine professional footballer who plays as a forward and captains both Barcelona and the Argentina national team. Often considered the best player in the world and widely regarded as one of the greatest players of all time, Messi has a record-tying five Ballon d’Or awards, four of which he won consecutively, and a record six European Golden Shoes.",
+  t2: "Mid-game match",
+  p2: "He has spent his entire professional career with Barcelona, where he has won a club-record 34 trophies, including ten La Liga titles, four UEFA Champions League titles and six Copas del Rey.
+
+",
+  img_src: "/assets/images/img29.webp",
+  img_alt: "text review",
+  t3: "Late game match",
+  p3: "A prolific goalscorer and a creative playmaker, Messi holds the records for most goals in La Liga (419), a La Liga and European league season (50), most hat-tricks in the UEFA Champions League (8), and most assists in La Liga (169) and the Copa América (12). He has scored 698 senior career goals for club and country."
+} %}
+
+
+{% set home = { 'name': 'Utah Jazz' } %}
+{% set away = { 'name': 'Chicago Bulls' } %}
+
+{% set stats = [
+  { 'label': 'PTS', 'home': 112,  'away': 108 },
+  { 'label': 'REB', 'home': 46,   'away': 41  },
+  { 'label': 'AST', 'home': 27,   'away': 22  },
+  { 'label': 'STL', 'home': 8,    'away': 6   },
+  { 'label': 'TOV', 'home': 12,   'away': 14  },
+  { 'label': 'FG%', 'home': 48.2, 'away': 45.1, 'kind': 'pct' },
+  { 'label': '3P%', 'home': 38.6, 'away': 34.9, 'kind': 'pct' },
+  { 'label': 'FT%', 'home': 83.1, 'away': 79.5, 'kind': 'pct' }
+] %}
+
+{% include "../assets/styles/pages/review/review-stats.twig" with {
+  'title': 'Team comparison',
+  'home': home,
+  'away': away,
+  'stats': stats
+} %}
+
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}
+
+
+
+
+
+
+

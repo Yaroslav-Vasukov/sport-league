@@ -1,0 +1,106 @@
+
+{% extends "../layouts/_base.html" %} 
+{% block title %}Home{% endblock %} {% block active_nav %}home{% endblock %} 
+{% block body_class %}page page--home{% endblock %}
+{% block head_extra %} 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/> 
+{% endblock %} 
+{% block content %}
+
+
+  {% set left %}
+
+{% include "../components/list/list.twig" with {
+  title: "Popular Leagues",
+  icon: "sports",            
+  leagues: [
+  { name: 'Premier League', url: '/league/epl',  logo: '/assets/images/league1.webp' },
+  { name: 'Serie A',        url: '/league/seria',logo: '/assets/images/league2.webp' },
+  { name: 'LaLiga',         url: '/league/laliga',logo: '/assets/images/league3.webp' },
+  { name: 'NBA', url: '/league/epl',  logo: '/assets/images/league4.webp' },
+  { name: 'UEFA',        url: '/league/seria',logo: '/assets/images/league5.webp' },
+  { name: 'Hockey',         url: '/league/laliga',logo: '/assets/images/league6.webp' },
+  { name: 'NHL', url: '/league/epl',  logo: '/assets/images/league7.webp' }
+],
+  limit: 8,
+  cols: 1,
+  extra_class: "sidebar-block"
+} %}
+
+{% include "../components/list/list.twig" with {
+  title: "Popular Teams",
+  icon: "groups",
+  teams: [
+    { name: "Roma", url: "/team/roma", logo: "/assets/images/team1.webp" },
+    { name: "Chicago Bulls", url: "/team/roma", logo: "/assets/images/team2.webp" },
+    { name: "Athletic Club", url: "/team/roma", logo: "/assets/images/team3.webp" },
+     { name: "Borrysia", url: "/team/roma", logo: "/assets/images/team4.webp" },
+    { name: "Real Madrid", url: "/team/roma", logo: "/assets/images/team5.webp" },
+    { name: "Barcelona", url: "/team/roma", logo: "/assets/images/team6.webp" },
+    { name: "S.S. Lazio", url: "/team/roma", logo: "/assets/images/team7.webp" },
+    { name: "Milan", url: "/team/milan", logo: "/assets/images/team8.webp" } 
+  ]
+} %}
+{% include "../components/list/list.twig" with {
+  title: "Popular Players",
+  icon: "person",
+  players: [
+    { name: "Lautaro Martínez", url: "/player/lautaro", avatar: "/assets/images/player1.webp" },
+    { name: "Shevchenko", url: "/player/lautaro", avatar: "/assets/images/player3.webp" },
+    { name: "Messi", url: "/player/lautaro", avatar: "/assets/images/player4.webp" },
+    { name: "Usyk", url: "/player/lautaro", avatar: "/assets/images/player5.webp" },
+    { name: "Boris Pistorius", url: "/player/lautaro", avatar: "/assets/images/player6.webp" },
+    { name: "Xavi Alonso", url: "/player/lautaro", avatar: "/assets/images/player7.webp" },
+    { name: "Alucard", url: "/player/lautaro", avatar: "/assets/images/player8.webp" },
+    { name: "Mikasa Accerman", url: "/player/lautaro", avatar: "/assets/images/player9.webp" },
+    { name: "Jack Daniels", url: "/player/lautaro", avatar: "/assets/images/player10.webp" },
+    { name: "Mbappé", url: "/player/mbappe", avatar: "/assets/images/player2.webp" }
+  ]
+} %}
+
+
+  {% endset %}
+
+  {% set content %}
+
+  {% endset %}
+  {% set right %}
+    <section class="block">
+    <div class="block__inner">
+      {% include "../components/card-post/card-post-m-list.twig" with {
+        title: "Latest News",
+        icon: "article",
+        posts: [
+          { href: '/post/1', title: 'Colts stun Broncos after penalty gives Indy a second chance', thumb: '/assets/images/img1.webp', published_at: '2023-10-01' },
+          { href: '/post/2', title: 'Sources: Burrow could talk with scoreboard statement', thumb: '/assets/images/img2.webp', published_at: '2023-10-02' },
+          { href: '/post/3', title: 'Eagles quiet Chiefs talk with scoreboard statement', thumb: '/assets/images/img3.webp', published_at: '2023-10-03' },
+          { href: '/post/4', title: 'McCarthys second start a slog as Falcons soar', thumb: '/assets/images/img4.webp', published_at: '2023-10-04' },
+          { href: '/post/5', title: 'Cowboys sign Clowney to boost depth, says Jones', thumb: '/assets/images/img5.webp', published_at: '2023-10-05' },
+          { href: '/post/6', title: 'Aces open playoff run with 17th straight victory', thumb: '/assets/images/img6.webp', published_at: '2023-10-06' }
+        ],
+        link_url: '/news',
+        link_label: 'See all news',
+        extra_class: 'card-post-m-list--home'
+      } %}
+    </div>
+  </section>
+  {% endset %}
+
+
+  {% include "../layouts/hub.html" with {
+    extra_class: "hub--home",
+    left: left,
+    content: content,
+    right: right
+  } %}
+
+{% endblock %} 
+{% block scripts %}   
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+></script> 
+{% endblock %}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="nz">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Без названия{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1" rel="stylesheet" />
+
+    {% block head_extra %}{% endblock %}
+     <link rel="stylesheet" href="/assets/styles/main.css" />
+  </head>
+  <body class="{% block body_class %}page{% endblock %}">
+    <main class="page__main">
+            {% include "../components/header/header.twig" with {
+          logo: { href: '/', src: '/assets/images/logo.png', alt: 'Sports Hub' },
+          sports: [
+            {
+              key: 'football', label: 'Football', icon: 'sports_soccer',
+              panel: {
+                featured: [
+                  { label: 'Calendar', url: '/football/calendar' },
+                  { label: 'Lives', url: '/football/lives' },
+                  { label: 'Review', url: '/football/review' }
+                ],
+                leagues: [
+                  { label: 'Premier League', url: '/football/premier-league' },
+                  { label: 'Serie A',        url: '/football/serie-a' },
+                  { label: 'Champions League', url: '/football/ucl' }
+                ],
+                teams: [
+                  { label: 'Teams', url: '/football/teams' },
+                  { label: 'Team', url: '/team/man-city' },
+                  { label: 'Player',            url: '/team/roma' }
+                ],
+                media: [
+                  { label: 'News', url: '/football/news' },
+                  { label: 'Videos',   url: '/football/videos' },
+                  { label: 'Post',   url: '/football/post' },
+                  { label: 'Video',   url: '/football/video' },
+                ],
+                contact: [
+                  { label: 'Contact', url: 'contact' }
+                ]
+              }
+            },
+            {
+              key: 'basketball', label: 'Basketball', icon: 'sports_basketball',
+                            panel: {
+                featured: [
+                  { label: 'Calendar', url: '/football/calendar' },
+                  { label: 'Lives', url: '/football/lives' },
+                  { label: 'Teams', url: '/football/teams' },
+                  { label: 'Review', url: '/football/review' }
+                ],
+                leagues: [
+                  { label: 'NBA', url: '/basketball/nba' }, 
+                  { label: 'EuroLeague', url: '/basketball/euroleague' }
+                ],
+                teams: [
+                  { label: 'Teams', url: '/football/teams' },
+                  { label: 'Team', url: '/team/man-city' },
+                  { label: 'Player',            url: '/team/roma' }
+                ],
+                Media: [
+                  { label: 'News', url: '/football/news' },
+                  { label: 'Videos',   url: '/football/videos' },
+                  { label: 'Post',   url: '/football/post' },
+                  { label: 'Video',   url: '/football/video' },
+                ],
+                                Contact: [
+                  { label: 'Contact', url: 'contact' }
+                ]
+              }
+            }
+          ]
+        } only %}
+      {% block content %}
+
+      {% endblock %}
+    </main>
+    <script type="module" src="/assets/scripts/main.js"></script>
+  </body>
+</html>

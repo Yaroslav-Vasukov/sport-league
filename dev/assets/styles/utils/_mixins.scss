@@ -1,0 +1,13 @@
+@mixin line-clamp($lines: 2, $line-height: 1.4em) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;       // ограничение количества строк
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: calc(#{$line-height} * #{$lines});
+}
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

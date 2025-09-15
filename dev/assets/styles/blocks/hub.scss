@@ -1,0 +1,100 @@
+/* dev/styles/blocks/_hub.scss */
+.hub {
+  --gap: 20px;
+  --aside-left-w: 300px;
+  --aside-right-w: 340px;
+  --content-min: 640px; /* чтобы контент не схлопывался */
+  --sticky-top: 72px; /* высота хедера/отступ для sticky */
+
+  padding: 24px 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns:
+      minmax(0, var(--aside-left-w))
+      minmax(var(--content-min), 1fr)
+      minmax(0, var(--aside-right-w));
+    gap: var(--gap);
+    align-items: start; /* сайдбары по верхнему краю */
+  }
+
+  &__aside {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    &.hub__aside--left {
+      position: sticky;
+      top: var(--sticky-top);
+    }
+  }
+
+  /* ====== Адаптив ====== */
+
+  /* ≥ 1440px — как задано в шаблоне */
+  @media (min-width: 1440px) {
+    --gap: 24px;
+  }
+
+  /* 1200–1439px — чуть ужмём правый сайдбар */
+  @media (max-width: 1439.98px) {
+    --aside-right-w: 300px;
+  }
+
+  /* 992–1199px — два столбца: левый сайдбар + контент, правый вниз */
+  @media (max-width: 1199.98px) {
+    &__grid {
+      grid-template-columns:
+        minmax(0, var(--aside-left-w))
+        1fr;
+      grid-template-areas:
+        "left content"
+        "right right";
+    }
+    &__aside--left {
+      grid-area: left;
+    }
+    &__content {
+      grid-area: content;
+    }
+    &__aside--right {
+      grid-area: right;
+      position: relative;
+      max-height: none;
+      overflow: visible;
+    }
+  }
+
+  /* ≤ 768px — одна колонка: контент → левый сайдбар → правый сайдбар */
+  @media (max-width: 767.98px) {
+    --gap: 16px;
+
+    &__grid {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "content"
+        "left"
+        "right";
+    }
+    &__content {
+      grid-area: content;
+    }
+    &__aside {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax( 240px, 1fr));
+    gap: 24px 16px;
+    }
+    &__aside--left {
+      grid-area: left;
+      position: static;
+      max-height: none;
+      overflow: visible;
+    }
+    &__aside--right {
+      grid-area: right;
+      position: static;
+      max-height: none;
+      overflow: visible;
+    }
+  }
+}

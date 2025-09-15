@@ -1,0 +1,53 @@
+{# card-post-m.twig
+  Мини-карточка поста (BEM)
+
+  Входные:
+  - href        (string) — ссылка на пост
+  - title       (string) — заголовок поста
+  - thumb_src   (string) — картинка превью (80x80)
+  - thumb_alt   (string) — alt картинки
+  - sport       (string) — вид спорта (напр. "Football")
+  - league      (string) — лига (напр. "Premier League")
+  - date_value  (mixed)  — дата (ISO/ts/Date)
+  - date_opts   (object) — опции для Date.render (variant, icon, show_icon, ...)
+  - extra_class (string) — доп. классы
+  - noimg       (bool)   — убрать картинку
+#}
+
+{% import '../date/date.twig' as Date %}
+
+{% set _href       = href|default('#') %}
+{% set _title      = title|default('Post title') %}
+{% set _thumb_src  = thumb_src|default('/assets/images/post1.webp') %}
+{% set _thumb_alt  = thumb_alt|default(_title) %}
+{% set _date_value = date_value|default(null) %}
+{% set _sport      = sport|default(null) %}
+{% set _league     = league|default(null) %}
+{% set _date_opts  = date_opts|default({ variant: 'short', show_icon: true, icon: 'calendar_today' }) %}
+{% set _mod_noimg  = noimg|default(false) %}
+{% set _class_mods = _mod_noimg ? ' card-post-m--noimg' : '' %}
+
+<article class="card-post-m{{ _class_mods }} {{ extra_class|default('') }}">
+  <a href="{{ _href }}" class="card-post-m__link" aria-label="{{ _title }}">
+    {% if not _mod_noimg %}
+      <figure class="card-post-m__thumb">
+        <img
+          src="{{ _thumb_src }}"
+          alt="{{ _thumb_alt }}"
+          class="card-post-m__img"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    {% endif %}
+
+    <div class="card-post-m__content">
+      <h3 class="card-post-m__title">{{ _title }}</h3>
+      {% if _date_value %}
+        <p class="card-post-m__meta">
+          {{ Date.render(_date_value, _date_opts) }}
+        </p>
+      {% endif %}
+    </div>
+  </a>
+</article>

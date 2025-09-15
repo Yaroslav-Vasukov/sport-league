@@ -1,0 +1,183 @@
+{% extends "../layouts/_base.html" %} {% block
+title %}news — Basketball Today{% endblock %} {% block active_nav
+%}news{% endblock %} {% block body_class %}page page--news{% endblock %}
+{% block head_extra %} {% endblock %} 
+{% block content %}
+
+{% include "../components/page-first/page-first.twig" with {
+  title: "news",
+  crumbs: [
+    { label: "news" }  
+  ]
+} %}
+
+
+{% set posts = [
+    {
+      url: "/news/lebron-extends",
+      thumb: "/assets/images/img3.webp",
+      thumb_alt: "LeBron signs extension",
+      published_at: "2024-12-12",
+      title: "ESPN unveils 25-26 game commentators",
+      excerpt: "The 39-year-old veteran has committed to another season...",
+      tags: ["nba"]
+    },
+    {
+      url: "/news/lebron-extends",
+      thumb: "/assets/images/img2.webp",
+      thumb_alt: "EuroBasket 2025",
+      published_at: "2024-12-12",
+      title: "LeBron James Signs One-Year Extension With Lakers",
+      excerpt: "The 39-year-old veteran has committed...",
+      tags: ["nba","transfers"]
+    },
+    {
+      url: "/news/lebron-extends",
+      thumb: "/assets/images/img1.webp",
+      thumb_alt: "Top sophomores",
+      published_at: "2026-11-01",
+      title: "10 sophomore players to watch in 2025-26",
+      excerpt: "Prospects to track as the season unfolds...",
+      tags: ["nba"]
+    },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img16.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2024-12-12",
+              title: "ESPN unveils 25-26 game commentators",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",
+              tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img17.webp",
+              thumb_alt: "EuroBasket 2025: Standings, schedule and results",
+              published_at: "2024-12-12",
+              title: "LeBron James Signs One-Year Extension With Lakers",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",
+              tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img1.webp",
+              thumb_alt: "4 lottery teams eyeing a return to playoffs",
+              published_at: "2024-12-12",
+              title: "Film Study: Will new faces help Nuggets' defense?",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      },
+      {
+                      url: "/news/lebron-extends",
+              thumb: "/assets/images/img19.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2024-12-12",
+              title: "NBA 2K26 top 100 player ratings revealed",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img21.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2024-12-12",
+              title: "LeBron James Signs One-Year Extension With Lakers",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img22.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2024-12-12",
+              title: "LeBron James Signs One-Year Extension With Lakers",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img23.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2024-12-12",
+              title: "Strus out 3-4 months after left foot surgery",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img24.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2026-11-01",
+              title: "10 sophomore players to watch in 2025-26",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img16.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2024-12-12",
+              title: "ESPN unveils 25-26 game commentators",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",
+              tags: ["euro"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img17.webp",
+              thumb_alt: "EuroBasket 2025: Standings, schedule and results",
+              published_at: "2024-12-12",
+              title: "LeBron James Signs One-Year Extension With Lakers",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",
+              tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img1.webp",
+              thumb_alt: "4 lottery teams eyeing a return to playoffs",
+              published_at: "2024-12-12",
+              title: "Film Study: Will new faces help Nuggets' defense?",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      },
+      {
+                      url: "/news/lebron-extends",
+              thumb: "/assets/images/img19.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2024-12-12",
+              title: "NBA 2K26 top 100 player ratings revealed",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img21.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2024-12-12",
+              title: "LeBron James Signs One-Year Extension With Lakers",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img22.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2024-12-12",
+              title: "LeBron James Signs One-Year Extension With Lakers",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img23.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2024-12-12",
+              title: "Strus out 3-4 months after left foot surgery",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      },
+      {
+        url: "/news/lebron-extends",
+              thumb: "/assets/images/img24.webp",
+              thumb_alt: "LeBron signs extension",
+              published_at: "2026-11-01",
+              title: "10 sophomore players to watch in 2025-26",
+              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
+      }
+    ]%}
+
+  {% include "../components/post/post-list.twig" with {
+    posts: posts,
+    per_page: 8,
+    show_filters: true   
+  } %}
+
+{% endblock %} {% block scripts %} {% endblock %}

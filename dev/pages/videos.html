@@ -1,0 +1,152 @@
+{% extends "../layouts/_base.html" %} {% block
+title %}Videos — Basketball Today{% endblock %} {% block active_nav
+%}videos{% endblock %} {% block body_class %}page page--videos{% endblock %}
+{% block head_extra %} {% endblock %} 
+{% block content %}
+
+{% include "../components/page-first/page-first.twig" with {
+  title: "Popular videos",
+  crumbs: [
+    { label: "videos" }  
+  ]
+} %}
+
+{% set videos = [
+  {
+    href: "/videos/123",
+    thumb: "/assets/images/img2.webp",
+    thumb_alt: "video thumbnail",
+    title: "Make Your Picks 🏀",
+    published_at: "2024-11-12",
+    tags: ["highlights"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img3.webp",
+    title: "Get Ready for the Action❗️",
+    published_at: "2024-12-12",
+    tags: ["promo"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img4.webp",
+    title: "Cup Play Underway 🏆",
+    published_at: "2024-03-21",
+    tags: ["highlights"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img7.webp",
+    title: "Weekly League Pass Watch Guide 📚",
+    published_at: "2024-03-21",
+    tags: ["guide"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img6.webp",
+    title: "Close Call in Indy 👀",
+    published_at: "2025-08-29",
+    tags: ["highlights"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img30.webp",
+    title: "Get Ready for the Action❗️",
+    published_at: "2024-12-12",
+    tags: ["promo"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img31.webp",
+    title: "Cup Play Underway 🏆",
+    published_at: "2024-03-21",
+    tags: ["highlights"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img32.webp",
+    title: "Close Call in Indy 👀",
+    published_at: "2025-08-29",
+    tags: ["highlights"]
+  },
+  {
+    href: "/videos/123",
+    thumb: "/assets/images/img33.webp",
+    thumb_alt: "video thumbnail",
+    title: "Make Your Picks 🏀",
+    published_at: "2024-11-12",
+    tags: ["highlights"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img13.webp",
+    title: "Get Ready for the Action❗️",
+    published_at: "2024-12-12",
+    tags: ["promo"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img12.webp",
+    title: "Cup Play Underway 🏆",
+    published_at: "2024-03-21",
+    tags: ["highlights"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img5.webp",
+    title: "Weekly League Pass Watch Guide 📚",
+    published_at: "2024-03-21",
+    tags: ["guide"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img4.webp",
+    title: "Close Call in Indy 👀",
+    published_at: "2025-08-29",
+    tags: ["highlights"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img3.webp",
+    title: "Get Ready for the Action❗️",
+    published_at: "2024-12-12",
+    tags: ["promo"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img2.webp",
+    title: "Cup Play Underway 🏆",
+    published_at: "2024-03-21",
+    tags: ["highlights"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img1.webp",
+    title: "Close Call in Indy 👀",
+    published_at: "2025-08-29",
+    tags: ["highlights"]
+  },
+  {
+    href: "/videos/124",
+    thumb: "/assets/images/img19.webp",
+    title: "Get Ready for the Action❗️",
+    published_at: "2024-12-12",
+    tags: ["promo"]
+  }
+] %}
+  {% include "../components/video/video-list.twig" with {
+    teams: teams,
+    per_page: 8,
+    show_filters: false  
+  } %}
+
+{% endblock %} {% block scripts %} {% endblock %}
+
+
+
+
+
+
+
+
+

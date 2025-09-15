@@ -1,0 +1,46 @@
+@use "@/assets/styles/utils/_root.scss" as *;
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  gap: 8px;
+  margin-bottom:24px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba($color-dark, .2);
+		&__wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+		}
+
+		&__icon {
+      font-size: 24px;
+      color: $color-light;
+      padding: 4px;
+      border-radius: 4px;
+      background-color: $color-primary-dark;
+		}
+
+		&__logo {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+		}
+
+		&__title {
+      font-family: $font-title;
+      font-size: 20px;
+		}
+
+		&__link {
+      display: flex;
+      text-transform: capitalize;
+      font-weight: 400;
+      &:hover {
+        color: $color-primary-dark;
+      }
+		}
+}
+

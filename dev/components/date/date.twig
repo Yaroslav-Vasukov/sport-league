@@ -1,0 +1,65 @@
+{# components/date/date.twig #}
+{% macro render(value, opts = {}) %}
+  {% import _self as d %}
+
+  {% set opts = {
+    variant:     opts.variant|default('date'),
+    show_icon:   opts.show_icon|default(false),
+    icon:        opts.icon|default('schedule'),
+    class:       opts.class|default(''),
+    title_full:  opts.title_full|default(true),
+    separator:   opts.separator|default('•')
+  } %}
+
+  {% set dt = value is empty ? null : date(value) %}
+  {% if not dt %}
+    <time class="ui-date ui-date--empty {{ opts.class|e }}">—</time>
+  {% else %}
+    {% set iso = dt|date('c') %}
+
+    {% if opts.variant == 'time' %}
+      {% set text = dt|date('H:i') %}
+    {% elseif opts.variant == 'datetime' %}
+      {% set text = dt|date('d M Y') ~ ' ' ~ opts.separator ~ ' ' ~ (dt|date('H:i')) %}
+    {% elseif opts.variant == 'short' %}
+      {% set text = dt|date('d M Y') %}
+    {% elseif opts.variant == 'long' %}
+      {% set text = dt|date('d F Y, H:i') %}
+    {% elseif opts.variant == 'ago' %}
+      {% set text = d._ago_static(dt) %}
+    {% elseif opts.variant == 'kickoff' %}
+      {% set text = dt|date('D, d M, H:i') %}
+    {% else %}
+      {% set text = dt|date('d M Y') %}
+    {% endif %}
+
+    <time
+      class="ui-date ui-date--{{ opts.variant }} {{ opts.class|e }}"
+      datetime="{{ iso }}"
+      {% if opts.title_full %}title="{{ iso }}"{% endif %}
+      {% if opts.variant == 'ago' %}data-timeago="{{ iso }}"{% endif %}
+    >
+      {% if opts.show_icon %}
+        <span class="material-symbols-outlined ui-date__icon">{{ opts.icon }}</span>
+      {% endif %}
+      <span class="ui-date__text">{{ text }}</span>
+    </time>
+  {% endif %}
+{% endmacro %}
+
+{# ===== Helpers ===== #}
+{% macro _ago_static(dt) %}
+  {% set now = date() %}
+  {% set diff = (now|date('U')) - (dt|date('U')) %}
+  {% if diff < 60 %}
+    just now
+  {% elseif diff < 3600 %}
+    {% set m = (diff / 60)|round(0, 'floor') %}
+    {{ m }} min ago
+  {% elseif diff < 86400 %}
+    {% set h = (diff / 3600)|round(0, 'floor') %}
+    {{ h }} h ago
+  {% else %}
+    {{ dt|date('d M Y') }}
+  {% endif %}
+{% endmacro %}
