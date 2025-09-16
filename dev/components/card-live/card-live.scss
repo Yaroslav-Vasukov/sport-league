@@ -1,0 +1,135 @@
+.card-live {
+          border-radius: 8px;
+          padding: 8px;
+          background: repeating-linear-gradient(115deg,#fff,#fff 15px,#f9f9f9 0,#f9f9f9 30px);
+          display: flex;
+          flex-direction: column;
+		&__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+		}
+
+		&__sport {
+      background-color: $color-primary-dark;
+      color: $color-light;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 14px;
+      &:hover {
+        text-decoration: none;
+        background-color: $color-primary;
+        transition: background-color 0.3s ease;
+      }
+		}
+
+		&__league {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+		}
+
+		&__league-icon {
+      height: 32px;
+      width: 32px;
+      object-fit: contain;
+      padding: 4px;
+      background-color: $color-gray;
+      border-radius: 4px;
+		}
+
+		&__league-title {
+      text-transform: uppercase;
+      font-weight: 400;
+		}
+
+		&__teams {
+      display: grid;
+      grid-template-columns: 1fr 0.5fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+		}
+
+		&__team {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      &:hover {
+        text-decoration: none;
+        color: $color-accent-orange;
+        transition: color 0.3s ease;
+      }
+      &:first-child {
+        flex-direction: row-reverse;
+              @media (max-width: 992px) {
+        flex-direction: column;
+      }
+      }
+      &:first-child:hover {
+        text-decoration: none;
+        color: $color-accent-blue;
+        transition: color 0.3s ease;
+      }
+      @media (max-width: 992px) {
+        flex-direction: column;
+      }
+		}
+
+		&__logo {
+      height: 64px;
+      width: 64px;
+      object-fit: contain;
+		}
+
+		&__tag {
+      line-height: 1.2;
+		}
+
+		&__time {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-dark-gray;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background-color: $color-gray;
+      @media (max-width: 576px) {
+        font-size: 20px;
+        padding: 8px 8px;
+      }
+		}
+
+		&__bot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 16px;
+      margin-top: auto;
+      @media (max-width: 576px) {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+		}
+
+		&__btn {
+      background-color: $color-primary-dark;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: $color-light;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 8px;
+      &:hover {
+        text-decoration: none;
+        background-color: $color-accent-orange;
+        transition: background-color 0.3s ease;
+      }
+		}
+}
+

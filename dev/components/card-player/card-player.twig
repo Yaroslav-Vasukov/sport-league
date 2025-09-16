@@ -1,0 +1,125 @@
+{# dev/components/card-player/card-player.twig #}
+{#
+  Компонент: card-player
+  Входные:
+    name            (string)                    — имя игрока
+    href            (string|null)               — ссылка на профиль игрока
+    img_bg          (string|null)               — фон/бэкграунд (например логотип команды или паттерн)
+    img_face        (string)                    — фото игрока
+    alt_bg          (string|null)               — alt для фона
+    alt_face        (string|null)               — alt для лица игрока
+
+    sport           (string|null)               — название спорта (тег)
+    team            (object|null)               — { name: string, logo: string|null, href: string|null }
+    tags            (array|null)                — дополнительные теги (строки), опционально
+
+    # ВАРИАНТ 1: готовый массив статов
+    stats           (array|null)                — [{ label: 'HT/WT', value: "6' 4\", 210 lbs" }, ...]
+
+    # ВАРИАНТ 2: поля по-отдельности (используются, если stats не передан)
+    htwt            (string|null)
+    birthdate       (string|null)               — например "12/8/1998 (26)"
+    birthplace      (string|null)
+    status          (string|null)
+    experience      (string|null)
+
+    extra_class     (string|null)               — дополнительный класс для модификаций
+#}
+
+{% set _name       = name|default('Unknown Player') %}
+{% set _href       = href|default(null) %}
+{% set _img_bg     = img_bg|default(null) %}
+{% set _img_face   = img_face|default('/assets/images/placeholder-player.webp') %}
+{% set _alt_bg     = alt_bg|default((team.name is defined ? team.name ~ ' background' : 'Team background')) %}
+{% set _alt_face   = alt_face|default(_name ~ ' photo') %}
+
+{% set _sport      = sport|default(null) %}
+{% set _team       = team|default(null) %}
+{% set _tags       = tags|default([]) %}
+
+{% set _stats      = stats is defined and stats is not empty
+  ? stats
+  : [] %}
+
+{# Если stats не пришёл — соберём его из одиночных полей #}
+{% if _stats is empty %}
+  {% set _stats = [] %}
+  {% if htwt|default(null)        %}{% set _stats = _stats|merge([{ label: 'HT/WT',     value: htwt }]) %}{% endif %}
+  {% if birthdate|default(null)   %}{% set _stats = _stats|merge([{ label: 'Birthdate', value: birthdate }]) %}{% endif %}
+  {% if birthplace|default(null)  %}{% set _stats = _stats|merge([{ label: 'Birthplace',value: birthplace }]) %}{% endif %}
+  {% if status|default(null)      %}{% set _stats = _stats|merge([{ label: 'Status',    value: status }]) %}{% endif %}
+  {% if experience|default(null)  %}{% set _stats = _stats|merge([{ label: 'Experience',value: experience }]) %}{% endif %}
+{% endif %}
+
+<article class="card-player {{ extra_class|default('') }}">
+  <div class="card-player__top">
+    {% if _href %}
+      <a href="{{ _href }}" class="card-player__link" aria-label="{{ _name }}">
+    {% else %}
+      <div class="card-player__link" aria-hidden="true">
+    {% endif %}
+
+        {% if _img_bg %}
+          <img src="{{ _img_bg }}" alt="{{ _alt_bg }}" class="card-player__bg">
+        {% endif %}
+        <img src="{{ _img_face }}" alt="{{ _alt_face }}" class="card-player__face">
+
+    {% if _href %}
+      </a>
+    {% else %}
+      </div>
+    {% endif %}
+
+    {% if _stats is not empty %}
+      <ul class="card-player__stat">
+        {% for s in _stats %}
+          {% if s.value is defined and s.value %}
+            <li class="card-player__stat-item">
+              {% if s.label is defined and s.label %}
+                <span class="card-player__stat-label">{{ s.label }}</span>
+              {% endif %}
+              <span class="card-player__stat-number">{{ s.value }}</span>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+
+  <div class="card-player__bot">
+    <h3 class="card-player__name">
+      {% if _href %}
+        <a href="{{ _href }}" class="card-player__name-link">{{ _name }}</a>
+      {% else %}
+        {{ _name }}
+      {% endif %}
+    </h3>
+
+    {% if _sport or _team or (_tags is not empty) %}
+      <ul class="card-player__bot-list">
+        {% if _sport %}
+          <li class="card-player__bot-item">
+            <a href="#" class="card-player__bot-link">{{ _sport }}</a>
+          </li>
+        {% endif %}
+
+        {% if _team %}
+          <li class="card-player__bot-item">
+            <a href="{{ _team.href|default('#') }}" class="card-player__bot-link">
+              {% if _team.logo|default(null) %}
+                <img src="{{ _team.logo }}" alt="{{ _team.name|default('Team') }} logo" class="card-player__bot-logo">
+              {% endif %}
+              <span class="card-player__bot-tag">{{ _team.name|default('Team') }}</span>
+            </a>
+          </li>
+        {% endif %}
+
+        {% for tag in _tags %}
+          <li class="card-player__bot-item">
+            <a href="#" class="card-player__bot-link">{{ tag }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</article>

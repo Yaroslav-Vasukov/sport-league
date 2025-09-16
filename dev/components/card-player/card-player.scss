@@ -1,0 +1,135 @@
+.card-player {
+  border: 1px solid rgba($color-dark, .2);
+  border-radius: 8px;
+  overflow: hidden;
+
+		&__top {
+      display: flex;
+      align-items: flex-end;
+      
+      gap: 16px;
+      padding: 24px 0 0;
+                        @media (max-width: 569.98px) {
+              flex-direction: column;
+              align-items: stretch;
+            }
+		}
+
+		&__link {
+      display: flex;
+      position: relative;
+      align-items: flex-end;
+                              @media (max-width: 569.98px) {
+              flex-direction: column;
+              align-items: center;
+              border-bottom: 1px solid rgba($color-dark, .2);
+            }
+		}
+
+		&__bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 1;
+      opacity: .75;
+		}
+
+		&__face {
+      position: relative;
+            z-index: 2;
+            height: 180px;
+            object-fit: contain;
+            object-position: center bottom;
+                  @media (max-width: 829.98px) {
+              height: 120px;
+            }
+                  @media (max-width: 767.98px) {
+              height: 200px;
+            }
+
+		}
+
+		&__stat {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      flex: 1;
+      padding: 0 8px 16px;
+		}
+
+		&__stat-item {
+      display: grid;
+      grid-template-columns:1fr auto;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+		}
+
+		&__stat-number {
+      font-weight: 700;
+      text-align: right;
+		}
+
+		&__bot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: $color-dark-gray;
+      padding: 16px;
+      color: $color-light;
+      .card-player:hover & {
+        background-color: $color-dark;
+        transition: background-color .3s;
+      }
+        @media (max-width: 569.98px) {
+          display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+            }
+		}
+
+		&__name {
+      font-size: 32px;
+      line-height: 1.2;
+		}
+
+		&__name-link {
+      &:hover {
+        color: $color-primary;
+        transition: color .3s;
+      }
+		}
+
+		&__bot-list {
+      display: flex;
+      gap: 16px;
+		}
+
+		&__bot-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+		}
+
+		&__bot-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: $color-light;
+      font-size: 14px;
+
+      &:hover {
+        color: $color-primary;
+                transition: color .3s;
+      }
+		}
+
+		&__bot-logo {
+      height: 24px;
+      width: 24px;
+      object-fit: contain;
+		}
+}
+

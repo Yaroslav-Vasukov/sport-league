@@ -42,12 +42,12 @@
     {% endif %}
 
     <div class="card-post-m__content">
-      <h3 class="card-post-m__title">{{ _title }}</h3>
       {% if _date_value %}
         <p class="card-post-m__meta">
           {{ Date.render(_date_value, _date_opts) }}
         </p>
       {% endif %}
+      <h3 class="card-post-m__title">{{ _title }}</h3>
     </div>
   </a>
 </article>

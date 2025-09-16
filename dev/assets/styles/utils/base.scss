@@ -1,8 +1,3 @@
-/* Fonts */
-$font-title: 'Anton', sans-serif;
-$font-sub: 'Oswald', sans-serif;
-$font-body: 'Open Sans', sans-serif;
-
 /* Colors */
 $color-primary: #00C853;
 $color-primary-dark: #007E33;
@@ -22,9 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Anton", sans-serif;
-  font-weight: 400; /* у Anton один вес */
-  text-transform: uppercase; /* можно сделать капслок для спортивного стиля */
+  font-family: "SF Pro Display", system-ui, -apple-system, sans-serif;
 }
 
 body,
@@ -35,12 +28,10 @@ span  {
   font-weight: 400;
   line-height: 1.6;
 }
-a {
-  font-family: $font-sub;
-}
+
 body {
   background-color: $color-gray;
-  font-family: $font-body;
+  font-family: "SF Pro Display", system-ui, -apple-system, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;

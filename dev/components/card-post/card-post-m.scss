@@ -1,14 +1,19 @@
+@use "@/assets/styles/utils/_mixins.scss" as *;
 
 .card-post-m {
 
 		&__link {
       display: flex;
       flex-direction: column;
+      &:hover .card-post-m__title {
+        color: $color-primary-dark;
+      }
 		}
 
 		&__thumb {
       aspect-ratio: 16 / 9;
       overflow: hidden;
+      border-radius: 8px;
 		}
 
 		&__img {
@@ -18,12 +23,14 @@
 		}
 
 		&__content {
+      margin-top: 10px;
 		}
 
 		&__title {
-      font-size: 20px;
-      margin: 12px 0 8px;
-      font-family: $font-sub;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.2;
+       @include line-clamp(2, 1.6em);
 		}
 
 		&__meta {

@@ -1,12 +1,20 @@
 @use 'utils/index' as *;
+@use '../styles/partials/fonts.scss';
 @use '../../components/header/header.scss';
 @use '../../components/section-head/section-head.scss';
 @use '../../components/list/list.scss';
 @use '../../components/date/date.scss';
+@use '../../components/card-post/card-post-m.scss';
+@use '../../components/card-post/card-post.scss';
+@use '../../components/card-video/card-video.scss';
+@use '../../components/card-live/card-live.scss';
+@use '../../components/card-player/card-player.scss';
+@use '../../components/swiper/swiper.scss';
 
 
 
 @use '../styles/partials/content-wrap.scss';
+
 
 @use './blocks/hub.scss';
 // @use './pages/review.scss';

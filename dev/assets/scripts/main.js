@@ -21,9 +21,9 @@ function init() {
   when("[data-date]", () =>
     import("@components/date/date.js")
   ); 
-//   when("[data-standings]", () =>
-//     import("@components/standings-tabs/standings-tabs.js")
-//   ); 
+  when("[data-swiper]", () =>
+    import("@components/swiper/swiper.js")
+  ); 
 //   when('[data-module="week-calendar"]', () =>
 //   import("@components/calendar/calendar.js")
 //   );

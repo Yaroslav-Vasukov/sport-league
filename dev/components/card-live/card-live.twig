@@ -1,0 +1,70 @@
+
+{% import '../date/date.twig' as Date %}
+
+{# входные с дефолтами #}
+{% set _date_value = date_value|default(null) %}
+{% set _date_opts  = date_opts|default({ variant: 'short', show_icon: true, icon: 'scoreboard' }) %}
+
+{% set _sport      = sport|default(null) %}
+{% set _league     = league|default(null) %}
+
+{# если явно передали href — используем его; иначе собираем из названия #}
+{% set _sport_href  = sport_href|default(_sport  ? '/sports/'  ~ (_sport|lower|replace({' ': '-', '/':'-'}))  : null) %}
+{% set _league_href = league_href|default(_league ? '/leagues/' ~ (_league|lower|replace({' ': '-', '/':'-'})) : null) %}
+
+{% set team1 = team1|default({ name: 'Barcelona',   logo: '/assets/images/team1.webp', href: '#' }) %}
+{% set team2 = team2|default({ name: 'Real Madrid', logo: '/assets/images/team2.webp', href: '#' }) %}
+{% set time  = time|default('20:00') %}
+
+<article class="card-live">
+  <div class="card-live__top">
+    {# Спорт — ссылка, если есть href; иначе <span> #}
+    {% if _sport %}
+      {% if _sport_href %}
+        <a href="{{ _sport_href }}" class="card-live__sport">{{ _sport }}</a>
+      {% else %}
+        <span class="card-live__sport">{{ _sport }}</span>
+      {% endif %}
+    {% endif %}
+
+    {# Лига — ссылка, если есть href; иначе <span> #}
+    {% if _league %}
+      {% if _league_href %}
+        <a href="{{ _league_href }}" class="card-live__league">
+          <img src="/assets/images/league1.webp" alt="{{ _league }}" class="card-live__league-icon">
+          <span class="card-live__league-title">{{ _league }}</span>
+        </a>
+      {% else %}
+        <span class="card-live__league">
+          <img src="/assets/images/league1.webp" alt="{{ _league }}" class="card-live__league-icon">
+          <span class="card-live__league-title">{{ _league }}</span>
+        </span>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <div class="card-live__teams">
+    <a href="{{ team1.href }}" class="card-live__team">
+      <img src="{{ team1.logo }}" alt="{{ team1.name }}" class="card-live__logo">
+      <h3 class="card-live__tag">{{ team1.name }}</h3>
+    </a>
+
+    <p class="card-live__time">{{ time }}</p>
+
+    <a href="{{ team2.href }}" class="card-live__team">
+      <img src="{{ team2.logo }}" alt="{{ team2.name }}" class="card-live__logo">
+      <h3 class="card-live__tag">{{ team2.name }}</h3>
+    </a>
+  </div>
+
+  <div class="card-live__bot">
+    <a href="#" class="card-live__btn">
+      <span class="card-live__btn-icon material-symbols-outlined">scoreboard</span>
+      Live Broadcast
+    </a>
+
+    {% if _date_value %}
+      <span class="card-live__date">{{ Date.render(_date_value, _date_opts) }}</span>
+    {% endif %}
+  </div>
+</article>

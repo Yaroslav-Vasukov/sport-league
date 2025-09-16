@@ -1,0 +1,81 @@
+@use "@/assets/styles/utils/_mixins.scss" as *;
+
+.card-video {
+  display: flex;
+  position: relative;
+        border-radius: 8px;
+      overflow: hidden;
+		&__link {
+      display: flex;
+      flex-grow: 1;
+      padding: 16px;
+      min-height: 240px;
+      &:hover .card-video__title {
+        color: $color-primary;
+        transition: color .3s ease;
+      }
+		}
+
+		&__thumb {
+      position: absolute;
+      left: 0;
+      top: 0;right: 0;
+      bottom: 0;
+      width: 100%;
+		}
+
+		&__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+		}
+
+		&__badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background-color: $color-primary-dark;
+      color: #fff;
+      padding: 2px 6px;
+      font-size: 12px;
+      border-radius: 4px;
+      font-weight: 500;
+            z-index: 2;
+		}
+
+		&__icon {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      color: #fff;
+      font-size: 32px;
+      z-index: 1;
+		}
+
+		&__content {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      left: 0px;
+      bottom: 0px;
+      gap: 4px;
+      padding: 24px 8px 8px 8px;
+      color: $color-light;
+      background: linear-gradient(0deg,rgba(42, 42, 42, 1) 50%, rgba(0, 0, 0, 0) 100%);
+		}
+
+
+
+
+
+		&__views {
+      font-size: 14px;
+      opacity: 0.9;
+		}
+
+		&__title {
+      font-weight: 600;
+		}
+}
+

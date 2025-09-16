@@ -1,0 +1,30 @@
+{% import '../date/date.twig' as Date %}
+
+{% set _sport      = sport|default(null) %}
+{% set _league     = league|default(null) %}
+{% set _date_value = date_value|default(null) %}
+{% set _date_opts  = date_opts|default({ variant: 'short', show_icon: true, icon: 'calendar_today' }) %}
+
+<article class="card-post">
+  <a href="{{ href|default('#') }}" class="card-post__link" aria-label="{{ title }}">
+      {% if thumb_src is defined and thumb_src %}
+        <figure class="card-post__thumb">
+          <img src="{{ thumb_src }}" alt="{{ title }}" class="card-post__img" loading="lazy">
+        </figure>
+      {% endif %}
+      <div class="card-post__content">
+          {% if _date_value %}
+            <p class="card-post-m__meta">
+              {{ Date.render(_date_value, _date_opts) }}
+            </p>
+          {% endif %}
+    
+        <h3 class="card-post__title">{{ title }}</h3>
+    
+        <p class="card-post__descr">
+          {{ descr }}
+        </p>
+      </div>
+  </a>
+
+</article>

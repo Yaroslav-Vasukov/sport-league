@@ -1,3 +1,4 @@
+@use "@/assets/styles/utils/_root.scss" as *;
 .list {
 		&__grid {
       display: flex;
@@ -29,7 +30,6 @@
 		&__title {
       font-size: 14px;
       transition: color .3s ease;
-      font-family: $font-sub;
       font-weight: 600;
 		}
 

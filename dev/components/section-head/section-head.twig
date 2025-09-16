@@ -1,31 +1,26 @@
 {# входные:
-  title (string)       – заголовок секции
-  link_url (string)    – ссылка "see all"
-  link_label (string)  – текст ссылки
-  icon (string)        – название material-symbol (опц.)
-  logo (string)        – путь к картинке (опц.)
-  logo_alt (string)    – alt для картинки
+  title, link_url?, link_label?, icon?, logo?, logo_alt?, show_link? (bool)
 #}
+
+{% set _title     = title|default('') %}
+{% set _link_url  = link_url|default('') %}
+{% set _show_link = (show_link is defined) ? show_link : (_link_url != '') %}
 
 <div class="section-head">
   <div class="section-head__wrap">
-    
     {% if icon is defined %}
-      <span class="material-symbols-outlined section-head__icon">
-        {{ icon }}
-      </span>
+      <span class="material-symbols-outlined section-head__icon">{{ icon }}</span>
     {% elseif logo is defined %}
-      <img src="{{ logo }}" alt="{{ logo_alt|default(title) }}" class="section-head__logo">
+      <img src="{{ logo }}" alt="{{ logo_alt|default(_title) }}" class="section-head__logo">
     {% endif %}
-
-    <h2 class="section-head__title">{{ title }}</h2>
+    <h2 class="section-head__title">{{ _title }}</h2>
   </div>
 
-{% if link_url is not empty %}
-  <a href="{{ link_url }}" class="section-head__link">
-    {{ link_label|default('See all') }}
-  </a>
-{% endif %}
+  {% if _show_link %}
+    <a href="{{ _link_url }}" class="section-head__link">
+      {{ link_label|default('See all') }}
+    </a>
+  {% endif %}
 </div>
 
 

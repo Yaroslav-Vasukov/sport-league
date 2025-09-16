@@ -4,29 +4,27 @@
   --aside-left-w: 300px;
   --aside-right-w: 340px;
   --content-min: 640px; /* чтобы контент не схлопывался */
-  --sticky-top: 72px; /* высота хедера/отступ для sticky */
+  --sticky-top: 102px; /* высота хедера/отступ для sticky */
 
   padding: 24px 0;
 
   &__grid {
     display: grid;
     grid-template-columns:
-      minmax(0, var(--aside-left-w))
-      minmax(var(--content-min), 1fr)
-      minmax(0, var(--aside-right-w));
+    minmax(0, var(--aside-left-w))
+    minmax(0, 1fr)
+    minmax(0, var(--aside-right-w));
     gap: var(--gap);
     align-items: start; /* сайдбары по верхнему краю */
   }
 
-  &__aside {
+  &__aside,
+  &__content {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 24px;
-    &.hub__aside--left {
-      position: sticky;
-      top: var(--sticky-top);
-    }
+    min-width: 0; 
   }
 
   /* ====== Адаптив ====== */
@@ -81,7 +79,7 @@
     }
     &__aside {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax( 240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax( 240px, 1fr));
     gap: 24px 16px;
     }
     &__aside--left {

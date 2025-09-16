@@ -1,0 +1,52 @@
+{# входные:
+  href        (string)  – ссылка на видео
+  title       (string)  – заголовок
+  thumb_src   (string)  – путь к превью
+  thumb_alt   (string)  – alt для превью (по умолчанию = title)
+  date_value  (string)  – дата (опц.)
+  date_opts   (object)  – опции Date.render (опц.)
+  duration    (string)  – длительность, например "08:24" (опц.)
+  sport       (string)  – вид спорта (опц.)
+  league      (string)  – лига (опц.)
+  views       (string|int) – просмотры (опц.)
+  play_icon   (string)  – иконка play, по умолчанию "play_circle"
+  extra_class (string)  – доп. класс на корень (опц.)
+#}
+
+{% import '../date/date.twig' as Date %}
+
+{% set _href       = href|default('#') %}
+{% set _title      = title|default('Untitled video') %}
+{% set _thumb_src  = thumb_src|default('/assets/images/img1.webp') %}
+{% set _thumb_alt  = thumb_alt|default(_title) %}
+{% set _date_value = date_value|default(null) %}
+{% set _date_opts  = date_opts|default({ variant: 'short', show_icon: true, icon: 'calendar_today' }) %}
+{% set _play_icon  = play_icon|default('play_circle') %}
+
+<article class="card-video {{ extra_class|default('') }}">
+  <a href="{{ _href }}" class="card-video__link" aria-label="{{ _title }}">
+    <figure class="card-video__thumb">
+      <img src="{{ _thumb_src }}" alt="{{ _thumb_alt }}" class="card-video__img" loading="lazy">
+      {% if duration %}
+        <span class="card-video__badge">{{ duration }}</span>
+      {% endif %}
+      <span class="card-video__icon material-symbols-outlined">{{ _play_icon }}</span>
+    </figure>
+
+    <div class="card-video__content">
+      {% if sport or league or _date_value or views is defined %}
+        <p class="card-video__meta">
+          {% if _date_value %}
+            <span class="card-video__date">{{ Date.render(_date_value, _date_opts) }}</span>
+          {% endif %}
+          {% if views is defined and views %}
+            <span class="card-video__sep">•</span>
+            <span class="card-video__views">{{ views }}</span>
+          {% endif %}
+        </p>
+      {% endif %}
+
+      <h3 class="card-video__title">{{ _title }}</h3>
+    </div>
+  </a>
+</article>
