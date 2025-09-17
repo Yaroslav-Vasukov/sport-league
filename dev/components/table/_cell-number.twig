@@ -1,0 +1,30 @@
+{% set show_sign = (col is defined and col.show_sign is defined) ? col.show_sign : false %}
+{% set decimals  = (col is defined and col.decimals  is defined) ? col.decimals  : 0 %}
+
+{# БАЗОВЫЕ ВЕТКИ БЕЗ РЕДКИХ ФИЛЬТРОВ/ТЕСТОВ #}
+{% if value is same as(null) or value is same as('') %}
+  <span class="num">—</span>
+
+{% elseif value is iterable %}
+  {# если внезапно пришел массив/объект — печатаем как есть #}
+  <span class="num">{{ value }}</span>
+
+{% else %}
+  {# пробуем привести к числу только если это безопасно #}
+  {% set str = value ~ '' %}
+  {% set sign = (str|slice(0,1) == '+' or str|slice(0,1) == '-') ? str|slice(0,1) : '' %}
+  {% set core = (sign != '') ? str|slice(1) : str %}
+  {% set is_number_like = (core matches('/^\\d+(\\.\\d+)?$/')) %}
+
+  {% if is_number_like %}
+    {# выводим с нужным знаком #}
+    {% set n = (sign == '-') ? ('-' ~ core) : core %}
+    {% if show_sign and (sign == '' or sign == '+') and (core != '0' and core != '0.0') %}
+      <span class="num">+{{ decimals > 0 ? (n) : n }}</span>
+    {% else %}
+      <span class="num">{{ decimals > 0 ? (n) : n }}</span>
+    {% endif %}
+  {% else %}
+    <span class="num">{{ value }}</span>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,75 @@
+{#
+  ВХОД:
+  - columns: [
+      { key: 'team',   label: 'Team',    align: 'left',  width: 'minmax(200px,1fr)', template: '@components/table/_cell-team.twig' },
+      { key: 'pts',    label: 'PTS',     align: 'right', width: '64px', is_numeric: true },
+      ...
+    ]
+  - rows:    [ { team: {...}, pts: 17, ... }, ... ]
+  - caption: 'Standings' (опционально)
+  - dense:   true|false (компактный режим)
+  - zebra:   true|false (полосатые строки)
+  - hover:   true|false (подсветка строки)
+  - sticky_head: true|false (липкая шапка)
+  - empty_text: 'No data' (когда rows пустой)
+#}
+
+{% set _cols = columns|default([]) %}
+{% set _rows = rows|default([]) %}
+{% set _caption = caption|default(null) %}
+{% set _mods = [] %}
+{% if hover %}{% set _mods = _mods|merge(['table--hover']) %}{% endif %}
+{% if sticky_head %}{% set _mods = _mods|merge(['table--sticky-head']) %}{% endif %}
+
+{% if scroll %}
+  <div class="table-wrap" role="region" aria-label="{{ caption|default('Table') }}" tabindex="0">
+{% endif %}
+
+  {% if _caption %} <div class="table__caption">
+    <caption class="table__caption">{{ _caption }}</caption>
+  </div> {% endif %}
+<table class="table {{ _mods|join(' ') }}" data-module="table">
+
+  <thead class="table__head">
+    <tr class="table__row">
+      {% for col in _cols %}
+        {% set _align = col.align|default('left') %}
+        <th class="table__cell table__cell--head table__cell--{{ _align }}"
+            scope="col"
+            style="{{ col.width is defined ? 'width:' ~ col.width ~ ';' : '' }}">
+          {{ col.label }}
+        </th>
+      {% endfor %}
+    </tr>
+  </thead>
+
+  <tbody class="table__body">
+    {% if _rows is empty %}
+      <tr class="table__row table__row--empty">
+        <td class="table__cell" colspan="{{ _cols|length }}">
+          {{ empty_text|default('No data.') }}
+        </td>
+      </tr>
+    {% else %}
+      {% for row in _rows %}
+        <tr class="table__row">
+          {% for col in _cols %}
+            {% set _align = col.align|default('left') %}
+            {% set _value = (row[col.key] is defined) ? row[col.key] : null %}
+             <td class="table__cell table__cell--{{ _align }}" data-label="{{ col.label }}">
+             {% if col.template is defined and col.template %}
+             {% include col.template with { value: _value, row: row, col: col } only %}
+             {% else %}
+             {{ _value }}
+             {% endif %}
+             </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    {% endif %}
+  </tbody>
+</table>
+
+{% if scroll %}
+  </div>
+{% endif %}

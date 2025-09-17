@@ -1,0 +1,123 @@
+{# dev/components/footer/footer.twig #}
+{% import _self as F %}
+
+{# ============ helpers ============ #}
+{% macro list(items, type) %}
+<ul class="footer__list">
+  {% for item in items %}
+    <li class="footer__item">
+      <a
+        href="{{ item.href|default('#') }}"
+        class="footer__link"
+        {% if item.target is defined %}target="{{ item.target }}"{% endif %}
+        {% if item.rel is defined %}rel="{{ item.rel }}"{% endif %}
+      >
+        {% if type == 'icon' and item.icon is defined %}
+          <span class="material-symbols-outlined footer__link-icon">{{ item.icon }}</span>
+        {% elseif type == 'logo' and item.logo is defined %}
+          <img
+            src="{{ item.logo }}"
+            alt="{{ item.alt|default(item.tag|default('')) }}"
+            class="footer__link-logo"
+          >
+        {% endif %}
+        {% if item.tag is defined %}<h3 class="footer__link-tag">{{ item.tag }}</h3>{% endif %}
+      </a>
+    </li>
+  {% else %}
+    <li class="footer__item"><span class="footer__link-tag">No items.</span></li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+{# ============ входные параметры ============ #}
+{# заголовки секций (при желании можно скрывать, передав пустые массивы) #}
+{% set title_sports    = title_sports|default('Footer Title') %}
+{% set title_useful    = title_useful|default('Useful links') %}
+{% set title_leagues   = title_leagues|default('Leagues') %}
+{% set title_teams     = title_teams|default('Teams') %}
+{% set title_players   = title_players|default('Popular players') %}
+
+{# данные списков #}
+{% set sports_links  = sports_links|default([])  %}  {# [{href, icon, tag}] #}
+{% set useful_links  = useful_links|default([])  %}  {# [{href, icon, tag}] #}
+{% set leagues       = leagues|default([])       %}  {# [{href, logo, tag, alt?}] #}
+{% set teams         = teams|default([])         %}  {# [{href, logo, tag, alt?}] #}
+{% set players       = players|default([])       %}  {# [{href, logo, tag, alt?}] #}
+
+{# логотип и подвальная часть #}
+{% set bottom_logo = bottom_logo|default({
+  href: '#',
+  src:  '/assets/images/logo.webp',
+  alt:  'logo'
+}) %}
+{% set bottom_links = bottom_links|default([]) %} {# [{href, label}] #}
+{% set copyright = copyright|default('© ESPN Enterprises, Inc. All rights reserved.') %}
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+
+      <div class="footer__top">
+        {% if sports_links|length %}
+          <div class="footer__item">
+            <h2 class="footer__title">{{ title_sports }}</h2>
+            {{ F.list(sports_links, 'icon') }}
+          </div>
+        {% endif %}
+
+        {% if useful_links|length %}
+          <div class="footer__item">
+            <h2 class="footer__title">{{ title_useful }}</h2>
+            {{ F.list(useful_links, 'icon') }}
+          </div>
+        {% endif %}
+
+        {% if leagues|length %}
+          <div class="footer__item">
+            <h2 class="footer__title">{{ title_leagues }}</h2>
+            {{ F.list(leagues, 'logo') }}
+          </div>
+        {% endif %}
+
+        {% if teams|length %}
+          <div class="footer__item">
+            <h2 class="footer__title">{{ title_teams }}</h2>
+            {{ F.list(teams, 'logo') }}
+          </div>
+        {% endif %}
+
+        {% if players|length %}
+          <div class="footer__item">
+            <h2 class="footer__title">{{ title_players }}</h2>
+            {{ F.list(players, 'logo') }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="footer__bottom">
+        <a href="{{ bottom_logo.href }}" class="footer__logo">
+          <img src="{{ bottom_logo.src }}" alt="{{ bottom_logo.alt|default('logo') }}" class="footer__logo-img">
+        </a>
+
+        <div class="footer__bottom-wrap">
+          {% if bottom_links|length %}
+            <ul class="footer__bottom-list">
+              {% for link in bottom_links %}
+                <li class="footer__bottom-item">
+                  <a href="{{ link.href|default('#') }}" class="footer__bottom-link"
+                     {% if link.target is defined %}target="{{ link.target }}"{% endif %}
+                     {% if link.rel is defined %}rel="{{ link.rel }}"{% endif %}
+                  >{{ link.label }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          <p class="footer__warning">{{ copyright }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>

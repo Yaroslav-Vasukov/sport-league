@@ -330,7 +330,28 @@
 ] %}
 
 
+{% set columns = [
+  { key:'pos',   label:'#',    align:'right', width:'32px',  template:'../table/_cell-number.twig' },
+  { key:'team',  label:'Team', align:'left',  width:'minmax(200px,1fr)', template:'../table/_cell-team.twig' },
+  { key:'mp',    label:'MP',   align:'right', width:'56px',  is_numeric:true, template:'../table/_cell-number.twig' },
+  { key:'w',     label:'W',    align:'right', width:'56px',  is_numeric:true, template:'../table/_cell-number.twig' },
+  { key:'d',     label:'D',    align:'right', width:'56px',  is_numeric:true, template:'../table/_cell-number.twig' },
+  { key:'l',     label:'L',    align:'right', width:'56px',  is_numeric:true, template:'../table/_cell-number.twig' },
+  { key:'gd',    label:'GD',   align:'right', width:'64px',  is_numeric:true, template:'../table/_cell-number.twig' },
+  { key:'pts',   label:'PTS',  align:'right', width:'64px',  is_numeric:true, template:'../table/_cell-number.twig' }
+] %}
 
+{% set rows = [
+  { pos:1, team:{ name:'Barcelona', logo:'/assets/images/team1.webp', href:'/teams/barcelona' }, mp:5, w:4, d:1, l:0, gd:9,  pts:13 },
+  { pos:2, team:{ name:'Real Madrid', logo:'/assets/images/team2.webp', href:'/teams/real-madrid' }, mp:5, w:4, d:0, l:1, gd:6,  pts:12 },
+  { pos:3, team:{ name:'Girona', logo:'/assets/images/team3.webp', href:'#' }, mp:5, w:3, d:1, l:1, gd:4,  pts:10 },
+  { pos:4, team:{ name:'Atletico', logo:'/assets/images/team4.webp', href:'#' }, mp:5, w:3, d:1, l:1, gd:3,  pts:10 },
+  { pos:5, team:{ name:'Barcelona', logo:'/assets/images/team5.webp', href:'/teams/barcelona' }, mp:5, w:4, d:1, l:0, gd:9,  pts:13 },
+  { pos:6, team:{ name:'Real Madrid', logo:'/assets/images/team6.webp', href:'/teams/real-madrid' }, mp:5, w:4, d:0, l:1, gd:6,  pts:12 },
+  { pos:7, team:{ name:'Girona', logo:'/assets/images/team7.webp', href:'#' }, mp:5, w:3, d:1, l:1, gd:4,  pts:10 },
+  { pos:8, team:{ name:'Atletico', logo:'/assets/images/team8.webp', href:'#' }, mp:5, w:3, d:1, l:1, gd:3,  pts:10 },
+  { pos:9, team:{ name:'Girona', logo:'/assets/images/team9.webp', href:'#' }, mp:5, w:3, d:1, l:1, gd:4,  pts:10 }
+] %}
 
 
 
@@ -446,6 +467,102 @@
   </div>
 </section>
 
+   <section class="block">
+  <div class="block__inner">
+    {% include "../components/section-head/section-head.twig" with {
+      title: "League table",
+      icon: "table",
+      link_url: "/league/serie-a",
+      link_label: "full table"
+    } %}
+
+    <div class="tabs" data-tabs id="tabs-standings" data-tabs-sync="hash" aria-label="Sports standings">
+      <div class="tabs__nav" role="tablist" aria-label="Leagues">
+        <button
+          class="tabs__tab is-active"
+          id="tab-laliga"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-laliga"
+          tabindex="0"
+          data-tab="laliga">
+          La Liga
+        </button>
+
+        <button
+          class="tabs__tab"
+          id="tab-premierLeague"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-premierLeague"
+          tabindex="-1"
+          data-tab="premierLeague">
+          Premier League
+        </button>
+        <button
+          class="tabs__tab"
+          id="tab-everdivisie"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-everdivisie"
+          tabindex="-1"
+          data-tab="everdivisie">
+          Everdivisie
+        </button>
+        <button
+          class="tabs__tab"
+          id="tab-serieA"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-serieA"
+          tabindex="-1"
+          data-tab="serieA">
+          Serie A
+        </button>
+      </div>
+
+      <div class="tabs__panel is-active" id="panel-laliga" role="tabpanel" aria-labelledby="tab-laliga" tabindex="0">
+        {% include '../components/table/table.twig' with {
+          caption: 'La Liga — Standings',
+          columns: columns,
+          scroll: true,
+          rows: rows,
+          sticky_head: true
+        } only %}
+      </div>
+          <div class="tabs__panel" id="panel-premierLeague" role="tabpanel" aria-labelledby="tab-premierLeague" tabindex="0" hidden>
+        {% include '../components/table/table.twig' with {
+          caption: 'Premier League — Standings',
+          columns: columns,
+          scroll: true,
+          rows: rows,
+          hover: true,
+          sticky_head: true
+        } only %}
+      </div>
+          <div class="tabs__panel" id="panel-everdivisie" role="tabpanel" aria-labelledby="tab-everdivisie" tabindex="0" hidden>
+        {% include '../components/table/table.twig' with {
+          caption: 'Everdivisie — Standings',
+          columns: columns,
+          scroll: true,
+          rows: rows,
+          hover: true,
+          sticky_head: true
+        } only %}
+      </div>
+          <div class="tabs__panel" id="panel-serieA" role="tabpanel" aria-labelledby="tab-serieA" tabindex="0" hidden>
+        {% include '../components/table/table.twig' with {
+          caption: 'Serie A — Standings',
+          columns: columns,
+          scroll: true,
+          rows: rows,
+          hover: true,
+          sticky_head: true
+        } only %}
+      </div>
+</section>
+
+
       <section class="block">
   <div class="block__inner">
   {% include "../components/section-head/section-head.twig" with {
@@ -480,6 +597,33 @@
   </div>
 </section>
 
+
+      <section class="block">
+  <div class="block__inner">
+  {% include "../components/section-head/section-head.twig" with {
+  title: "other News",
+    icon: "breaking_news",
+  link_url: "/league/serie-a",
+  link_label: "read more"
+} %}
+
+<div class="card-post-list__grid">
+   {% for post in posts|slice(0, 10) %}
+    {% include "../components/card-post/card-post.twig" with {
+        href:       post.href,
+        title:      post.title,
+        thumb_src:  post.thumb,
+        date_value: post.published_at,
+        sport:      post.sport|default(null),
+        descr:      post.descr,
+        league:     post.league|default(null)
+      } only %}
+      {% else %}
+        <p class="muted">No posts.</p>
+      {% endfor %}
+</div>
+  </div>
+</section>
 
 
 

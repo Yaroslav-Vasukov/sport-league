@@ -1,0 +1,7 @@
+{# value: { name, logo, href } #}
+<a class="table-team" href="{{ value.href|default('#') }}">
+  {% if value.logo %}
+    <img class="table-team__logo" src="{{ value.logo }}" alt="" loading="lazy">
+  {% endif %}
+  <span class="table-team__name">{{ value.name }}</span>
+</a>

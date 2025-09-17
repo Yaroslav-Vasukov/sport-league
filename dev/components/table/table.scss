@@ -1,0 +1,152 @@
+.table-wrap {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+/* когда таблица именно со скроллом */
+.table-wrap .table {
+  width: max-content; /* важный момент */
+  min-width: 100%;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
+  position: relative;
+  &--sticky-head th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  &__row {
+    position: relative;
+  }
+  &__caption {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: $color-light;
+       font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  &__head .table__row {
+    background: $color-primary-dark;
+    color: $color-light;
+  }
+  &__body .table__row {
+    border-bottom: 1px solid rgba($color-dark, .2);
+    &:hover {
+      background: rgba($color-primary, .1);
+      border-bottom: 1px solid rgba($color-primary, .5);
+      transition: color .3s, background .3s, border-color .3s;
+    }
+  }
+
+
+
+
+  &__head .table__row .table__cell:first-child,
+  &__body .table__row .table__cell:first-child {
+    position: sticky;
+    left: 0;
+  } 
+
+  &__head .table__row .table__cell:nth-child(2),
+  &__body .table__row .table__cell:nth-child(2) {
+    position: sticky;
+    left: 32px;
+  }
+
+  &__head .table__row .table__cell:first-child,
+  &__head .table__row .table__cell:nth-child(2) {
+    background: $color-primary-dark;
+    z-index: 2;
+  }
+  &__body .table__row .table__cell:first-child,
+  &__body .table__row .table__cell:nth-child(2) {
+    background: $color-light;
+    z-index: 2;
+  }
+&__body .table__row .table__cell:nth-child(2) {
+    border-right: 1px solid rgba($color-dark, .2);
+}
+
+
+
+
+
+
+   &__body .table__row:last-child {
+    border-bottom: none;
+  }
+   &__body .table__row .table__cell:nth-child(2) {
+    display: flex;
+  }
+  &__cell--head {
+    text-align: left;
+    font-weight: 600;
+    padding: 8px;
+    position: relative;
+  }
+
+  &__row:not(.table__row--empty) .table__cell {
+    padding: 8px;
+    vertical-align: middle;
+  }
+
+
+
+
+  &--sticky-head {
+    .table__head .table__cell--head {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+  }
+
+  .table__cell--left {
+    text-align: left;
+  }
+  .table__cell--right {
+    text-align: right;
+  }
+  .table__cell--center {
+    text-align: center;
+  }
+}
+
+/* «командная» ячейка */
+.table-team {
+  display: inline-flex;
+  height: 100%;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  &:hover .table-team__name {
+    color: $color-accent-blue;
+  }
+  &__logo {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    background-color: rgba($color-dark,  .4);
+    object-fit: contain;
+    border-radius: 4px;
+  }
+  &__name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 36ch;
+    @media (max-width: 400px) {
+      display: none;
+    }
+  }
+}

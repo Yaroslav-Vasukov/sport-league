@@ -24,13 +24,17 @@
 		}
 
 		&__logo {
-      width: 24px;
-      height: 24px;
+         padding: 4px;
+         border-radius: 4px;
+         background-color: $color-gray;
+      width: 32px;
+      height: 32px;
       object-fit: contain;
 		}
 
 		&__title {
       font-size: 20px;
+      text-transform: uppercase;
 		}
 
 		&__link {

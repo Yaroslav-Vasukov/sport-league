@@ -80,6 +80,70 @@
       {% block content %}
 
       {% endblock %}
+
+
+        {% include "../components/footer/footer.twig" with {
+  title_sports:  'Sports',
+  title_useful:  'Useful links',
+  title_leagues: 'Leagues',
+  title_teams:   'Teams',
+  title_players: 'Popular players',
+
+  sports_links: [
+    { href: '/football',  icon: 'sports_soccer',     tag: 'Football'   },
+    { href: '/basketball',icon: 'sports_basketball', tag: 'Basketball' },
+    { href: '/hockey',    icon: 'sports_hockey',     tag: 'Hockey'     },
+    { href: '/volleyball',icon: 'sports_volleyball', tag: 'Volleyball' }
+  ],
+
+  useful_links: [
+    { href: '/',          icon: 'home',             tag: 'Home'  },
+    { href: '/news',      icon: 'news',             tag: 'News'  },
+    { href: '/about',     icon: 'contact_support',  tag: 'About' },
+    { href: '/live',      icon: 'live_tv',          tag: 'Lives' }
+  ],
+
+  leagues: [
+    { href: '/epl', logo: '/assets/images/league1.webp', tag: 'Premier League' },
+    { href: '/laliga', logo: '/assets/images/league2.webp', tag: 'La Liga' },
+    { href: '/serie-a', logo: '/assets/images/league3.webp', tag: 'Serie A' },
+    { href: '/bundesliga', logo: '/assets/images/league4.webp', tag: 'Bundesliga' }
+  ],
+
+  teams: [
+    { href: '/teams/1', logo: '/assets/images/team1.webp', tag: 'Team A' },
+    { href: '/teams/2', logo: '/assets/images/team2.webp', tag: 'Team B' },
+    { href: '/teams/3', logo: '/assets/images/team3.webp', tag: 'Team C' },
+    { href: '/teams/4', logo: '/assets/images/team4.webp', tag: 'Team D' }
+  ],
+
+  players: [
+    { href: '/players/1', logo: '/assets/images/player1.webp', tag: 'Player 1' },
+    { href: '/players/2', logo: '/assets/images/player2.webp', tag: 'Player 2' },
+    { href: '/players/3', logo: '/assets/images/player3.webp', tag: 'Player 3' },
+    { href: '/players/4', logo: '/assets/images/player4.webp', tag: 'Player 4' }
+  ],
+
+  bottom_logo: { href: '/', src: '/assets/images/logo.webp', alt: 'Sport Site' },
+  bottom_links: [
+    { href: '/privacy', label: 'Privacy Policy' },
+    { href: '/terms',   label: 'Terms of Service' },
+    { href: '/help',    label: 'Help Center' }
+  ],
+  copyright:
+    '© 2025 Sport Site. All rights reserved.'
+} only %}
+
+
+
+
+
+
+
+
+
+
+
     </main>
     {% block scripts %}{% endblock %}
     <script type="module" src="/assets/scripts/main.js"></script>

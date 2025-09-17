@@ -1,0 +1,58 @@
+<section class="section" data-standings>
+  <div class="container">
+    <div class="section__inner standings__inner">
+
+      <div class="standings-tabs" data-tabs id="standings-tabs" aria-label="NBA standings">
+
+        <div class="standings-tabs__nav" role="tablist" aria-label="Conferences">
+          <button
+            class="standings-tabs__tab is-active"
+            id="tab-east"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-east"
+            tabindex="0"
+            data-tab="east"> 
+            Eastern Conference
+          </button>
+
+          <button
+            class="standings-tabs__tab"
+            id="tab-west"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-west"
+            tabindex="-1"
+            data-tab="west">
+            Western Conference
+          </button>
+        </div>
+        <div
+          class="standings-tabs__panel is-active"
+          id="panel-east"
+          role="tabpanel"
+          aria-labelledby="tab-east"
+          tabindex="0">
+              {% include "../components/standings-table/standings-table.twig" with {
+                title: "Eastern Conference",
+                conference: "east",
+                rows: east_rows
+              } %}
+        </div>
+        <div
+          class="standings-tabs__panel"
+          id="panel-west"
+          role="tabpanel"
+          aria-labelledby="tab-west"
+          tabindex="0"
+          hidden>
+          {% include "../components/standings-table/standings-table.twig" with {
+                title: "Western Conference",
+                conference: "west",
+                rows: west_rows
+              } %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
