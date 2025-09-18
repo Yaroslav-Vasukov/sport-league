@@ -1,0 +1,123 @@
+.card-match {
+  position: relative;
+  border-radius: 16px;
+  padding: 12px;
+  background: var(--card-bg, #fff);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  &__inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 10px;
+  }
+
+  &__teams {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  &__team {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  &__team-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  &__team-name {
+    font-weight: 600;
+  }
+
+  &__score {
+    font-size: 20px;
+    font-weight: 700;
+    min-width: 28px;
+    text-align: right;
+  }
+
+  &__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+  }
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+  }
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e53935;
+    animation: pulse 1.2s infinite;
+  }
+
+  &__cta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* модификаторы состояния */
+  &--live {
+    border: 1px solid rgba(229, 57, 53, 0.25);
+  }
+  &--upcoming {
+    border: 1px solid rgba(25, 118, 210, 0.2);
+  }
+  &--past {
+    opacity: 0.96;
+  }
+
+  @media (max-width: 600px) {
+    &__teams {
+      grid-template-columns: 1fr;
+    }
+    &__team--home,
+    &__team--away {
+      justify-content: space-between;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+
+/* простые кнопки (если ещё нет в проекте) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #eee;
+  text-decoration: none;
+}
+.btn--primary {
+  background: #0a7cff;
+  color: #fff;
+}

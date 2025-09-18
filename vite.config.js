@@ -262,7 +262,7 @@ export default defineConfig({
           if (req.url === "/" || req.url === "/index")
             req.url = "/pages/home.html";
           const m = req.url.match(
-            /^\/(news|post|videos|calendar|history|review|video|teams|team|player|contact|lives)\/?$/i
+            /^\/(news|post|videos|calendar|league|review|video|teams|team|player|contact|lives)\/?$/i
           );
           if (m) req.url = `/pages/${m[1]}.html`;
           next();
@@ -529,7 +529,7 @@ export default defineConfig({
         index: path.resolve(__dirname, "dev/pages/home.html"),
         news: path.resolve(__dirname, "dev/pages/news.html"),
         lives: path.resolve(__dirname, "dev/pages/lives.html"),
-        history: path.resolve(__dirname, "dev/pages/history.html"),
+        league: path.resolve(__dirname, "dev/pages/league.html"),
         calendar: path.resolve(__dirname, "dev/pages/calendar.html"),
         post: path.resolve(__dirname, "dev/pages/post.html"),
         videos: path.resolve(__dirname, "dev/pages/videos.html"),

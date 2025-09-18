@@ -1,0 +1,68 @@
+{#
+  Props:
+  - logo, tag, href
+  - nav_items: [{ title, url, active }]
+#}
+{% set _logo      = logo|default('/assets/images/league1.webp') %}
+{% set _tag       = tag|default('NBA') %}
+{% set _href      = href|default('#') %}
+{% set _nav_items = nav_items|default([]) %}
+
+<section class="header-league" data-module="header-league">
+  <div class="container">
+    <div class="header-league__inner">
+      <a href="{{ _href }}" class="header-league__link">
+        <img src="{{ _logo }}" alt="{{ _tag }}" class="header-league__logo">
+        <h2 class="header-league__tag">{{ _tag }}</h2>
+      </a>
+
+      {# desktop nav #}
+      <nav class="header-league__nav" aria-label="{{ _tag }} navigation">
+        <ul class="header-league__list">
+          {% for item in _nav_items %}
+            <li class="header-league__item">
+              <a href="{{ item.url }}"
+                 class="header-league__item-link{% if item.active %} is-active{% endif %}">
+                {{ item.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      {# burger button — toggles offcanvas #}
+      <button class="header-league__burger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="league-offcanvas"
+              aria-label="Open {{ _tag }} menu">
+        <span class="header-league__burger-bar"></span>
+        <span class="header-league__burger-bar"></span>
+        <span class="header-league__burger-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  {# offcanvas (доп. меню) #}
+  <div class="header-league__overlay" hidden></div>
+  <aside id="league-offcanvas"
+         class="header-league__offcanvas"
+         aria-hidden="true"
+         tabindex="-1">
+    <div class="header-league__offcanvas-head">
+      <span class="header-league__offcanvas-title">{{ _tag }}</span>
+    </div>
+    <nav class="header-league__offnav" aria-label="{{ _tag }} menu">
+      <ul class="header-league__offlist">
+        {% for item in _nav_items %}
+          <li class="header-league__offitem">
+            <a href="{{ item.url }}"
+               class="header-league__offlink{% if item.active %} is-active{% endif %}">
+              {{ item.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </aside>
+</section>

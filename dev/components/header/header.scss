@@ -87,6 +87,10 @@ html.menu-open {
   display: flex;
   gap: 8px;
   align-items: center;
+  &:hover .nav__item:not(:hover) .nav__link {
+    opacity: 0.8;
+    transition: opacity 0.1s ease;
+  }
 }
 
 .nav__link {

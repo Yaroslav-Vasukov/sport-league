@@ -1,0 +1,58 @@
+{% import '../date/date.twig' as Date %}
+
+{# дефолты #}
+{% set _home       = team_home|default({ name:'Home', href:'#', logo:'/assets/images/team1.webp' }) %}
+{% set _away       = team_away|default({ name:'Away', href:'#', logo:'/assets/images/team2.webp' }) %}
+{% set _score_home = score_home|default('—') %}
+{% set _score_away = score_away|default('—') %}
+{% set _status     = status|default('Scheduled') %}
+{% set _league     = league|default(null) %}
+{% set _date_value = date_value|default(null) %}
+{% set _date_opts  = date_opts|default({ variant:'short', show_icon:true, icon:'scoreboard' }) %}
+
+<article class="card-match card-match">
+  <div class="card-match__teams">
+    <a href="{{ _home.href }}" class="card-match__team">
+      <img src="{{ _home.logo }}" alt="{{ _home.name }}" class="card-match__team-logo" loading="lazy" decoding="async">
+      <span class="card-match__team-name">{{ _home.name }}</span>
+    </a>
+
+    <div class="card-match__scorebox">
+      <span class="card-match__score">{{ _score_home }}</span>
+      <span class="card-match__divider">:</span>
+      <span class="card-match__score">{{ _score_away }}</span>
+    </div>
+
+    <a href="{{ _away.href }}" class="card-match__team">
+      <img src="{{ _away.logo }}" alt="{{ _away.name }}" class="card-match__team-logo" loading="lazy" decoding="async">
+      <span class="card-match__team-name">{{ _away.name }}</span>
+    </a>
+  </div>
+
+  <div class="card-match__meta">
+    {% if _date_value %}
+      <span class="card-match__date">{{ Date.render(_date_value, _date_opts) }}</span>
+    {% endif %}
+    <span class="card-match__status">{{ _status }}</span>
+    {% if _league %}
+      <a href="{{ _league.href }}" class="card-match__league">{{ _league.name }}</a>
+    {% endif %}
+  </div>
+</article>
+
+
+
+{# 
+
+{% include "@components/card-match/card-match-simple.twig" with {
+  team_home: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
+  team_away: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" },
+  score_home: 2,
+  score_away: 1,
+  date_value: "2025-09-20 21:45:00",
+  status: "Final",
+  league: { name:"La Liga", href:"/leagues/la-liga" }
+} %}
+
+
+ #}

@@ -27,12 +27,11 @@ function init() {
   when("[data-tabs]", () =>
     import("@components/tabs/tabs.js")
   ); 
-//   when('[data-module="week-calendar"]', () =>
-//   import("@components/calendar/calendar.js")
-//   );
-//   when('[data-module="smart-list"]', () =>
-//   import("@components/smart-list/smart-list.js")
-//   );
+  when('[data-module="header-league"]', () =>
+  import("@components/header-league/header-league.js")
+  );
+  when('[data-countdown-ts]', () => import('@components/card-match/card-match.js'));
+
 //   when('[data-module="player-header"]', () =>
 //   import('@components/player/player-header.js')
 // );
