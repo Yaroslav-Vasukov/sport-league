@@ -55,7 +55,7 @@
 
   &__stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 4px;
     list-style: none;
     margin-bottom: 16px;
@@ -64,9 +64,9 @@
     }
   }
   &__stats-item {
-    background-color: $color-primary-dark;
+    background-color: $color-gray;
         border-radius: 4px;
-    color: $color-light;
+    color: $color-dark;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,7 +81,7 @@
   }
   &__stats-title {
     font-size: 14px;
-    color: rgba($color-light, 0.85);
+    color: rgba($color-dark, 0.85);
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
