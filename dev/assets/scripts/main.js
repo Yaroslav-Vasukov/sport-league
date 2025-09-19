@@ -30,8 +30,7 @@ function init() {
   when('[data-module="header-league"]', () =>
   import("@components/header-league/header-league.js")
   );
-  when('[data-countdown-ts]', () => import('@components/card-match/card-match.js'));
-
+  when('[data-calendar]', () => import('@components/calendar/calendar.js'));
 //   when('[data-module="player-header"]', () =>
 //   import('@components/player/player-header.js')
 // );

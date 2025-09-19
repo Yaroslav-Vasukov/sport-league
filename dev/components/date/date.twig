@@ -1,46 +1,50 @@
 {# components/date/date.twig #}
-{% macro render(value, opts = {}) %}
+{% macro render(value, opts) %}
   {% import _self as d %}
 
-  {% set opts = {
-    variant:     opts.variant|default('date'),
-    show_icon:   opts.show_icon|default(false),
-    icon:        opts.icon|default('schedule'),
-    class:       opts.class|default(''),
-    title_full:  opts.title_full|default(true),
-    separator:   opts.separator|default('•')
+  {# Дефолты и безопасная нормализация опций #}
+  {% set _opts = opts|default({}) %}
+  {% set _opts = {
+    variant:     _opts.variant|default('date'),
+    show_icon:   _opts.show_icon|default(false),
+    icon:        _opts.icon|default('schedule'),
+    class:       _opts.class|default(''),
+    title_full:  _opts.title_full|default(true),
+    separator:   _opts.separator|default('•')
   } %}
 
-  {% set dt = value is empty ? null : date(value) %}
-  {% if not dt %}
-    <time class="ui-date ui-date--empty {{ opts.class|e }}">—</time>
+  {# Нельзя вызывать date(value) как функцию — работаем через фильтр #}
+  {% if value is not defined or value == '' or value == null %}
+    <time class="ui-date ui-date--empty {{ _opts.class|e }}">—</time>
   {% else %}
-    {% set iso = dt|date('c') %}
+    {# Пробуем форматировать напрямую фильтром #}
+    {% set iso = value|date('c') %}
 
-    {% if opts.variant == 'time' %}
-      {% set text = dt|date('H:i') %}
-    {% elseif opts.variant == 'datetime' %}
-      {% set text = dt|date('d M Y') ~ ' ' ~ opts.separator ~ ' ' ~ (dt|date('H:i')) %}
-    {% elseif opts.variant == 'short' %}
-      {% set text = dt|date('d M Y') %}
-    {% elseif opts.variant == 'long' %}
-      {% set text = dt|date('d F Y, H:i') %}
-    {% elseif opts.variant == 'ago' %}
-      {% set text = d._ago_static(dt) %}
-    {% elseif opts.variant == 'kickoff' %}
-      {% set text = dt|date('D, d M, H:i') %}
+    {% if _opts.variant == 'time' %}
+      {% set text = value|date('H:i') %}
+    {% elseif _opts.variant == 'datetime' %}
+      {% set text = (value|date('d M Y')) ~ ' ' ~ _opts.separator ~ ' ' ~ (value|date('H:i')) %}
+    {% elseif _opts.variant == 'short' %}
+      {% set text = value|date('d M Y') %}
+    {% elseif _opts.variant == 'long' %}
+      {% set text = value|date('d F Y, H:i') %}
+    {% elseif _opts.variant == 'ago' %}
+      {# передаем оригинальное value в хелпер, он сам посчитает #}
+      {% set text = d._ago_static(value) %}
+    {% elseif _opts.variant == 'kickoff' %}
+      {% set text = value|date('D, d M, H:i') %}
     {% else %}
-      {% set text = dt|date('d M Y') %}
+      {% set text = value|date('d M Y') %}
     {% endif %}
 
     <time
-      class="ui-date ui-date--{{ opts.variant }} {{ opts.class|e }}"
+      class="ui-date ui-date--{{ _opts.variant }} {{ _opts.class|e }}"
       datetime="{{ iso }}"
-      {% if opts.title_full %}title="{{ iso }}"{% endif %}
-      {% if opts.variant == 'ago' %}data-timeago="{{ iso }}"{% endif %}
+      {% if _opts.title_full %}title="{{ iso }}"{% endif %}
+      {% if _opts.variant == 'ago' %}data-timeago="{{ iso }}"{% endif %}
     >
-      {% if opts.show_icon %}
-        <span class="material-symbols-outlined ui-date__icon">{{ opts.icon }}</span>
+      {% if _opts.show_icon %}
+        <span class="material-symbols-outlined ui-date__icon">{{ _opts.icon }}</span>
       {% endif %}
       <span class="ui-date__text">{{ text }}</span>
     </time>
@@ -48,9 +52,12 @@
 {% endmacro %}
 
 {# ===== Helpers ===== #}
-{% macro _ago_static(dt) %}
-  {% set now = date() %}
-  {% set diff = (now|date('U')) - (dt|date('U')) %}
+{% macro _ago_static(value) %}
+  {# В twig.js берем текущее время через строку 'now' #}
+  {% set nowU = 'now'|date('U') %}
+  {% set dtU  = value|date('U') %}
+  {% set diff = nowU - dtU %}
+
   {% if diff < 60 %}
     just now
   {% elseif diff < 3600 %}
@@ -60,6 +67,6 @@
     {% set h = (diff / 3600)|round(0, 'floor') %}
     {{ h }} h ago
   {% else %}
-    {{ dt|date('d M Y') }}
+    {{ value|date('d M Y') }}
   {% endif %}
 {% endmacro %}

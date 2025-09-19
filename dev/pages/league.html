@@ -27,6 +27,109 @@
 {% endblock %}
 {% block content %}
 
+{% set matches = [
+  {
+    team_home: { name: "Barcelona", href: "/teams/barcelona", logo: "/assets/images/team1.webp" },
+    team_away: { name: "Real Madrid", href: "/teams/real-madrid", logo: "/assets/images/team2.webp" },
+    score_home: 2,
+    score_away: 1,
+    date_value: "2025-09-20 21:45:00",
+    status: "Final",
+    league: { name: "La Liga", href: "/leagues/la-liga" },
+    button: { label: "Match Center", url: "/match/1001" }
+  },
+  {
+    team_home: { name: "Juventus", href: "/teams/juventus", logo: "/assets/images/team3.webp" },
+    team_away: { name: "Milan", href: "/teams/milan", logo: "/assets/images/team4.webp" },
+    score_home: 1,
+    score_away: 1,
+    date_value: "2025-09-21 20:00:00",
+    status: "Live",
+    league: { name: "Serie A", href: "/leagues/serie-a" },
+    button: { label: "Match Center", url: "/match/1002" }
+  },
+  {
+    team_home: { name: "Bayern Munich", href: "/teams/bayern", logo: "/assets/images/team5.webp" },
+    team_away: { name: "Borussia Dortmund", href: "/teams/dortmund", logo: "/assets/images/team6.webp" },
+    score_home: 3,
+    score_away: 2,
+    date_value: "2025-09-22 19:30:00",
+    status: "Final",
+    league: { name: "Bundesliga", href: "/leagues/bundesliga" },
+    button: { label: "Match Center", url: "/match/1003" }
+  },
+  {
+    team_home: { name: "PSG", href: "/teams/psg", logo: "/assets/images/team7.webp" },
+    team_away: { name: "Marseille", href: "/teams/marseille", logo: "/assets/images/team8.webp" },
+    score_home: 2,
+    score_away: 0,
+    date_value: "2025-09-23 21:00:00",
+    status: "Final",
+    league: { name: "Ligue 1", href: "/leagues/ligue-1" },
+    button: { label: "Match Center", url: "/match/1004" }
+  },
+  {
+    team_home: { name: "Liverpool", href: "/teams/liverpool", logo: "/assets/images/team9.webp" },
+    team_away: { name: "Manchester United", href: "/teams/man-utd", logo: "/assets/images/team10.webp" },
+    score_home: 0,
+    score_away: 0,
+    date_value: "2025-09-24 18:30:00",
+    status: "Upcoming",
+    league: { name: "Premier League", href: "/leagues/premier-league" },
+    button: { label: "Match Center", url: "/match/1005" }
+  },
+  {
+    team_home: { name: "Chelsea", href: "/teams/chelsea", logo: "/assets/images/team11.webp" },
+    team_away: { name: "Arsenal", href: "/teams/arsenal", logo: "/assets/images/team12.webp" },
+    score_home: 2,
+    score_away: 2,
+    date_value: "2025-09-25 20:45:00",
+    status: "Live",
+    league: { name: "Premier League", href: "/leagues/premier-league" },
+    button: { label: "Match Center", url: "/match/1006" }
+  },
+  {
+    team_home: { name: "Inter", href: "/teams/inter", logo: "/assets/images/team13.webp" },
+    team_away: { name: "Napoli", href: "/teams/napoli", logo: "/assets/images/team14.webp" },
+    score_home: 1,
+    score_away: 3,
+    date_value: "2025-09-26 21:45:00",
+    status: "Final",
+    league: { name: "Serie A", href: "/leagues/serie-a" },
+    button: { label: "Match Center", url: "/match/1007" }
+  },
+  {
+    team_home: { name: "Ajax", href: "/teams/ajax", logo: "/assets/images/team15.webp" },
+    team_away: { name: "Feyenoord", href: "/teams/feyenoord", logo: "/assets/images/team16.webp" },
+    score_home: 4,
+    score_away: 1,
+    date_value: "2025-09-27 17:00:00",
+    status: "Final",
+    league: { name: "Eredivisie", href: "/leagues/eredivisie" },
+    button: { label: "Match Center", url: "/match/1008" }
+  },
+  {
+    team_home: { name: "Benfica", href: "/teams/benfica", logo: "/assets/images/team17.webp" },
+    team_away: { name: "Porto", href: "/teams/porto", logo: "/assets/images/team18.webp" },
+    score_home: 2,
+    score_away: 1,
+    date_value: "2025-09-28 20:15:00",
+    status: "Final",
+    league: { name: "Primeira Liga", href: "/leagues/primeira-liga" },
+    button: { label: "Match Center", url: "/match/1009" }
+  },
+  {
+    team_home: { name: "Flamengo", href: "/teams/flamengo", logo: "/assets/images/team19.webp" },
+    team_away: { name: "Palmeiras", href: "/teams/palmeiras", logo: "/assets/images/team20.webp" },
+    score_home: 3,
+    score_away: 3,
+    date_value: "2025-09-29 22:00:00",
+    status: "Live",
+    league: { name: "Brasileirao", href: "/leagues/brasileirao" },
+    button: { label: "Match Center", url: "/match/1010" }
+  }
+] %}
+
 
 {% set lives = [
   {
@@ -427,127 +530,8 @@
 ] %}
 
 
-{% set matches = [
 
-  {
-    team_home: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
-    team_away: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" },
-    date_value: "2025-09-20 21:45:00",
-    status: "Scheduled",
-    league: { name:"La Liga", href:"/leagues/la-liga" },
-    href: "/match/1001",
-    tickets_url: "/match/1001/tickets",
-    preview_url: "/match/1001/preview"
-  },
 
-  {
-    team_home: { name:"Warriors", href:"/teams/warriors", logo:"/assets/images/team7.webp" },
-    team_away: { name:"Lakers",   href:"/teams/lakers",   logo:"/assets/images/team8.webp" },
-    date_value: "2025-09-21 04:30:00",
-    status: "Scheduled",
-    league: { name:"NBA", href:"/leagues/nba" },
-    href: "/match/1002",
-    tickets_url: "/match/1002/tickets",
-    preview_url: "/match/1002/preview"
-  },
-
-  {
-    team_home: { name:"Mavericks", href:"/teams/mavericks", logo:"/assets/images/team3.webp" },
-    team_away: { name:"Celtics",   href:"/teams/celtics",   logo:"/assets/images/team4.webp" },
-    score_home: 78,
-    score_away: 74,
-    date_value: "now",
-    status: "Q3",
-    league: { name:"NBA", href:"/leagues/nba" },
-    href: "/match/1003",
-    live_url: "/match/1003/watch"
-  },
-
-  {
-    team_home: { name:"Inter", href:"/teams/inter", logo:"/assets/images/team5.webp" },
-    team_away: { name:"Juventus", href:"/teams/juventus", logo:"/assets/images/team6.webp" },
-    score_home: 1,
-    score_away: 0,
-    date_value: "now",
-    status: "HT",
-    league: { name:"Serie A", href:"/leagues/serie-a" },
-    href: "/match/1004",
-    live_url: "/match/1004/watch"
-  },
-
-  {
-    team_home: { name:"Man City", href:"/teams/man-city", logo:"/assets/images/team9.webp" },
-    team_away: { name:"Arsenal",  href:"/teams/arsenal",  logo:"/assets/images/team10.webp" },
-    score_home: 2,
-    score_away: 2,
-    date_value: "2025-09-12 19:30:00",
-    status: "Final",
-    league: { name:"Premier League", href:"/leagues/epl" },
-    href: "/match/1005",
-    recap_url: "/match/1005/recap",
-    highlights_url: "/match/1005/highlights"
-  },
-
-  {
-    team_home: { name:"Heat",  href:"/teams/heat",  logo:"/assets/images/team8.webp" },
-    team_away: { name:"Knicks", href:"/teams/knicks", logo:"/assets/images/team6.webp" },
-    score_home: 103,
-    score_away: 98,
-    date_value: "2025-09-15 02:00:00",
-    status: "Final",
-    league: { name:"NBA", href:"/leagues/nba" },
-    href: "/match/1006",
-    recap_url: "/match/1006/recap",
-    highlights_url: "/match/1006/highlights"
-  },
-
-  {
-    team_home: { name:"PSG",    href:"/teams/psg",    logo:"/assets/images/team11.webp" },
-    team_away: { name:"Bayern", href:"/teams/bayern", logo:"/assets/images/team12.webp" },
-    date_value: "2025-09-25 22:00:00",
-    status: "Scheduled",
-    league: { name:"UEFA Champions League", href:"/leagues/ucl" },
-    href: "/match/1007",
-    tickets_url: "/match/1007/tickets",
-    preview_url: "/match/1007/preview"
-  },
-
-  {
-    team_home: { name:"Oilers",      href:"/teams/oilers",      logo:"/assets/images/team5.webp" },
-    team_away: { name:"Maple Leafs", href:"/teams/maple-leafs", logo:"/assets/images/team3.webp" },
-    date_value: "2025-09-23 02:00:00",
-    status: "Scheduled",
-    league: { name:"NHL", href:"/leagues/nhl" },
-    href: "/match/1008",
-    tickets_url: "/match/1008/tickets",
-    preview_url: "/match/1008/preview"
-  },
-
-  {
-    team_home: { name:"Milan", href:"/teams/milan", logo:"/assets/images/team1.webp" },
-    team_away: { name:"Roma",  href:"/teams/roma",  logo:"/assets/images/team2.webp" },
-    score_home: 3,
-    score_away: 1,
-    date_value: "2025-09-05 21:45:00",
-    status: "Final",
-    league: { name:"Serie A", href:"/leagues/serie-a" },
-    href: "/match/1009",
-    recap_url: "/match/1009/recap",
-    highlights_url: "/match/1009/highlights"
-  },
-
-  {
-    team_home: { name:"Rangers",  href:"/teams/rangers",  logo:"/assets/images/team7.webp" },
-    team_away: { name:"Penguins", href:"/teams/penguins", logo:"/assets/images/team4.webp" },
-    score_home: 2,
-    score_away: 1,
-    date_value: "now",
-    status: "1st",
-    league: { name:"NHL", href:"/leagues/nhl" },
-    href: "/match/1010",
-    live_url: "/match/1010/watch"
-  }
-] %}
 
 
 
@@ -619,6 +603,17 @@
 
   {% set content %}
 
+     <section class="block">
+  <div class="block__inner">
+    {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+  items: [
+    { href: "/", icon: "home" },
+    { label: "Basketball", href: "/basketball" },
+    { label: "NBA" }
+  ]
+} %}
+    </div>
+</section>
      <section class="block">
   <div class="block__inner">
     {% include '../components/table/table.twig' with {
@@ -707,9 +702,54 @@
   link_label: "read more"
 } %}
 
-<div class="card-calendar__grid">
 
-</div>
+<div class="card-match__grid">
+  {% include "../components/card-match/card-match.twig" with {
+  team_home: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
+  team_away: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" },
+  score_home: 2,
+  score_away: 1,
+  date_value: "2025-09-20 21:45:00",
+  status: "Final",
+  button: { label:"Match Report", href:"/match/1" },
+  league: { name:"La Liga", href:"/leagues/la-liga" }
+
+} %}
+  {% include "../components/card-match/card-match.twig" with {
+  team_home: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
+  team_away: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" },
+  score_home: 2,
+  score_away: 1,
+  date_value: "2025-09-20 21:45:00",
+  status: "Final",
+  button: { label:"Match Report", href:"/match/1" },
+  league: { name:"La Liga", href:"/leagues/la-liga" }
+
+} %}
+  {% include "../components/card-match/card-match.twig" with {
+  team_home: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
+  team_away: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" },
+  score_home: 2,
+  score_away: 1,
+  date_value: "2025-09-20 21:45:00",
+  status: "Final",
+  button: { label:"Match Report", href:"/match/1" },
+  league: { name:"La Liga", href:"/leagues/la-liga" }
+
+} %}
+  {% include "../components/card-match/card-match.twig" with {
+  team_home: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
+  team_away: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" },
+  score_home: 2,
+  score_away: 1,
+  date_value: "2025-09-20 21:45:00",
+  status: "Final",
+  button: { label:"Match Report", href:"/match/1" },
+  league: { name:"La Liga", href:"/leagues/la-liga" }
+
+} %}
+</div> 
+
   </div>
 </section>
 

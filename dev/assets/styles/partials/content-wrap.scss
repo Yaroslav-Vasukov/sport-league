@@ -26,6 +26,11 @@
     aspect-ratio: auto;
   } 
 }
+.card-match__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax( 300px, 1fr));
+    gap: 24px 16px;
+}
 .video-list__grid,
 .card-post-m-list__grid {
     display: grid;

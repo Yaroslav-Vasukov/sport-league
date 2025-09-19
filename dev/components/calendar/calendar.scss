@@ -1,0 +1,141 @@
+// ===== helpers =====
+@mixin grid-cols($n, $gap: 8px) {
+  display: grid;
+  grid-template-columns: repeat($n, minmax(0, 1fr));
+  gap: $gap;
+}
+
+@mixin button-reset {
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+// ===== calendar =====
+.calendar {
+
+  position: relative;
+  &__wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    margin-top: 16px;
+  }
+  &__bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__title {
+    font-weight: 700;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__nav {
+    @include button-reset;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid $color-gray;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+        &:hover {
+      background-color: rgba($color-dark, 0.1);
+      transition: background-color 0.1s;
+    }
+    &-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: $color-dark-gray;
+    }
+    &:focus-visible {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+}
+
+
+  &__grid {
+    @include grid-cols(7, 6px);
+    position: relative;
+  }
+
+  &__dow {
+    @include grid-cols(7, 8px);
+    grid-area: 1/1/2/8;
+    margin-bottom: 4px;
+
+    span {
+      font-size: 14px;
+      color: $color-dark-gray;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+
+  &__cell {
+    cursor: pointer;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border: 1px solid $color-gray;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #fff;
+    &:hover {
+      background-color: rgba($color-dark, 0.1);
+      transition: background-color 0.1s;
+    }
+    &--muted {
+      opacity: 0.45;
+      cursor: default;
+          &:hover {
+      background-color: $color-light;
+      transition: background-color 0.1s;
+    }
+    }
+
+    &[aria-selected="true"] {
+      background-color: $color-primary;
+      color: $color-light;
+      border-color: $color-primary-dark;
+    }
+
+    // применяй класс .calendar__today на .calendar__cell
+    &.calendar__today {
+      border-color: $color-primary-dark;
+      color: $color-dark;
+    }
+  }
+
+  &__daynum {
+    font-weight: 700;
+  }
+
+  &__badge {
+    position: absolute;
+    border-radius: 50%;
+    background-color: $color-primary-dark;
+    height: 6px;
+    width: 6px;
+    top: 4px;
+    right: 4px;
+  }
+
+  &__matches {
+    padding-top: 8px;
+    flex-grow: 1;
+  }
+}
+
+

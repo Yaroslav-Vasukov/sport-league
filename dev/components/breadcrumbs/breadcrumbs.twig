@@ -1,9 +1,48 @@
-<ul class="breadcrumbs">
-  <li class="breadcrumbs__item">
-    <a class="breadcrumbs__link" href="/"><span class="material-icons breadcrumbs__icon">home</span></a>
-    <span class="breadcrumbs__separator">/</span>
-  </li>
-  <li class="breadcrumbs__item">
-    <span class="breadcrumbs__current">Current Page</span>
-  </li>
-</ul>
+{# 
+  Входные параметры:
+  - items: [
+      { label: 'Home', href: '/', icon: 'home' },
+      { label: 'Football', href: '/football' },
+      { label: 'La Liga', href: '/football/la-liga' },
+      { label: 'Current Page' }
+    ]
+#}
+
+{% set _items = items|default([]) %}
+{% if _items %}
+<div class="breadcrumbs__wrap">
+  <ul class="breadcrumbs">
+    {% for item in _items %}
+      <li class="breadcrumbs__item">
+        {% if item.href is defined %}
+          <a href="{{ item.href }}" class="breadcrumbs__link">
+            {% if item.icon is defined %}
+              <span class="material-symbols-outlined breadcrumbs__icon">{{ item.icon }}</span>
+            {% endif %}
+            <span class="breadcrumbs__text">{{ item.label }}</span>
+          </a>
+          <span class="breadcrumbs__separator">/</span>
+        {% else %}
+          <span class="breadcrumbs__current">{{ item.label }}</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+
+
+
+
+
+{# 
+{% include "@components/breadcrumbs/breadcrumbs.twig" with {
+  items: [
+    { label: "Home", href: "/", icon: "home" },
+    { label: "Football", href: "/football" },
+    { label: "La Liga", href: "/football/la-liga" },
+    { label: "Current Page" }
+  ]
+} %}
+
+#}

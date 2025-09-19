@@ -1,0 +1,49 @@
+<section class="calendar" id="app-calendar" data-calendar
+  data-matches='{"2025-09-18":[
+    {"time":"21:45","league":{"name":"La Liga","href":"/leagues/la-liga"},
+     "home":{"name":"Barcelona","href":"/teams/barcelona","logo":"/assets/images/team1.webp"},
+     "away":{"name":"Real Madrid","href":"/teams/real-madrid","logo":"/assets/images/team2.webp"},
+     "href":"/match/123"},
+    {"time":"21:45","league":{"name":"La Liga","href":"/leagues/la-liga"},
+     "home":{"name":"Barcelona","href":"/teams/barcelona","logo":"/assets/images/team1.webp"},
+     "away":{"name":"Real Madrid","href":"/teams/real-madrid","logo":"/assets/images/team2.webp"},
+     "href":"/match/123"},
+    {"time":"21:45","league":{"name":"La Liga","href":"/leagues/la-liga"},
+     "home":{"name":"Barcelona","href":"/teams/barcelona","logo":"/assets/images/team1.webp"},
+     "away":{"name":"Real Madrid","href":"/teams/real-madrid","logo":"/assets/images/team2.webp"},
+     "href":"/match/123"},
+    {"time":"21:45","league":{"name":"La Liga","href":"/leagues/la-liga"},
+     "home":{"name":"Barcelona","href":"/teams/barcelona","logo":"/assets/images/team1.webp"},
+     "away":{"name":"Real Madrid","href":"/teams/real-madrid","logo":"/assets/images/team2.webp"},
+     "href":"/match/123"},
+    {"time":"21:45","league":{"name":"La Liga","href":"/leagues/la-liga"},
+     "home":{"name":"Barcelona","href":"/teams/barcelona","logo":"/assets/images/team1.webp"},
+     "away":{"name":"Real Madrid","href":"/teams/real-madrid","logo":"/assets/images/team2.webp"},
+     "href":"/match/123"}
+  ]}'>
+  <header class="calendar__bar">
+    <a class="calendar__nav calendar__nav--today" data-go-today href="#"> 
+  <span class="material-symbols-outlined calendar__nav-icon">event</span>
+</a>
+    <button class="calendar__nav" data-prev-month aria-label="Previous month">
+      <span class="material-symbols-outlined">chevron_left</span>
+    </button>
+    <div class="calendar__title">
+      <span class="calendar__month" data-el="month"></span>
+      <span class="calendar__year"  data-el="year"></span>
+    </div>
+    <button class="calendar__nav" data-next-month aria-label="Next month">
+      <span class="material-symbols-outlined">chevron_right</span>
+    </button>
+  </header>
+  <div class="calendar__wrap">
+    <div class="calendar__grid" data-el="grid" aria-label="Month view" role="grid"></div>
+    <aside class="calendar__matches">
+      <h3 class="calendar__matches-title">
+        Matches on <span data-el="matches-date">—</span>
+      </h3>
+      <div class="calendar__matches-list" data-el="matches"></div>
+    </aside>
+  </div>
+</section>
+

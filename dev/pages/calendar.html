@@ -1,94 +1,58 @@
-{# dev/pages/calendar.html #} {% extends "../layouts/_base.html" %} {% block
-title %}Calendar — Basketball Today{% endblock %} {% block active_nav
-%}calendar{% endblock %} {% block body_class %}page page--calendar{% endblock %}
-{% block head_extra %} {% endblock %} 
+
+{% extends "../layouts/_base-league.html" %} 
+{% block title %}Home{% endblock %} 
+{% block body_class %}page page--home{% endblock %}
+{% block head_extra %} 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/> 
+{% endblock %} 
+{% block league_header %}
+  {% include "../components/header-league/header-league.twig" with {
+    logo: '/assets/images/league6.webp',
+    tag:  'NBA',
+    href: '/league',
+    nav_items: [
+      { title: 'Home', url: '/league'},
+      { title: 'Calendar', url: '/calendar', active: true  },
+      { title: 'Lives',    url: '/lives' },
+      { title: 'Review',   url: '/review' },
+      { title: 'Teams',    url: '/teams' },
+      { title: 'Players',  url: '/players'},
+      { title: 'News',     url: '/news' },
+      { title: 'Videos',   url: '/videos' }
+    ]
+  } %}
+{% endblock %}
 {% block content %}
 
-{% include "../components/page-first/page-first.twig" with {
-  title: "Calendar",
-  crumbs: [
-    { label: "Calendar" }  
-  ]
-} %}
-<section
-  class="section calendar section--calendar"
-  id="week-calendar"
-  data-module="week-calendar"
-  aria-label="Weekly schedule"
->
-  <div class="container">
-    <div class="section__inner">
-      
-      {% include "../components/calendar/calendar.twig" with {
-        id: "week-calendar",
-        title: "",
-        show_today: true
-      } %}
+  <section class="page-content">
+    <div class="container">
+      <div class="page-content__inner">
+             <section class="block">
+              <div class="block__inner">
+                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+                  items: [
+                    { href: "/", icon: "home" },
+                    { label: "Basketball", href: "/basketball" },
+                    { label: "NBA", href: "/league" },
+                    { label: "Calendar" }
+                  ]
+                } %}
+              </div>
+            </section>  
+             <section class="block">
+              <div class="block__inner">
+                {% include "../components/calendar/calendar.twig" %}
+              </div>
+            </section>  
 
-      
-      <ul class="calendar__matches" data-role="matches-list">
-        <li>
-        </li>
-      </ul>
-
-      
-      <script id="week-calendar-data" type="application/json">
-{
-  "events": [
-    { 
-      "date": "2025-09-01", "time": "19:30", 
-      "home": "Lakers", "away": "Warriors",
-      "btn": { "text": "Preview", "href": "/games/1", "extra_class": "button--outline" }
-    },
-    { 
-      "date": "2025-09-01", "time": "12:30", 
-      "home": "Suns", "away": "Spurs",
-      "btn": { "text": "Preview", "href": "/games/2" }
-    },
-    { 
-      "date": "2025-09-02", "time": "21:00", 
-      "home": "Heat", "away": "Celtics",
-      "btn": { "text": "Tickets", "href": "/games/3", "extra_class": "button--primary" }
-    },
-    { 
-      "date": "2025-09-04", "time": "20:00", 
-      "home": "Bulls", "away": "Knicks",
-      "btn": { "text": "Details", "href": "/games/4" }
-    },
-    { 
-      "date": "2025-09-07", "time": "18:00", 
-      "home": "Suns", "away": "Spurs",
-      "btn": { "text": "Preview", "href": "/games/5" }
-    },
-    {
-      "date": "2025-09-04", "time": "18:00",
-      "home": "Bulls", "away": "Knicks",
-      "btn": { "text": "Preview", "href": "/games/4" }
-    },
-    {
-      "date": "2025-09-04", "time": "15:00",
-      "home": "Heat", "away": "Celtics",
-      "homeScore": 87, "awayScore": 93,
-      "finished": true, "status": "final",
-      "btn": { "text": "Recap", "href": "/games/5", "extra_class": "button--outline" }
-    },
-    {
-      "date": "2025-09-02", "time": "12:30",
-      "home": "Suns", "away": "Spurs",
-      "homeScore": 102, "awayScore": 98,
-      "finished": true, "status": "final",
-      "btn": { "text": "Details", "href": "/games/2", "extra_class": "button--calendar" }
-    },
-    {
-      "date": "2025-09-02", "time": "19:30",
-      "home": "Lakers", "away": "Warriors",
-      "btn": { "text": "Preview", "href": "/games/1", "extra_class": "button--outline" }
-    }
-  ]
-}
-
-      </script>
+      </div>
     </div>
-  </div>
-</section>
-{% endblock %} {% block scripts %} {% endblock %}
+  </section>
+
+
+{% endblock %} 
+{% block scripts %}   
+{% endblock %}
