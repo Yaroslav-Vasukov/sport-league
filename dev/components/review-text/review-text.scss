@@ -1,0 +1,42 @@
+.review-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+		&__review {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      margin-bottom: 8px;
+      aspect-ratio: 16 / 7;
+      
+		}
+
+		&__video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+		}
+
+		&__icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      color: $color-light;
+      opacity: 0.9;
+      &:hover {
+        color: $color-primary;
+        opacity: 1;
+        transition: opacity .3s, color .3s;
+      }
+		}
+
+		&__descr {
+      font-weight: 600;
+      opacity: 0.8;
+
+		}
+}

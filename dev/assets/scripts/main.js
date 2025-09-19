@@ -31,9 +31,9 @@ function init() {
   import("@components/header-league/header-league.js")
   );
   when('[data-calendar]', () => import('@components/calendar/calendar.js'));
-//   when('[data-module="player-header"]', () =>
-//   import('@components/player/player-header.js')
-// );
+  when('[data-pagination]', () =>
+  import('@components/pagination/pagination.js')
+);
 
 }
 

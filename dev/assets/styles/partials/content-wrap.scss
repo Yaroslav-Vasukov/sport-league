@@ -42,9 +42,14 @@
     grid-template-columns: repeat(auto-fill, minmax( 240px, 1fr));
     gap: 24px 16px;
 }
-.lives-page__grid {
+.teams__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax( 320px, 1fr));
+    gap: 24px 16px;
+}
+.lives__grid {
   display: grid;
-    grid-template-columns: repeat(auto-fill, minmax( 400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax( 500px, 1fr));
     gap: 24px 16px;
 
 }

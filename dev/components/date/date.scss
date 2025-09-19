@@ -17,4 +17,10 @@
     padding: 8px 16px;
     border-radius: 6px; 
   }
+  &--review {
+    font-weight: 400;
+    background-color: $color-gray;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
 }

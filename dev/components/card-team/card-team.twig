@@ -1,0 +1,71 @@
+{# props:
+  team_name, team_href, team_logo, rank_text
+  stats: [{label:'PPG', value:'111.6'}, ...]
+  btn?: { text, href?, extra_class? }
+#}
+{% set team_name = team_name|default('Team Name') %}
+{% set team_href = team_href|default('#') %}
+{% set team_logo = team_logo|default('/assets/images/team1.webp') %}
+{% set rank_text = rank_text|default('—') %}
+{% set stats     = stats|default([]) %}
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="{{ team_href }}" class="team-card__logo" aria-label="{{ team_name }}">
+      <img src="{{ team_logo }}" alt="{{ team_name }} logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="{{ team_href }}" class="team-card__title-link">{{ team_name }}</a>
+      </h3>
+      <p class="team-card__rank">{{ rank_text }}</p>
+    </div>
+  </div>
+  {% if stats|length %}
+  <ul class="team-card__stats" aria-label="Team stats">
+    {% for s in stats %}
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">{{ s.value }}</span>
+        <span class="team-card__stats-title">{{ s.label }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  <div class="team-card__bot">
+    {% if btn is defined %}
+      {% set btn = btn|merge({ text: btn.text|default('Button'), href: btn.href|default('#'), extra_class: btn.extra_class|default('') }) %}
+      <a href="{{ btn.href }}" class="btn team-card__btn {{ btn.extra_class }}">{{ btn.text }}</a>
+    {% endif %}
+  </div>
+</article>
+
+{#    
+{% include "@components/team-card/team-card.twig" with {
+  team_name: 'Barcelona',
+  team_href: '/teams/barcelona',
+  team_logo: '/assets/images/team1.webp',
+  rank_text: 'La Liga: 2nd',
+  stats: [
+    {label:'PPG', value:'2.11'},
+    {label:'GF',  value:'72'},
+    {label:'GA',  value:'29'}
+  ],
+  btn: { text:'Profile', href:'/teams/barcelona' }
+} only %}
+            #}
+
+
+{#}
+            {% include "@components/team-card/team-card.twig" with {
+  team_name: t.team_name,
+  team_href: t.team_href,
+  team_logo: t.team_logo,
+  rank_text: t.rank_text,
+  stats: t.stats|slice(0,2),       # поменьше полей
+  btn: null,
+  extra_class: 'team-card--compact'
+} only %}
+#}

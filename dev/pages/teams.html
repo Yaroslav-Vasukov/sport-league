@@ -1,158 +1,340 @@
-{% extends "../layouts/_base.html" %} {% block
-title %}teams — Basketball Today{% endblock %} {% block active_nav
-%}teams{% endblock %} {% block body_class %}page page--teams{% endblock %}
-{% block head_extra %} {% endblock %} 
+
+{% extends "../layouts/_base-league.html" %} 
+{% block title %}Home{% endblock %} 
+{% block body_class %}page page--home{% endblock %}
+{% block head_extra %} 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/> 
+{% endblock %} 
+{% block league_header %}
+  {% include "../components/header-league/header-league.twig" with {
+    logo: '/assets/images/league6.webp',
+    tag:  'NBA',
+    href: '/league',
+    nav_items: [
+      { title: 'Home', url: '/league'},
+      { title: 'Calendar', url: '/calendar'},
+      { title: 'Lives',    url: '/lives'},
+      { title: 'Review',   url: '/review' },
+      { title: 'Teams',    url: '/teams', active: true },
+      { title: 'Players',  url: '/players'},
+      { title: 'News',     url: '/news' },
+      { title: 'Videos',   url: '/videos' }
+    ]
+  } %}
+{% endblock %}
 {% block content %}
 
-{% include "../components/page-first/page-first.twig" with {
-  title: "NBA teams",
-  crumbs: [
-    { label: "teams" }  
-  ]
-} %}
 {% set teams = [
   {
-  team_name: "Bombardilo",
-  team_href: "/teams/charlotte-hornets",
-  team_logo: "/assets/images/team2.webp",
-  rank_text: "3rd in Eastern",
-  tags: ["west","southeast"],
-  stats: [
-    {label:"PPG", value:"111.6"},
-    {label:"RPG", value:"44.1"},
-    {label:"APG", value:"25.7"},
-    {label:"FG%", value:".471"}
-  ],
-  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
-},
+    team_name: "Barcelona",
+    team_href: "/teams/barcelona",
+    team_logo: "/assets/images/team1.webp",
+    rank_text: "La Liga — 1st",
+    stats: [
+      { label: "PPG", value: "2.47" },
+      { label: "GF", value: "85" },
+      { label: "GA", value: "28" }
+    ],
+    btn: { text: "Profile", href: "/teams/barcelona" }
+  },
   {
-  team_name: "Lucky strikes",
-  team_href: "/teams/charlotte-hornets",
-  team_logo: "/assets/images/team3.webp",
-  rank_text: "3rd in Eastern",
-  tags: ["west","southeast"],
-  stats: [
-    {label:"PPG", value:"111.6"},
-    {label:"RPG", value:"44.1"},
-    {label:"APG", value:"25.7"},
-    {label:"FG%", value:".471"}
-  ],
-  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
-},
+    team_name: "Real Madrid",
+    team_href: "/teams/real-madrid",
+    team_logo: "/assets/images/team2.webp",
+    rank_text: "La Liga — 2nd",
+    stats: [
+      { label: "PPG", value: "2.32" },
+      { label: "GF", value: "81" },
+      { label: "GA", value: "34" }
+    ],
+    btn: { text: "Profile", href: "/teams/real-madrid" }
+  },
   {
-  team_name: "Kunkes",
-  team_href: "/teams/charlotte-hornets",
-  team_logo: "/assets/images/team4.webp",
-  rank_text: "3rd in Eastern",
-  tags: ["east","southeast"],
-  stats: [
-    {label:"PPG", value:"111.6"},
-    {label:"RPG", value:"44.1"},
-    {label:"APG", value:"25.7"},
-    {label:"FG%", value:".471"}
-  ],
-  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
-},
+    team_name: "Atletico Madrid",
+    team_href: "/teams/atletico",
+    team_logo: "/assets/images/team3.webp",
+    rank_text: "La Liga — 3rd",
+    stats: [
+      { label: "PPG", value: "2.11" },
+      { label: "GF", value: "74" },
+      { label: "GA", value: "37" }
+    ],
+    btn: { text: "Profile", href: "/teams/atletico" }
+  },
   {
-  team_name: "Rajastan Boys",
-  team_href: "/teams/charlotte-hornets",
-  team_logo: "/assets/images/team5.webp",
-  rank_text: "3rd in Eastern",
-  tags: ["east","southeast"],
-  stats: [
-    {label:"PPG", value:"111.6"},
-    {label:"RPG", value:"44.1"},
-    {label:"APG", value:"25.7"},
-    {label:"FG%", value:".471"}
-  ],
-  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
-},
+    team_name: "Sevilla",
+    team_href: "/teams/sevilla",
+    team_logo: "/assets/images/team4.webp",
+    rank_text: "La Liga — 4th",
+    stats: [
+      { label: "PPG", value: "1.95" },
+      { label: "GF", value: "65" },
+      { label: "GA", value: "44" }
+    ],
+    btn: { text: "Profile", href: "/teams/sevilla" }
+  },
   {
-  team_name: "Lucky strikes",
-  team_href: "/teams/charlotte-hornets",
-  team_logo: "/assets/images/team6.webp",
-  rank_text: "3rd in Eastern",
-  tags: ["east","southeast"],
-  stats: [
-    {label:"PPG", value:"111.6"},
-    {label:"RPG", value:"44.1"},
-    {label:"APG", value:"25.7"},
-    {label:"FG%", value:".471"}
-  ],
-  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
-},
+    team_name: "Valencia",
+    team_href: "/teams/valencia",
+    team_logo: "/assets/images/team5.webp",
+    rank_text: "La Liga — 5th",
+    stats: [
+      { label: "PPG", value: "1.82" },
+      { label: "GF", value: "59" },
+      { label: "GA", value: "49" }
+    ],
+    btn: { text: "Profile", href: "/teams/valencia" }
+  },
   {
-  team_name: "Charlotte Hornets",
-  team_href: "/teams/charlotte-hornets",
-  team_logo: "/assets/images/team7.webp",
-  rank_text: "3rd in Eastern",
-  tags: ["east","southeast"],
-  stats: [
-    {label:"PPG", value:"111.6"},
-    {label:"RPG", value:"44.1"},
-    {label:"APG", value:"25.7"},
-    {label:"FG%", value:".471"}
-  ],
-  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
-},
+    team_name: "Villarreal",
+    team_href: "/teams/villarreal",
+    team_logo: "/assets/images/team6.webp",
+    rank_text: "La Liga — 6th",
+    stats: [
+      { label: "PPG", value: "1.76" },
+      { label: "GF", value: "58" },
+      { label: "GA", value: "52" }
+    ],
+    btn: { text: "Profile", href: "/teams/villarreal" }
+  },
   {
-  team_name: "Bombardilo",
-  team_href: "/teams/charlotte-hornets",
-  team_logo: "/assets/images/team8.webp",
-  rank_text: "3rd in Eastern",
-  tags: ["east","southeast"],
-  stats: [
-    {label:"PPG", value:"111.6"},
-    {label:"RPG", value:"44.1"},
-    {label:"APG", value:"25.7"},
-    {label:"FG%", value:".471"}
-  ],
-  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
-},
+    team_name: "Real Sociedad",
+    team_href: "/teams/sociedad",
+    team_logo: "/assets/images/team7.webp",
+    rank_text: "La Liga — 7th",
+    stats: [
+      { label: "PPG", value: "1.64" },
+      { label: "GF", value: "55" },
+      { label: "GA", value: "53" }
+    ],
+    btn: { text: "Profile", href: "/teams/sociedad" }
+  },
   {
-  team_name: "Lucky strikes",
-  team_href: "/teams/charlotte-hornets",
-  team_logo: "/assets/images/team1.webp",
-  rank_text: "3rd in Eastern",
-  tags: ["east","southeast"],
-  stats: [
-    {label:"PPG", value:"111.6"},
-    {label:"RPG", value:"44.1"},
-    {label:"APG", value:"25.7"},
-    {label:"FG%", value:".471"}
-  ],
-  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
-},
+    team_name: "Athletic Bilbao",
+    team_href: "/teams/bilbao",
+    team_logo: "/assets/images/team8.webp",
+    rank_text: "La Liga — 8th",
+    stats: [
+      { label: "PPG", value: "1.58" },
+      { label: "GF", value: "50" },
+      { label: "GA", value: "56" }
+    ],
+    btn: { text: "Profile", href: "/teams/bilbao" }
+  },
   {
-  team_name: "Rajastan Boys",
-  team_href: "/teams/charlotte-hornets",
-  team_logo: "/assets/images/team9.webp",
-  rank_text: "3rd in Eastern",
-  tags: ["east","southeast"],
-  stats: [
-    {label:"PPG", value:"111.6"},
-    {label:"RPG", value:"44.1"},
-    {label:"APG", value:"25.7"},
-    {label:"FG%", value:".471"}
-  ],
-  btn: { text:"Team page", href:"/teams/charlotte-hornets" }
-}
-    ]%}
+    team_name: "Real Betis",
+    team_href: "/teams/betis",
+    team_logo: "/assets/images/team9.webp",
+    rank_text: "La Liga — 9th",
+    stats: [
+      { label: "PPG", value: "1.52" },
+      { label: "GF", value: "47" },
+      { label: "GA", value: "58" }
+    ],
+    btn: { text: "Profile", href: "/teams/betis" }
+  },
+  {
+    team_name: "Celta Vigo",
+    team_href: "/teams/celta",
+    team_logo: "/assets/images/team10.webp",
+    rank_text: "La Liga — 10th",
+    stats: [
+      { label: "PPG", value: "1.40" },
+      { label: "GF", value: "44" },
+      { label: "GA", value: "60" }
+    ],
+    btn: { text: "Profile", href: "/teams/celta" }
+  },
+  {
+    team_name: "Espanyol",
+    team_href: "/teams/espanyol",
+    team_logo: "/assets/images/team11.webp",
+    rank_text: "La Liga — 11th",
+    stats: [
+      { label: "PPG", value: "1.29" },
+      { label: "GF", value: "41" },
+      { label: "GA", value: "64" }
+    ],
+    btn: { text: "Profile", href: "/teams/espanyol" }
+  },
+  {
+    team_name: "Real Madrid",
+    team_href: "/teams/real-madrid",
+    team_logo: "/assets/images/team2.webp",
+    rank_text: "La Liga — 2nd",
+    stats: [
+      { label: "PPG", value: "2.32" },
+      { label: "GF", value: "81" },
+      { label: "GA", value: "34" }
+    ],
+    btn: { text: "Profile", href: "/teams/real-madrid" }
+  },
+  {
+    team_name: "Atletico Madrid",
+    team_href: "/teams/atletico",
+    team_logo: "/assets/images/team3.webp",
+    rank_text: "La Liga — 3rd",
+    stats: [
+      { label: "PPG", value: "2.11" },
+      { label: "GF", value: "74" },
+      { label: "GA", value: "37" }
+    ],
+    btn: { text: "Profile", href: "/teams/atletico" }
+  },
+  {
+    team_name: "Sevilla",
+    team_href: "/teams/sevilla",
+    team_logo: "/assets/images/team4.webp",
+    rank_text: "La Liga — 4th",
+    stats: [
+      { label: "PPG", value: "1.95" },
+      { label: "GF", value: "65" },
+      { label: "GA", value: "44" }
+    ],
+    btn: { text: "Profile", href: "/teams/sevilla" }
+  },
+  {
+    team_name: "Valencia",
+    team_href: "/teams/valencia",
+    team_logo: "/assets/images/team5.webp",
+    rank_text: "La Liga — 5th",
+    stats: [
+      { label: "PPG", value: "1.82" },
+      { label: "GF", value: "59" },
+      { label: "GA", value: "49" }
+    ],
+    btn: { text: "Profile", href: "/teams/valencia" }
+  },
+  {
+    team_name: "Villarreal",
+    team_href: "/teams/villarreal",
+    team_logo: "/assets/images/team6.webp",
+    rank_text: "La Liga — 6th",
+    stats: [
+      { label: "PPG", value: "1.76" },
+      { label: "GF", value: "58" },
+      { label: "GA", value: "52" }
+    ],
+    btn: { text: "Profile", href: "/teams/villarreal" }
+  },
+  {
+    team_name: "Real Sociedad",
+    team_href: "/teams/sociedad",
+    team_logo: "/assets/images/team7.webp",
+    rank_text: "La Liga — 7th",
+    stats: [
+      { label: "PPG", value: "1.64" },
+      { label: "GF", value: "55" },
+      { label: "GA", value: "53" }
+    ],
+    btn: { text: "Profile", href: "/teams/sociedad" }
+  },
+  {
+    team_name: "Athletic Bilbao",
+    team_href: "/teams/bilbao",
+    team_logo: "/assets/images/team8.webp",
+    rank_text: "La Liga — 8th",
+    stats: [
+      { label: "PPG", value: "1.58" },
+      { label: "GF", value: "50" },
+      { label: "GA", value: "56" }
+    ],
+    btn: { text: "Profile", href: "/teams/bilbao" }
+  },
+  {
+    team_name: "Real Betis",
+    team_href: "/teams/betis",
+    team_logo: "/assets/images/team9.webp",
+    rank_text: "La Liga — 9th",
+    stats: [
+      { label: "PPG", value: "1.52" },
+      { label: "GF", value: "47" },
+      { label: "GA", value: "58" }
+    ],
+    btn: { text: "Profile", href: "/teams/betis" }
+  },
+  {
+    team_name: "Celta Vigo",
+    team_href: "/teams/celta",
+    team_logo: "/assets/images/team10.webp",
+    rank_text: "La Liga — 10th",
+    stats: [
+      { label: "PPG", value: "1.40" },
+      { label: "GF", value: "44" },
+      { label: "GA", value: "60" }
+    ],
+    btn: { text: "Profile", href: "/teams/celta" }
+  },
+  {
+    team_name: "Espanyol",
+    team_href: "/teams/espanyol",
+    team_logo: "/assets/images/team11.webp",
+    rank_text: "La Liga — 11th",
+    stats: [
+      { label: "PPG", value: "1.29" },
+      { label: "GF", value: "41" },
+      { label: "GA", value: "64" }
+    ],
+    btn: { text: "Profile", href: "/teams/espanyol" }
+  },
+  {
+    team_name: "Granada",
+    team_href: "/teams/granada",
+    team_logo: "/assets/images/team12.webp",
+    rank_text: "La Liga — 12th",
+    stats: [
+      { label: "PPG", value: "1.18" },
+      { label: "GF", value: "39" },
+      { label: "GA", value: "67" }
+    ],
+    btn: { text: "Profile", href: "/teams/granada" }
+  }
+] %}
+  <section class="page-content">
+    <div class="container">
+      <div class="page-content__inner">
+                     <section class="block">
+              <div class="block__inner">
+                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+                  items: [
+                    { href: "/", icon: "home" },
+                    { label: "Basketball", href: "/basketball" },
+                    { label: "NBA", href: "/league" },
+                    { label: "Teams" }
+                  ]
+                } %}
+              </div>
+            </section>  
+                  <section class="block"
+         data-pagination
+         data-pagination-items=".teams__grid"
+         data-pagination-item=".team-card"
+         data-pagination-size="8"
+         data-pagination-param="tpage">
+          <div class="block__inner">
+            <div class="teams__grid">
+              {% for t in teams %}
+  {% include "../components/card-team/card-team.twig" with {
+    team_name: t.team_name,
+    team_href: t.team_href,
+    team_logo: t.team_logo,
+    rank_text: t.rank_text,
+    stats: t.stats,
+    btn: t.btn
+  } only %}
+{% endfor %}
+            </div>
+            <nav class="pagination" aria-label="lives pagination"></nav>
+          </div>
+      </section>
+      </div>
+    </div>
+  </section>
 
-  {% include "../components/team-card/teams-list.twig" with {
-    teams: teams,
-    per_page: 8,
-    show_filters: true   
-  } %}
 
-
-{% endblock %} {% block scripts %} {% endblock %}
-
-
-
-
-
-
-
-
-
+{% endblock %} 
+{% block scripts %}   
+{% endblock %}

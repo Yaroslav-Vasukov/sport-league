@@ -1,0 +1,34 @@
+{# Вход:
+   - content  (HTML)
+   - right    (HTML)
+   - left     (HTML, опц.)
+   - extra_class (строка, опц.)
+#}
+
+{% set _left        = left|default('') %}
+{% set _right       = right|default('') %}
+{% set _content     = content|default('') %}
+{# считаем, что «левого нет», если после очистки он пустой #}
+{% set _has_left    = (_left is defined) and (_left|striptags|trim != '') %}
+{% set _extra_class = extra_class|default('') ~ (_has_left ? '' : ' hub--no-left') %}
+
+<section class="hub {{ _extra_class }}">
+  <div class="container container--xl">
+    <div class="hub__grid">
+      {# выводим левый aside только если он реально есть #}
+      {% if _has_left %}
+        <aside class="hub__aside hub__aside--left">
+          {{ _left|raw }}
+        </aside>
+      {% endif %}
+
+      <main class="hub__content">
+        {{ _content|raw }}
+      </main>
+
+      <aside class="hub__aside hub__aside--right">
+        {{ _right|raw }}
+      </aside>
+    </div>
+  </div>
+</section>

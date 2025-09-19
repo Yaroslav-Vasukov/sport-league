@@ -1,0 +1,20 @@
+{#
+  Компонент: Review Teams
+  Вход:
+    - home: { href, logo, name }
+    - away: { href, logo, name }
+    - extra_class: '' (опционально)
+#}
+
+{% set _home = home|default({ href:'#', logo:'/assets/images/team1.webp', name:'Home' }) %}
+{% set _away = away|default({ href:'#', logo:'/assets/images/team2.webp', name:'Away' }) %}
+{% set _extra_class = extra_class|default('') %}
+
+<div class="review__teams {{ _extra_class }}">
+  <a href="{{ _home.href }}" class="review__teams-link review__teams-link--home">
+    <img src="{{ _home.logo }}" alt="{{ _home.name }}" class="review__teams-logo">
+  </a>
+  <a href="{{ _away.href }}" class="review__teams-link review__teams-link--away">
+    <img src="{{ _away.logo }}" alt="{{ _away.name }}" class="review__teams-logo">
+  </a>
+</div>

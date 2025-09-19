@@ -1,0 +1,94 @@
+{# 
+  Компонент: Match Stats (BEM: .match-stats)
+  Вход:
+    - items: [
+        { title: 'Ball possession', left: 66, right: 34 },
+        ...
+      ]
+    - extra_class: '' (опционально)
+    - show_values: true|false (по умолчанию true)
+    - round: 0|1|2 ... (точность округления процентов для текста, по умолчанию 0)
+#}
+
+{% set _items       = items|default([]) %}
+{% set _extra_class = extra_class|default('') %}
+{% set _show_values = show_values is defined ? show_values : true %}
+{% set _round       = round|default(0) %}
+
+<div class="match-stats {{ _extra_class }}">
+  {% for it in _items %}
+    {# безопасные числа #}
+    {% set left  = (it.left  is defined and it.left  is not null) ? it.left  : 0 %}
+    {% set right = (it.right is defined and it.right is not null) ? it.right : 0 %}
+    {% set total = (left + right) %}
+    {% set leftP = total > 0 ? (left / total * 100) : 50 %}
+    {% set rightP = 100 - leftP %}
+
+    <div class="match-stats__row"
+         data-left="{{ left }}"
+         data-right="{{ right }}"
+         data-leftp="{{ leftP }}"
+         data-rightp="{{ rightP }}">
+      <div class="match-stats__item">
+        <div class="match-stats__head">
+          {% if _show_values %}
+            <p class="match-stats__value match-stats__value--left">
+              {{ left|round(_round, 'common') }}
+            </p>
+          {% else %}
+            <p class="match-stats__value match-stats__value--left"></p>
+          {% endif %}
+
+          <h5 class="match-stats__title">{{ it.title|default('—') }}</h5>
+
+          {% if _show_values %}
+            <p class="match-stats__value match-stats__value--right">
+              {{ right|round(_round, 'common') }}
+            </p>
+          {% else %}
+            <p class="match-stats__value match-stats__value--right"></p>
+          {% endif %}
+        </div>
+
+        <div class="match-stats__bar">
+          <div class="match-stats__segment match-stats__segment--left"
+               style="width: {{ leftP }}%"></div>
+          <div class="match-stats__segment match-stats__segment--right"
+               style="width: {{ rightP }}%"></div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <p class="match-stats__empty">No data</p>
+  {% endfor %}
+</div>
+
+
+
+{#
+{% set stats = [
+  { title: 'Ball possession',     left: 66,  right: 34 },
+  { title: 'Blows',               left: 56,  right: 456 },
+  { title: 'Shots (on target)',   left: 78,  right: 98 },
+  { title: 'Fouls (committed)',   left: 241, right: 124 },
+  { title: 'Yellow cards',        left: 12,  right: 5 },
+  { title: 'Saves',               left: 24,  right: 33 },
+  { title: 'Number of gears',     left: 68,  right: 76 },
+  { title: 'Moments created',     left: 21,  right: 31 },
+  { title: 'Goal scoring chances',left: 87,  right: 43 },
+  { title: 'Canopies',            left: 21,  right: 22 },
+  { title: 'Penalty kicks',       left: 546, right: 312 },
+  { title: 'Offsides',            left: 52,  right: 21 },
+  { title: 'Red cards',           left: 2,   right: 1 },
+  { title: 'Goal kicks',          left: 24,  right: 21 },
+  { title: 'Throw-ins',           left: 23,  right: 67 }
+] %}
+
+{% include "@components/match-stats/match-stats.twig" with {
+  items: stats,
+  extra_class: 'match-stats--compact',  # опционально
+  show_values: true,
+  round: 0
+} only %}
+
+#}

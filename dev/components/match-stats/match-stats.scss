@@ -1,0 +1,53 @@
+.match-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item { width: 100%; }
+
+  &__head {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  &__value {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+
+    &--left { text-align: left; }
+    &--right { text-align: right; }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 16px;
+    color: $color-dark;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  &__bar {
+    display: flex;
+    height: 12px;
+    gap: 8px;
+    overflow: hidden;
+    background-color: $color-light;
+  }
+
+  &__segment {
+    height: 100%;
+
+    &--left  { background-color: $color-accent-blue; }
+    &--right { background-color: $color-primary; }
+  }
+}

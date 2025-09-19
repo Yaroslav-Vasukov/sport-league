@@ -1,0 +1,38 @@
+.review {
+
+		&__teams {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+		}
+
+		&__teams-link {
+      border-radius: 8px;
+      padding: 8px;
+		}
+
+		&__teams-link--home {
+      background-color: rgba($color-accent-blue, 0.25);
+      &:hover {
+        background-color: rgba($color-accent-blue, 0.35);
+        transition: background-color 0.3s ease;
+      }
+		}
+
+		&__teams-logo {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+		}
+
+		&__teams-link--away {
+      background-color: rgba($color-primary-dark, 0.25);
+      &:hover {
+        background-color: rgba($color-primary-dark, 0.35);
+        transition: background-color 0.3s ease;
+      }
+		}
+}
+

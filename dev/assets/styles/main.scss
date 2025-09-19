@@ -1,5 +1,4 @@
 @use 'utils/index' as *;
-@use '../styles/partials/fonts.scss';
 @use '../../components/header/header.scss';
 @use '../../components/header-league/header-league.scss';
 @use '../../components/section-head/section-head.scss';
@@ -17,6 +16,15 @@
 @use '../../components/tabs/tabs.scss';
 @use '../../components/breadcrumbs/breadcrumbs.scss';
 @use '../../components/calendar/calendar.scss';
+@use '../../components/pagination/pagination.scss';
+
+
+@use '../../components/match-stats/match-stats.scss';
+@use '../../components/review-header/review-header.scss';
+@use '../../components/review-teams/review-teams.scss';
+@use '../../components/review-text/review-text.scss';
+ 
+@use '../../components/card-team/card-team.scss';
 
 
 

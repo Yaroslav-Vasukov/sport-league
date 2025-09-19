@@ -96,3 +96,43 @@
     }
   }
 }
+
+/* ===== Вариант без левого сайдбара ===== */
+.hub--no-left {
+  .hub__aside--left { display: none !important; }
+  & .hub__aside--right {
+    @media (max-width: 767.98px) {
+      display: none;
+    }
+  }
+  .hub__grid {
+    /* Десктоп: 2 колонки — контент + правый сайдбар */
+    grid-template-columns:
+      minmax(var(--content-min), 1fr)
+      minmax(0, var(--aside-right-w));
+    grid-template-areas: "content right";
+  }
+
+  .hub__content      { grid-area: content; }
+  .hub__aside--right { grid-area: right; }
+
+  /* 992–1199px — остаёмся в 2 колонки (левого нет) */
+  @media (max-width: 1199.98px) {
+    .hub__grid {
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, var(--aside-right-w));
+      grid-template-areas: "content right";
+    }
+  }
+
+  /* ≤ 768px — одна колонка: контент → правый сайдбар */
+  @media (max-width: 767.98px) {
+    .hub__grid {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "content"
+        "right";
+    }
+  }
+}

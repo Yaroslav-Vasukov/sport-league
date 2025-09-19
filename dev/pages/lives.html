@@ -1,201 +1,160 @@
-{% extends "../layouts/_base.html" %} {% block
-title %}lives — Basketball Today{% endblock %} {% block active_nav
-%}lives{% endblock %} {% block body_class %}page page--lives{% endblock %}
-{% block head_extra %} {% endblock %} 
+
+{% extends "../layouts/_base-league.html" %} 
+{% block title %}Home{% endblock %} 
+{% block body_class %}page page--home{% endblock %}
+{% block head_extra %} 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/> 
+{% endblock %} 
+{% block league_header %}
+  {% include "../components/header-league/header-league.twig" with {
+    logo: '/assets/images/league6.webp',
+    tag:  'NBA',
+    href: '/league',
+    nav_items: [
+      { title: 'Home', url: '/league'},
+      { title: 'Calendar', url: '/calendar'},
+      { title: 'Lives',    url: '/lives', active: true},
+      { title: 'Review',   url: '/review' },
+      { title: 'Teams',    url: '/teams' },
+      { title: 'Players',  url: '/players'},
+      { title: 'News',     url: '/news' },
+      { title: 'Videos',   url: '/videos' }
+    ]
+  } %}
+{% endblock %}
 {% block content %}
 
-{% include "../components/page-first/page-first.twig" with {
-  title: "popular lives",
-  crumbs: [
-    { label: "lives" }  
-  ]
-} %}
-{% set games = [
+{% set lives = [
   {
+    sport:  'Football',
+    league: 'La Liga',
+    time:   '12:34',
     status: 'live',
-    stage: 'Preseason',
-    event: 'NBA Abu Dhabi Game',
-    home: { url:'/teams/76ers', logo:'/assets/images/team7.webp', tag:'76ers', stat:'0-0' },
-    away: { url:'/teams/celtics', logo:'/assets/images/team8.webp', tag:'Celtics', stat:'0-0' },
-    tip_time:'18:00', tip_date:'2025-12-24', venue:'Neutral site',
-    btn: { text:'Live Broadcast', href:'/live/123', extra_class:'button--small' }
+    date_value: '2025-09-15 12:30:00',
+    team1: { name: 'Barcelona',   logo: '/assets/images/team1.webp', href: '/teams/barcelona' },
+    team2: { name: 'Real Madrid', logo: '/assets/images/team2.webp', href: '/teams/real-madrid' },
+    href:  '/match/1'
   },
   {
-    status: 'upcoming',
-    stage: 'Preseason',
-    event: 'NBA Abu Dhabi Game',
-    home: { url:'/teams/76ers', logo:'/assets/images/team4.webp', tag:'76ers', stat:'0-0' },
-    away: { url:'/teams/celtics', logo:'/assets/images/team5.webp', tag:'Celtics', stat:'0-0' },
-    tip_time:'21:30', tip_date:'2025-12-24', venue:'Neutral site',
-    btn: { text:'Live Broadcast', href:'/live/124', extra_class:'button--small' }
+    sport:  'Football',
+    league: 'Premier League',
+    time:   '35:20',
+    status: 'live',
+    date_value: '2025-09-15 11:00:00',
+    team1: { name: 'Arsenal', logo: '/assets/images/team5.webp', href: '/teams/arsenal' },
+    team2: { name: 'Chelsea', logo: '/assets/images/team2.webp', href: '/teams/chelsea' },
+    href:  '/match/2'
   },
-   {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team7.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team5.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "18:50",
-      tip_date: "2025-12-26",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team1.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team6.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "16:45",
-      tip_date: "2025-12-26",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team2.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team6.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "14:30",
-      tip_date: "2025-12-25",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team2.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team5.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "20:15",
-      tip_date: "2025-12-27",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team1.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team6.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "19:30",
-      tip_date: "2025-12-26",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team3.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team6.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "23:30",
-      tip_date: "2025-12-25",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team2.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team5.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "22:30",
-      tip_date: "2025-12-27",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team1.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team2.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "21:30",
-      tip_date: "2025-12-28",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team3.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team6.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "18:00",
-      tip_date: "2025-12-26",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team4.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team5.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "12:30",
-      tip_date: "2025-12-27",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team1.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team6.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "12:30",
-      tip_date: "2025-12-25",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team2.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team2.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "19:00",
-      tip_date: "2025-12-28",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team3.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team5.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "19:00",
-      tip_date: "2025-12-24",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team1.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team8.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "18:00",
-      tip_date: "2025-12-25",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    },
-    {
-      stage: "Preseason",
-      event: "NBA Abu Dhabi Game",
-      home: { url: "/teams/76ers", logo: "/assets/images/team4.webp", tag: "76ers", stat: "0-0" },
-      away: { url: "/teams/celtics", logo: "/assets/images/team5.webp", tag: "Celtics", stat: "0-0" },
-      tip_time: "18:00",
-      tip_date: "2025-12-25",
-      venue: "Neutral site",
-      btn: { text: "Live Broadcast", href: "/live/123", extra_class: "button--small" }
-    }
-    
+  {
+    sport:  'Basketball',
+    league: 'NBA',
+    time:   'Q2 08:12',
+    status: 'live',
+    date_value: '2025-09-15 10:00:00',
+    team1: { name: 'Lakers', logo: '/assets/images/team3.webp', href: '/teams/lakers' },
+    team2: { name: 'Celtics', logo: '/assets/images/team2.webp', href: '/teams/celtics' },
+    href:  '/match/3'
+  },
+  {
+    sport:  'Football', league: 'Serie A', time: 'HT', status: 'live',
+    date_value: '2025-09-15 09:45:00',
+    team1: { name: 'Inter', logo: '/assets/images/team1.webp', href: '/teams/inter' },
+    team2: { name: 'Milan', logo: '/assets/images/team7.webp', href: '/teams/milan' },
+    href:  '/match/4'
+  },
+  {
+    sport:  'Football', league: 'Bundesliga', time: '19:00', status: 'upcoming',
+    date_value: '2025-09-15 19:00:00',
+    team1: { name: 'Bayern', logo: '/assets/images/team1.webp', href: '/teams/bayern' },
+    team2: { name: 'Dortmund', logo: '/assets/images/team4.webp', href: '/teams/bvb' },
+    href:  '/match/5'
+  },
+  {
+    sport:  'Basketball', league: 'EuroLeague', time: 'FT', status: 'finished',
+    date_value: '2025-09-14 21:00:00',
+    team1: { name: 'Real Madrid', logo: '/assets/images/team7.webp', href: '/teams/realm' },
+    team2: { name: 'Barcelona', logo: '/assets/images/team8.webp', href: '/teams/barca' },
+    href:  '/match/6'
+  },
+  {
+    sport:  'Football', league: 'Ligue 1', time: '21:45', status: 'upcoming',
+    date_value: '2025-09-15 21:45:00',
+    team1: { name: 'PSG', logo: '/assets/images/team4.webp', href: '/teams/psg' },
+    team2: { name: 'Marseille', logo: '/assets/images/team1.webp', href: '/teams/om' },
+    href:  '/match/7'
+  },
+  {
+    sport:  'Football', league: 'Eredivisie', time: 'FT', status: 'finished',
+    date_value: '2025-09-14 18:00:00',
+    team1: { name: 'Ajax', logo: '/assets/images/team6.webp', href: '/teams/ajax' },
+    team2: { name: 'PSV',  logo: '/assets/images/team5.webp',  href: '/teams/psv' },
+    href:  '/match/8'
+  },
+  {
+    sport:  'Basketball', league: 'NBA', time: 'Q3 04:10', status: 'live',
+    date_value: '2025-09-15 07:30:00',
+    team1: { name: 'Warriors', logo: '/assets/images/team4.webp', href: '/teams/warriors' },
+    team2: { name: 'Suns',     logo: '/assets/images/team3.webp',     href: '/teams/suns' },
+    href:  '/match/9'
+  },
+  {
+    sport:  'Football', league: 'UCL', time: '22:00', status: 'upcoming',
+    date_value: '2025-09-16 22:00:00',
+    team1: { name: 'Man City', logo: '/assets/images/team2.webp', href: '/teams/mancity' },
+    team2: { name: 'Napoli',   logo: '/assets/images/team1.webp',  href: '/teams/napoli' },
+    href:  '/match/10'
+  }
 ] %}
-{% include "../components/lives-list/lives-list.twig" with {
-  title: "popular lives",
-  games: games,
-  per_page: 6,
-  show_filters: true
-} %}
 
 
-{% endblock %} {% block scripts %} {% endblock %}
+  <section class="page-content">
+    <div class="container">
+      <div class="page-content__inner">
+             <section class="block">
+              <div class="block__inner">
+                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+                  items: [
+                    { href: "/", icon: "home" },
+                    { label: "Basketball", href: "/basketball" },
+                    { label: "NBA", href: "/league" },
+                    { label: "Calendar" }
+                  ]
+                } %}
+              </div>
+            </section>  
+                  <section class="block"
+         data-pagination
+         data-pagination-items=".lives__grid"
+         data-pagination-item=".card-live"
+         data-pagination-size="4"
+         data-pagination-param="lpage">
+          <div class="block__inner">
+            <div class="lives__grid">
+                                {% for m in lives %}
+                                {% include "../components/card-live/card-live.twig" with {
+              sport:  m.sport,
+              league: m.league,
+              sport_href:  m.sport_href,
+              league_href: m.league_href,
+              team1: m.team1,
+              team2: m.team2,
+              time:  m.time,
+              date_value: m.date_value,
+              date_opts: { variant: 'lives', show_icon: true, icon: 'calendar_today' }
+            } only %}
+                  {% endfor %}
+            </div>
+            <nav class="pagination" aria-label="lives pagination"></nav>
+          </div>
+      </section>
+      </div>
+    </div>
+  </section>
 
 
-
-
-
-
-
-
-
+{% endblock %} 
+{% block scripts %}   
+{% endblock %}

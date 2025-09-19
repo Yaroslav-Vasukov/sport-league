@@ -15,13 +15,13 @@
     href: '/league',
     nav_items: [
       { title: 'Home', url: '/league', active: true },
-      { title: 'Calendar', url: '/leagues/nba/calendar' },
-      { title: 'Lives',    url: '/leagues/nba/lives' },
-      { title: 'Review',   url: '/leagues/nba/review' },
-      { title: 'Teams',    url: '/leagues/nba/teams' },
-      { title: 'Players',  url: '/leagues/nba/players'},
-      { title: 'News',     url: '/leagues/nba/news' },
-      { title: 'Videos',   url: '/leagues/nba/videos' }
+      { title: 'Calendar', url: '/calendar' },
+      { title: 'Lives',    url: '/lives' },
+      { title: 'Review',   url: '/review' },
+      { title: 'Teams',    url: '/teams' },
+      { title: 'Players',  url: '/players'},
+      { title: 'News',     url: '/news' },
+      { title: 'Videos',   url: '/videos' }
     ]
   } %}
 {% endblock %}
@@ -868,8 +868,8 @@
   {% endset %}
 
 
-  {% include "../layouts/hub.html" with {
-    extra_class: "hub--home",
+  {% include "../layouts/hub.twig" with {
+    extra_class: "hub--league",
     left: left,
     content: content,
     right: right

@@ -20,6 +20,9 @@
     top: 0;
     z-index: 1;
   }
+  &--compact .table-team__name{
+   display: none;
+  }
   &__row {
     position: relative;
   }

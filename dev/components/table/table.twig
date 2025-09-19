@@ -7,16 +7,15 @@
     ]
   - rows:    [ { team: {...}, pts: 17, ... }, ... ]
   - caption: 'Standings' (опционально)
-  - dense:   true|false (компактный режим)
-  - zebra:   true|false (полосатые строки)
-  - hover:   true|false (подсветка строки)
   - sticky_head: true|false (липкая шапка)
   - empty_text: 'No data' (когда rows пустой)
 #}
 
 {% set _cols = columns|default([]) %}
 {% set _rows = rows|default([]) %}
+
 {% set _caption = caption|default(null) %}
+{% set _extra_class = extra_class|default('') %}
 {% set _mods = [] %}
 {% if hover %}{% set _mods = _mods|merge(['table--hover']) %}{% endif %}
 {% if sticky_head %}{% set _mods = _mods|merge(['table--sticky-head']) %}{% endif %}
@@ -28,7 +27,7 @@
   {% if _caption %} <div class="table__caption">
     <caption class="table__caption">{{ _caption }}</caption>
   </div> {% endif %}
-<table class="table {{ _mods|join(' ') }}" data-module="table">
+<table class="table {{ (_mods|join(' ')) }} {{ _extra_class }}" data-module="table">
 
   <thead class="table__head">
     <tr class="table__row">

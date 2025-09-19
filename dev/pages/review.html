@@ -1,80 +1,225 @@
-{% extends "../layouts/_base.html" %}
 
-{% block title %}review — Basketball Today{% endblock %}
-{% block active_nav %}review{% endblock %}
+{% extends "../layouts/_base-league.html" %} 
+{% block title %}Home{% endblock %} 
 {% block body_class %}page page--review{% endblock %}
-{% block head_extra %}{% endblock %}
-
-{% block content %}
-
-  {% include "../assets/styles/pages/review/review-header.twig" with {
-    home:  { tag: "Bulls", logo: "/assets/images/team1.webp", href: "/teams/bulls" },
-    away:  { tag: "76ers", logo: "/assets/images/team2.webp", href: "/teams/76ers" },
-    score: { home: 92, away: 122, info: "FINAL" },
-    btn:   { text: "video review", href: "/games/123/box" }
-  } %}  
-
-
-
-
-{% set players = [
-  { 'name': 'J. Freeman-Liberty', 'img': '/assets/images/player1.webp', 'score': '22 pts', 'href': '#' },
-  { 'name': 'M. Pereira',         'img': '/assets/images/player2.webp', 'score': '21 pts', 'href': '#' },
-  { 'name': 'Y. Kawamura',        'img': '/assets/images/player3.webp', 'score': '20 pts', 'href': '#' }
-] %}
-
-{% set videos = [
-  { 'href': '/videos/123', 'thumb': '/assets/images/img2.webp', 'title': 'Make Your Picks 🏀',          'published_at': '2024-11-12' },
-  { 'href': '/videos/124', 'thumb': '/assets/images/img3.webp', 'title': 'Get Ready for the Action❗️', 'published_at': '2024-12-12' }
-] %}
-
-{% include "../assets/styles/pages/review/review-center.twig" with {
-  'title_players': 'Best players',
-  'players': players,
-  'title_videos': 'Highlights',
-  'videos': videos
-} %}
-
-{% include "../assets/styles/pages/review/review-content.twig" with {
-  title: "Text review",
-  t1: "Start match",
-  p1: "Thomas Smith is an Argentine professional footballer who plays as a forward and captains both Barcelona and the Argentina national team. Often considered the best player in the world and widely regarded as one of the greatest players of all time, Messi has a record-tying five Ballon d’Or awards, four of which he won consecutively, and a record six European Golden Shoes.",
-  t2: "Mid-game match",
-  p2: "He has spent his entire professional career with Barcelona, where he has won a club-record 34 trophies, including ten La Liga titles, four UEFA Champions League titles and six Copas del Rey.
-
-",
-  img_src: "/assets/images/img29.webp",
-  img_alt: "text review",
-  t3: "Late game match",
-  p3: "A prolific goalscorer and a creative playmaker, Messi holds the records for most goals in La Liga (419), a La Liga and European league season (50), most hat-tricks in the UEFA Champions League (8), and most assists in La Liga (169) and the Copa América (12). He has scored 698 senior career goals for club and country."
-} %}
-
-
-{% set home = { 'name': 'Utah Jazz' } %}
-{% set away = { 'name': 'Chicago Bulls' } %}
-
-{% set stats = [
-  { 'label': 'PTS', 'home': 112,  'away': 108 },
-  { 'label': 'REB', 'home': 46,   'away': 41  },
-  { 'label': 'AST', 'home': 27,   'away': 22  },
-  { 'label': 'STL', 'home': 8,    'away': 6   },
-  { 'label': 'TOV', 'home': 12,   'away': 14  },
-  { 'label': 'FG%', 'home': 48.2, 'away': 45.1, 'kind': 'pct' },
-  { 'label': '3P%', 'home': 38.6, 'away': 34.9, 'kind': 'pct' },
-  { 'label': 'FT%', 'home': 83.1, 'away': 79.5, 'kind': 'pct' }
-] %}
-
-{% include "../assets/styles/pages/review/review-stats.twig" with {
-  'title': 'Team comparison',
-  'home': home,
-  'away': away,
-  'stats': stats
-} %}
-
-
+{% block head_extra %} 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/> 
+{% endblock %} 
+{% block league_header %}
+  {% include "../components/header-league/header-league.twig" with {
+    logo: '/assets/images/league6.webp',
+    tag:  'NBA',
+    href: '/league',
+    nav_items: [
+      { title: 'Home', url: '/league'},
+      { title: 'Calendar', url: '/calendar'},
+      { title: 'Lives',    url: '/lives'},
+      { title: 'Review',   url: '/review', active: true },
+      { title: 'Teams',    url: '/teams' },
+      { title: 'Players',  url: '/players'},
+      { title: 'News',     url: '/news' },
+      { title: 'Videos',   url: '/videos' }
+    ]
+  } %}
 {% endblock %}
+{% block content %}
+  <section class="page-content">
+    <div class="container">
+      <div class="page-content__inner">
 
-{% block scripts %}{% endblock %}
+            {% include "../components/review-header/review-header.twig" with {
+  league: {
+    name: "NBA",
+    href: "/leagues/la-liga",
+    logo: "/assets/images/league6.webp"
+  },
+  match: {
+    date_value: "2025-09-20 21:45:00",
+    date_opts: { variant: "review", show_icon: true, icon: "schedule" },
+    status: "Final",
+    score1: 2,
+    score2: 1,
+    team1: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
+    team2: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" }
+  }
+} only %}
+      </div>
+    </div>
+  </section>
+  {% set content %}
+             <section class="block">
+              <div class="block__inner">
+                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+                  items: [
+                    { href: "/", icon: "home" },
+                    { label: "Basketball", href: "/basketball" },
+                    { label: "NBA", href: "/league" },
+                    { label: "Calendar", href: "/calendar" },
+                    { label: "Review" }
+                  ]
+                } %}
+              </div>
+            </section>  
+               <section class="block">
+              <div class="block__inner">
+                {% include "../components/section-head/section-head.twig" with {
+      title: "Text review",
+      icon: "article",
+    } %} 
+    {% include "../components/review-text/review-text.twig" with {
+  video: {
+    href: "/videos/highlights-1",
+    thumb: "/assets/images/img14.webp",
+    alt: "Highlights thumbnail"
+  },
+  descr: [
+    "lorem245 ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna. In the end, Barcelona secured a narrow 2–1 victory to maintain their lead in the league standings.",
+    " lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna. In the end, Barcelona secured a narrow 2–1 victory to maintain their lead in the league standings.",
+    "In the end, Barcelona secured a narrow 2–1 victory to maintain their lead in the league standings. Real Madrid created several dangerous chances in the first half, but were unable to convert them into goals. Real Madrid created several dangerous chances in the first half, but were unable to convert them into goals.",
+    "The match was marked by intense competition and strategic plays from both teams.",
+  ]
+} only %}
+              </div>
+            </section>  
+            <section class="block">
+               <div class="block__inner">
+                    {% include "../components/section-head/section-head.twig" with {
+      title: "Key stats",
+      icon: "percent",
+    } %}
+
+    {% include "../components/review-teams/review-teams.twig" with {
+  home: { href: "/teams/barcelona", logo: "/assets/images/team1.webp", name: "Barcelona" },
+  away: { href: "/teams/real-madrid", logo: "/assets/images/team2.webp", name: "Real Madrid" },
+} only %}
+
+                {% set stats = [
+  { title: 'Ball possession',     left: 111,  right: 34 },
+  { title: 'Blows',               left: 56,  right: 456 },
+  { title: 'Shots (on target)',   left: 78,  right: 98 },
+  { title: 'Fouls (committed)',   left: 241, right: 124 },
+  { title: 'Yellow cards',        left: 12,  right: 5 },
+  { title: 'Saves',               left: 24,  right: 33 },
+  { title: 'Number of gears',     left: 68,  right: 76 },
+  { title: 'Moments created',     left: 21,  right: 31 },
+  { title: 'Goal scoring chances',left: 87,  right: 43 },
+  { title: 'Canopies',            left: 21,  right: 22 },
+  { title: 'Penalty kicks',       left: 546, right: 312 },
+  { title: 'Offsides',            left: 52,  right: 21 },
+  { title: 'Red cards',           left: 2,   right: 1 },
+  { title: 'Goal kicks',          left: 24,  right: 21 },
+  { title: 'Throw-ins',           left: 23,  right: 67 }
+] %}
+
+{% include "../components/match-stats/match-stats.twig" with {
+  items: stats,
+  extra_class: 'match-stats--basic', 
+  show_values: true,
+  round: 0
+} only %}
+               </div> 
+            </section>
+
+
+  {% endset %}
+
+
+  {% set right %}
+  {% set columns = [
+  { key:'pos',   label:'#',    align:'right', width:'32px',  template:'../table/_cell-number.twig' },
+  { key:'team',   label:'Team',    align:'left',  width:'minmax(40px,1fr)', template:'../table/_cell-team.twig' },
+
+  { key:'w',      label:'W',       align:'right', width:'44px', is_numeric:true, template:'../table/_cell-number.twig' },
+  { key:'l',      label:'L',       align:'right', width:'44px', is_numeric:true, template:'../table/_cell-number.twig' },
+  { key:'pct',    label:'PCT',     align:'right', width:'64px', is_numeric:true, template:'../table/_cell-number.twig' },
+  { key:'pts',    label:'PTS',     align:'right', width:'64px', is_numeric:true, template:'../table/_cell-number.twig' }
+
+] %}
+
+{% set rows = [
+  {
+    pos:1,
+    team: { name:'Dallas Mavericks', logo:'/assets/images/team1.webp', href:'/teams/mavericks' },
+    w:52, l:20, pct:0.722, pts: 124
+  },
+  {
+    pos:2,
+    team: { name:'Boston Celtics', logo:'/assets/images/team2.webp', href:'/teams/celtics' },
+    w:50, l:22, pct:0.694, pts: 120
+  },
+  {
+    pos:3,
+    team: { name:'Denver Nuggets', logo:'/assets/images/team3.webp', href:'/teams/nuggets' },
+    w:48, l:24, pct:0.667, pts: 115
+  },
+  {
+    pos:4,
+    team: { name:'Oklahoma City Thunder', logo:'/assets/images/team4.webp', href:'/teams/thunder' },
+    w:46, l:26, pct:0.639, pts: 110
+  },
+  {
+    pos:5,
+    team: { name:'Milwaukee Bucks', logo:'/assets/images/team5.webp', href:'/teams/bucks' },
+    w:45, l:27, pct:0.625, pts: 105
+  },
+  {
+    pos:6,
+    team: { name:'New York Knicks', logo:'/assets/images/team6.webp', href:'/teams/knicks' },
+    w:43, l:29, pct:0.597, pts: 100
+  },
+  {
+    pos:7,
+    team: { name:'Golden State Warriors', logo:'/assets/images/team7.webp', href:'/teams/warriors' },
+    w:41, l:31, pct:0.569, pts: 95
+  },
+  {
+    pos:8,
+    team: { name:'Miami Heat', logo:'/assets/images/team8.webp', href:'/teams/heat' },
+    w:39, l:33, pct:0.542, pts: 90
+  }
+] %}
+  <div class="block">
+    <div class="block__inner"> 
+      {% include "../components/section-head/section-head.twig" with {
+      title: "Standings",
+      icon: "table_chart",
+    } %}
+    {% include "../components/table/table.twig" with {
+      columns: columns,
+      rows: rows,
+      extra_class: 'table--compact',
+      head_sticky: false,
+      no_results_text: 'No teams',
+      scroll: false
+    } only %}
+    </div>
+  </div>
+
+  {% include "../components/list/list.twig" with {
+  title: "Popular Teams",
+  icon: "groups",
+  teams: [
+    { name: "Roma", url: "/team/roma", logo: "/assets/images/team1.webp" },
+    { name: "Chicago Bulls", url: "/team/roma", logo: "/assets/images/team2.webp" },
+    { name: "Athletic Club", url: "/team/roma", logo: "/assets/images/team3.webp" },
+     { name: "Borrysia", url: "/team/roma", logo: "/assets/images/team4.webp" },
+    { name: "Real Madrid", url: "/team/roma", logo: "/assets/images/team5.webp" },
+    { name: "Barcelona", url: "/team/roma", logo: "/assets/images/team6.webp" },
+    { name: "S.S. Lazio", url: "/team/roma", logo: "/assets/images/team7.webp" },
+    { name: "Milan", url: "/team/milan", logo: "/assets/images/team8.webp" } 
+  ]
+} %}
+  {% endset %}
+
+
+  {% include "../layouts/hub.twig" with {
+    extra_class: "hub--home",
+    content: content,
+    right: right
+  } %}
 
 
 
@@ -82,3 +227,8 @@
 
 
 
+
+
+{% endblock %} 
+{% block scripts %}   
+{% endblock %}

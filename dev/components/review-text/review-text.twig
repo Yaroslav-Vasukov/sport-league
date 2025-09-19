@@ -1,0 +1,22 @@
+{#
+  Компонент: Review Text
+  Вход:
+    - video: { href, thumb, alt }
+    - descr: [ "строка", "строка", ... ]
+    - extra_class: '' (опционально)
+#}
+
+{% set _video = video|default({ href:'#', thumb:'/assets/images/img14.webp', alt:'thumbnail' }) %}
+{% set _descr = descr|default([]) %}
+{% set _extra_class = extra_class|default('') %}
+
+<div class="review-text {{ _extra_class }}">
+  <a href="{{ _video.href }}" class="review-text__review">
+    <img src="{{ _video.thumb }}" alt="{{ _video.alt }}" class="review-text__video">
+    <span class="review-text__icon material-symbols-outlined">play_circle</span>
+  </a>
+
+  {% for p in _descr %}
+    <p class="review-text__descr">{{ p }}</p>
+  {% endfor %}
+</div>
