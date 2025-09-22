@@ -1,23 +1,137 @@
-{% extends "../layouts/_base.html" %} {% block
-title %}Contact — Basketball Today{% endblock %} {% block active_nav
-%}contact{% endblock %} {% block body_class %}page page--Contact{% endblock %}
-{% block head_extra %} {% endblock %} 
+
+{% extends "../layouts/_base-league.html" %} 
+{% block title %}Contact{% endblock %} 
+{% block body_class %}page page--contact{% endblock %}
+{% block active_nav %}contact{% endblock %}
+{% block head_extra %} 
+{% endblock %} 
 {% block content %}
 
-{% include "../components/page-first/page-first.twig" with {
-  title: "Contact us",
-  crumbs: [
-    { label: "Contact" }  
-  ]
-} %}
-  {% include "../components/contact/contact.twig" with {
-  description: "Свяжитесь с нами по любому удобному каналу:",
-  items: [
-    { href: "mailto:help@nba-basketball.pt", title: "email", text: "help@nba-basketball.pt" },
-    { href: "tel:+1234123456789", title: "phone", text: "+1 (234) 123 - 456 - 789" },
-    { href: "#", title: "location", text: "Rua da Prata 96, 1100-420 Lisboa, Portugal" }
-  ]
-} %}
+  <section class="page-content">
+    <div class="container">
+      <div class="page-content__inner">
+                     <section class="block">
+              <div class="block__inner">
+                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+                  items: [
+                    { href: "/", icon: "home" },
+                    { label: "Contact" }
+                  ]
+                } %}
+              </div>
+            </section>  
+            <section class="block">
+  <div class="block__inner">
+        {% include "../components/section-head/section-head.twig" with {
+      title: "Get in Touch",
+      icon: "contact_page",
+    } %}
+    <p class="page-intro">Редакция и офисы. Выберите удобный для вас адрес — на карточке есть ссылки на карту, email и телефон.</p>
+
+    <ul class="contacts" role="list">
+      {# HQ #}
+      <li class="contacts__item">
+        <article class="contacts-card">
+          <header class="contacts-card__head">
+            <span class="material-symbols-outlined contacts-card__icon" aria-hidden="true">location_on</span>
+            <h2 class="contacts-card__title">Headquarters</h2>
+          </header>
+          <address class="contacts-card__addr">
+            <span class="contacts-card__line">1 Sports Avenue</span>
+            <span class="contacts-card__line">Kyiv, 01001, Ukraine</span>
+          </address>
+          <div class="contacts-card__links">
+            <a class="contacts-card__link" href="https://maps.google.com/?q=1+Sports+Avenue+Kyiv" target="_blank" rel="noopener">Open on map</a>
+            <a class="contacts-card__link" href="mailto:info@sports-site.com">info@sports-site.com</a>
+            <a class="contacts-card__link" href="tel:+380441234567">+38 (044) 123-45-67</a>
+          </div>
+        </article>
+      </li>
+
+      {# Editorial #}
+      <li class="contacts__item">
+        <article class="contacts-card">
+          <header class="contacts-card__head">
+            <span class="material-symbols-outlined contacts-card__icon" aria-hidden="true">newspaper</span>
+            <h2 class="contacts-card__title">Editorial Office</h2>
+          </header>
+          <address class="contacts-card__addr">
+            <span class="contacts-card__line">24 Press Street</span>
+            <span class="contacts-card__line">Lviv, 79000, Ukraine</span>
+          </address>
+          <div class="contacts-card__links">
+            <a class="contacts-card__link" href="https://maps.google.com/?q=24+Press+Street+Lviv" target="_blank" rel="noopener">Open on map</a>
+            <a class="contacts-card__link" href="mailto:editorial@sports-site.com">editorial@sports-site.com</a>
+            <a class="contacts-card__link" href="tel:+380322223344">+38 (032) 222-33-44</a>
+          </div>
+        </article>
+      </li>
+
+      {# Advertising #}
+      <li class="contacts__item">
+        <article class="contacts-card">
+          <header class="contacts-card__head">
+            <span class="material-symbols-outlined contacts-card__icon" aria-hidden="true">campaign</span>
+            <h2 class="contacts-card__title">Advertising</h2>
+          </header>
+          <address class="contacts-card__addr">
+            <span class="contacts-card__line">18 Market Blvd</span>
+            <span class="contacts-card__line">Odesa, 65000, Ukraine</span>
+          </address>
+          <div class="contacts-card__links">
+            <a class="contacts-card__link" href="https://maps.google.com/?q=18+Market+Blvd+Odesa" target="_blank" rel="noopener">Open on map</a>
+            <a class="contacts-card__link" href="mailto:ads@sports-site.com">ads@sports-site.com</a>
+            <a class="contacts-card__link" href="tel:+380482556677">+38 (048) 255-66-77</a>
+          </div>
+        </article>
+      </li>
+
+      {# Press #}
+      <li class="contacts__item">
+        <article class="contacts-card">
+          <header class="contacts-card__head">
+            <span class="material-symbols-outlined contacts-card__icon" aria-hidden="true">mail</span>
+            <h2 class="contacts-card__title">Press / PR</h2>
+          </header>
+          <address class="contacts-card__addr">
+            <span class="contacts-card__line">7 Media Park</span>
+            <span class="contacts-card__line">Kharkiv, 61000, Ukraine</span>
+          </address>
+          <div class="contacts-card__links">
+            <a class="contacts-card__link" href="https://maps.google.com/?q=7+Media+Park+Kharkiv" target="_blank" rel="noopener">Open on map</a>
+            <a class="contacts-card__link" href="mailto:press@sports-site.com">press@sports-site.com</a>
+            <a class="contacts-card__link" href="tel:+380577001122">+38 (057) 700-11-22</a>
+          </div>
+        </article>
+      </li>
+
+      {# Support #}
+      <li class="contacts__item">
+        <article class="contacts-card">
+          <header class="contacts-card__head">
+            <span class="material-symbols-outlined contacts-card__icon" aria-hidden="true">support_agent</span>
+            <h2 class="contacts-card__title">Support</h2>
+          </header>
+          <address class="contacts-card__addr">
+            <span class="contacts-card__line">12 Help Desk Ave</span>
+            <span class="contacts-card__line">Dnipro, 49000, Ukraine</span>
+          </address>
+          <div class="contacts-card__links">
+            <a class="contacts-card__link" href="https://maps.google.com/?q=12+Help+Desk+Ave+Dnipro" target="_blank" rel="noopener">Open on map</a>
+            <a class="contacts-card__link" href="mailto:support@sports-site.com">support@sports-site.com</a>
+            <a class="contacts-card__link" href="tel:+380563330099">+38 (056) 333-00-99</a>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </div>
+</section>
+
+      </div>
+    </div>
+  </section>
 
 
-{% endblock %} {% block scripts %} {% endblock %}
+{% endblock %} 
+{% block scripts %}   
+{% endblock %}
