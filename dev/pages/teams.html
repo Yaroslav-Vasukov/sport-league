@@ -1,30 +1,10 @@
 
 {% extends "../layouts/_base-league.html" %} 
-{% block title %}Home{% endblock %} 
-{% block body_class %}page page--home{% endblock %}
+{% block title %}Teams{% endblock %} 
+{% block body_class %}page page--teams{% endblock %}
+{% block active_nav %}teams{% endblock %}
 {% block head_extra %} 
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/> 
 {% endblock %} 
-{% block league_header %}
-  {% include "../components/header-league/header-league.twig" with {
-    logo: '/assets/images/league6.webp',
-    tag:  'NBA',
-    href: '/league',
-    nav_items: [
-      { title: 'Home', url: '/league'},
-      { title: 'Calendar', url: '/calendar'},
-      { title: 'Lives',    url: '/lives'},
-      { title: 'Review',   url: '/review' },
-      { title: 'Teams',    url: '/teams', active: true },
-      { title: 'Players',  url: '/players'},
-      { title: 'News',     url: '/news' },
-      { title: 'Videos',   url: '/videos' }
-    ]
-  } %}
-{% endblock %}
 {% block content %}
 
 {% set teams = [

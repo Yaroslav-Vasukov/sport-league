@@ -1,31 +1,31 @@
-.videos__wrap {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax( 320px, 1fr));
-  grid-auto-rows: 320px;
-  gap: 16px;
-  & .video {
-    display: flex;
-  }
-  & .video__link {
-    flex-grow: 1;
-  }
-  & .video__thumb-wrap {
-    aspect-ratio: auto;
-    height: 100%;
-    width: 100%;
-  }
-  & .video:nth-child(7n) {
-    grid-column: span 2;
-    grid-row: span 2;
-    @media (max-width: 740px) {
-          grid-column: span 1;
-    grid-row: span 1;
-    }
-  }
-  & .video:nth-child(7n) .video__thumb-wrap {
-    aspect-ratio: auto;
-  } 
-}
+// .videos__wrap {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax( 320px, 1fr));
+//   grid-auto-rows: 320px;
+//   gap: 16px;
+//   & .video {
+//     display: flex;
+//   }
+//   & .video__link {
+//     flex-grow: 1;
+//   }
+//   & .video__thumb-wrap {
+//     aspect-ratio: auto;
+//     height: 100%;
+//     width: 100%;
+//   }
+//   & .video:nth-child(7n) {
+//     grid-column: span 2;
+//     grid-row: span 2;
+//     @media (max-width: 740px) {
+//           grid-column: span 1;
+//     grid-row: span 1;
+//     }
+//   }
+//   & .video:nth-child(7n) .video__thumb-wrap {
+//     aspect-ratio: auto;
+//   } 
+// }
 .card-match__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax( 300px, 1fr));
@@ -37,10 +37,16 @@
     grid-template-columns: repeat(auto-fit, minmax( 200px, 1fr));
     gap: 24px 16px;
 }
+.video-list__grid--large {
+    grid-template-columns: repeat(auto-fit, minmax( 320px, 1fr));
+}
 .card-post-list__grid {
       display: grid;
     grid-template-columns: repeat(auto-fill, minmax( 240px, 1fr));
     gap: 24px 16px;
+    &--large {
+      grid-template-columns: repeat(auto-fill, minmax( 340px, 1fr));
+    }
 }
 .teams__grid {
     display: grid;

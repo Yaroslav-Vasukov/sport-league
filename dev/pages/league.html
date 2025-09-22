@@ -1,12 +1,9 @@
 
 {% extends "../layouts/_base-league.html" %} 
-{% block title %}Home{% endblock %} {% block active_nav %}home{% endblock %} 
-{% block body_class %}page page--home{% endblock %}
+{% block title %}League{% endblock %} {% block active_nav %}home{% endblock %} 
+{% block body_class %}page page--league{% endblock %}
+{% block active_nav %}league{% endblock %}
 {% block head_extra %} 
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/> 
 {% endblock %} 
 {% block league_header %}
   {% include "../components/header-league/header-league.twig" with {

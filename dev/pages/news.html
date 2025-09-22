@@ -1,183 +1,79 @@
-{% extends "../layouts/_base.html" %} {% block
-title %}news — Basketball Today{% endblock %} {% block active_nav
-%}news{% endblock %} {% block body_class %}page page--news{% endblock %}
-{% block head_extra %} {% endblock %} 
+
+{% extends "../layouts/_base-league.html" %} 
+{% block title %}News{% endblock %} 
+{% block body_class %}page page--news{% endblock %}
+{% block active_nav %}news{% endblock %}
+{% block head_extra %} 
+{% endblock %} 
 {% block content %}
-
-{% include "../components/page-first/page-first.twig" with {
-  title: "news",
-  crumbs: [
-    { label: "news" }  
-  ]
-} %}
-
-
 {% set posts = [
-    {
-      url: "/news/lebron-extends",
-      thumb: "/assets/images/img3.webp",
-      thumb_alt: "LeBron signs extension",
-      published_at: "2024-12-12",
-      title: "ESPN unveils 25-26 game commentators",
-      excerpt: "The 39-year-old veteran has committed to another season...",
-      tags: ["nba"]
-    },
-    {
-      url: "/news/lebron-extends",
-      thumb: "/assets/images/img2.webp",
-      thumb_alt: "EuroBasket 2025",
-      published_at: "2024-12-12",
-      title: "LeBron James Signs One-Year Extension With Lakers",
-      excerpt: "The 39-year-old veteran has committed...",
-      tags: ["nba","transfers"]
-    },
-    {
-      url: "/news/lebron-extends",
-      thumb: "/assets/images/img1.webp",
-      thumb_alt: "Top sophomores",
-      published_at: "2026-11-01",
-      title: "10 sophomore players to watch in 2025-26",
-      excerpt: "Prospects to track as the season unfolds...",
-      tags: ["nba"]
-    },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img16.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2024-12-12",
-              title: "ESPN unveils 25-26 game commentators",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",
-              tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img17.webp",
-              thumb_alt: "EuroBasket 2025: Standings, schedule and results",
-              published_at: "2024-12-12",
-              title: "LeBron James Signs One-Year Extension With Lakers",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",
-              tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img1.webp",
-              thumb_alt: "4 lottery teams eyeing a return to playoffs",
-              published_at: "2024-12-12",
-              title: "Film Study: Will new faces help Nuggets' defense?",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      },
-      {
-                      url: "/news/lebron-extends",
-              thumb: "/assets/images/img19.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2024-12-12",
-              title: "NBA 2K26 top 100 player ratings revealed",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img21.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2024-12-12",
-              title: "LeBron James Signs One-Year Extension With Lakers",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img22.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2024-12-12",
-              title: "LeBron James Signs One-Year Extension With Lakers",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img23.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2024-12-12",
-              title: "Strus out 3-4 months after left foot surgery",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img24.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2026-11-01",
-              title: "10 sophomore players to watch in 2025-26",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img16.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2024-12-12",
-              title: "ESPN unveils 25-26 game commentators",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",
-              tags: ["euro"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img17.webp",
-              thumb_alt: "EuroBasket 2025: Standings, schedule and results",
-              published_at: "2024-12-12",
-              title: "LeBron James Signs One-Year Extension With Lakers",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",
-              tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img1.webp",
-              thumb_alt: "4 lottery teams eyeing a return to playoffs",
-              published_at: "2024-12-12",
-              title: "Film Study: Will new faces help Nuggets' defense?",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      },
-      {
-                      url: "/news/lebron-extends",
-              thumb: "/assets/images/img19.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2024-12-12",
-              title: "NBA 2K26 top 100 player ratings revealed",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img21.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2024-12-12",
-              title: "LeBron James Signs One-Year Extension With Lakers",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img22.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2024-12-12",
-              title: "LeBron James Signs One-Year Extension With Lakers",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img23.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2024-12-12",
-              title: "Strus out 3-4 months after left foot surgery",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      },
-      {
-        url: "/news/lebron-extends",
-              thumb: "/assets/images/img24.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2026-11-01",
-              title: "10 sophomore players to watch in 2025-26",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles.",  tags: ["nba"]
-      }
-    ]%}
+  { href: '/post/1',  title: 'Mahomes magic: Chiefs edge Bills in primetime thriller',      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img1.webp',  published_at: '2023-10-01', sport: 'Football',   league: 'NFL' },
+  { href: '/post/2',  title: 'Eagles defense smothers Cowboys in statement win',            descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img2.webp',  published_at: '2023-10-02', sport: 'Football',   league: 'NFL' },
+  { href: '/post/3',  title: 'Arsenal outlast Spurs in five-goal North London derby',       descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img3.webp',  published_at: '2023-10-03', sport: 'Football',     league: 'Premier League' },
+  { href: '/post/4',  title: 'Barcelona rally to defeat Sevilla with late winner',          descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img4.webp',  published_at: '2023-10-04', sport: 'Football',     league: 'LaLiga' },
+  { href: '/post/5',  title: 'Inter dominate Milan in emphatic Derby della Madonnina',      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img5.webp',  published_at: '2023-10-05', sport: 'Football',     league: 'Serie A' },
+  { href: '/post/6',  title: 'LeBron drops triple-double as Lakers top Warriors',          descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img6.webp',  published_at: '2023-10-06', sport: 'Basketball', league: 'NBA' },
+  { href: '/post/7',  title: 'Aces clinch playoff spot with road blowout',                 descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img7.webp',  published_at: '2023-10-07', sport: 'Basketball', league: 'WNBA' },
+  { href: '/post/8',  title: 'Maple Leafs win OT classic against Bruins',                  descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img8.webp',  published_at: '2023-10-08', sport: 'Basketball',     league: 'NHL' },
+  { href: '/post/9',  title: 'Real Madrid book UCL quarterfinal spot after away win',      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img9.webp',  published_at: '2023-10-09', sport: 'Football',     league: 'UEFA Champions League' },
+  { href: '/post/10', title: 'Bayern cruise past Dortmund in Der Klassiker',                descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img10.webp', published_at: '2023-10-10', sport: 'Football',     league: 'Bundesliga' },
+  { href: '/post/11', title: 'Mbappé brace lifts PSG over Lyon',                            descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img11.webp', published_at: '2023-10-11', sport: 'Football',     league: 'Ligue 1' },
+  { href: '/post/12', title: 'LAFC edge Seattle in wild MLS shootout',                      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img12.webp', published_at: '2023-10-12', sport: 'Football',     league: 'MLS' },
+  { href: '/post/13', title: 'Djokovic survives five-set epic in Paris',                    descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img13.webp', published_at: '2023-10-13', sport: 'Basketball',     league: 'ATP' },
+  { href: '/post/14', title: 'Świątek sweeps to title in Rome',                             descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img14.webp', published_at: '2023-10-14', sport: 'Basketball',     league: 'WTA' },
+  { href: '/post/15', title: 'Verstappen wins chaotic Monaco GP',                           descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img15.webp', published_at: '2023-10-15', sport: 'Basketball', league: 'F1' },
+  { href: '/post/16', title: 'Makhachev retains title with dominant submission',            descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img16.webp', published_at: '2023-10-16', sport: 'Basketball',        league: 'UFC' },
+  { href: '/post/17', title: 'Kohli masterclass lights up IPL chase',                       descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'   ,       thumb: '/assets/images/img17.webp', published_at: '2023-10-17', sport: 'Basketball',    league: 'IPL' },
+  { href: '/post/18', title: 'Yankees power past Red Sox with late homers',                 descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'   ,       thumb: '/assets/images/img1.webp',  published_at: '2023-10-18', sport: 'Basketball',   league: 'MLB' },
+  { href: '/post/19', title: 'Ireland claim dramatic Six Nations victory at Twickenham',     descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img2.webp',  published_at: '2023-10-19', sport: 'Basketball',      league: 'Six Nations' },
+  { href: '/post/20', title: 'Ajax youngsters shine in Eredivisie rout',                     descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,       thumb: '/assets/images/img3.webp',  published_at: '2023-10-20', sport: 'Football',     league: 'NBA' }
+] %}
 
-  {% include "../components/post/post-list.twig" with {
-    posts: posts,
-    per_page: 8,
-    show_filters: true   
-  } %}
+  <section class="page-content">
+    <div class="container">
+      <div class="page-content__inner">
+                     <section class="block">
+              <div class="block__inner">
+                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+                  items: [
+                    { href: "/", icon: "home" },
+                    { label: "Basketball", href: "/basketball" },
+                    { label: "NBA", href: "/league" },
+                    { label: "News" }
+                  ]
+                } %}
+              </div>
+            </section>  
+                  <section class="block"
+         data-pagination
+         data-pagination-items=".card-post-list__grid"
+         data-pagination-item=".card-post"
+         data-pagination-size="9"
+         data-pagination-param="tpage">
+          <div class="block__inner">
+<div class="card-post-list__grid card-post-list__grid--large">
+   {% for post in posts %}
+    {% include "../components/card-post/card-post.twig" with {
+        href:       post.href,
+        title:      post.title,
+        thumb_src:  post.thumb,
+        date_value: post.published_at,
+        sport:      post.sport|default(null),
+        descr:      post.descr,
+        league:     post.league|default(null)
+      } only %}
+      {% else %}
+        <p class="muted">No posts.</p>
+      {% endfor %}
+</div>
+            <nav class="pagination" aria-label="lives pagination"></nav>
+          </div>
+      </section>
+      </div>
+    </div>
+  </section>
 
-{% endblock %} {% block scripts %} {% endblock %}
+
+{% endblock %} 
+{% block scripts %}   
+{% endblock %}

@@ -1,7 +1,19 @@
+// calendar.js
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const DOW = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]; // неделя с понедельника
-const pad2 = (n) => String(n).padStart(2,"0");
-const iso = (y,m,d) => `${y}-${pad2(m+1)}-${pad2(d)}`;
+const DOW    = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]; // неделя с понедельника
+const pad2   = (n) => String(n).padStart(2,"0");
+const iso    = (y,m,d) => `${y}-${pad2(m+1)}-${pad2(d)}`;
+
+// 🔹 форматтер даты (аналог Date.render(..., { variant:'short_no_year' }))
+const MONTHS_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function fmtDateShortNoYear(dt) {
+  // "22 Sep, 18:45"
+  const dd  = String(dt.getDate()).padStart(2,"0");
+  const mon = MONTHS_SHORT[dt.getMonth()];
+  const hh  = String(dt.getHours()).padStart(2,"0");
+  const mm  = String(dt.getMinutes()).padStart(2,"0");
+  return `${dd} ${mon}, ${hh}:${mm}`;
+}
 
 function initCalendar(root){
   const grid        = root.querySelector('[data-el="grid"]');
@@ -19,17 +31,13 @@ function initCalendar(root){
   let view = new Date(today.getFullYear(), today.getMonth(), 1);
   let selected = new Date(today);
 
-  // события навигации
-  root.querySelector("[data-prev-month]").addEventListener("click", () => {
-    view = new Date(view.getFullYear(), view.getMonth()-1, 1);
-    render();
-  });
-  root.querySelector("[data-next-month]").addEventListener("click", () => {
-    view = new Date(view.getFullYear(), view.getMonth()+1, 1);
-    render();
-  });
+  // навигация
+  const prevBtn = root.querySelector("[data-prev-month]");
+  const nextBtn = root.querySelector("[data-next-month]");
+  if (prevBtn) prevBtn.addEventListener("click", () => { view = new Date(view.getFullYear(), view.getMonth()-1, 1); render(); });
+  if (nextBtn) nextBtn.addEventListener("click", () => { view = new Date(view.getFullYear(), view.getMonth()+1, 1); render(); });
 
-  // рендер
+  // стартовый рендер
   render();
 
   function render(){
@@ -61,7 +69,7 @@ function initCalendar(root){
     const first = new Date(y, m, 1);
     const daysInMonth = new Date(y, m+1, 0).getDate();
 
-    // индекс старта (понедельник = 0)
+    // индекс старта (Mon=0)
     const startIndex = (first.getDay() + 6) % 7;
 
     // хвост прошлого месяца
@@ -104,11 +112,12 @@ function initCalendar(root){
     num.textContent = d;
     cell.appendChild(num);
 
-    // бейдж: есть матчи
+    // бейдж: количество матчей в день
     const n = matchesByDate[key]?.length || 0;
     if (n) {
       const badge = document.createElement("div");
       badge.className = "calendar__badge";
+      badge.textContent = n; // можно оставить пустым кружком, если так задумано
       cell.appendChild(badge);
     }
 
@@ -133,35 +142,56 @@ function initCalendar(root){
 
   function renderMatches(){
     const k = iso(selected.getFullYear(), selected.getMonth(), selected.getDate());
-    matchesDate.textContent = k;
+    if (matchesDate) matchesDate.textContent = k;
     const data = matchesByDate[k] || [];
-    matchesWrap.innerHTML = ""; // очищаем
+    matchesWrap.innerHTML = "";
 
     if (!data.length){
       matchesWrap.innerHTML = `<p class="muted">No matches scheduled.</p>`;
       return;
     }
 
-    // рендер любой компонент через <template>
+    // заполняем готовый <template id="tpl-card-match">
     const tpl = document.getElementById("tpl-card-match");
+    if (!tpl) {
+      console.warn("[calendar] Missing #tpl-card-match");
+      return;
+    }
+
     data.forEach(m => {
       const node = tpl.content.cloneNode(true);
-      // заполняем поля
-      node.querySelector('[data-el="home-link"]').href = m.home.href;
-      node.querySelector('[data-el="home-logo"]').src  = m.home.logo;
-      node.querySelector('[data-el="home-logo"]').alt  = m.home.name;
-      node.querySelector('[data-el="home-name"]').textContent = m.home.name;
 
-      node.querySelector('[data-el="away-link"]').href = m.away.href;
-      node.querySelector('[data-el="away-logo"]').src  = m.away.logo;
-      node.querySelector('[data-el="away-logo"]').alt  = m.away.name;
-      node.querySelector('[data-el="away-name"]').textContent = m.away.name;
+      // home
+      node.querySelector('[data-el="home-link"]').href         = m.home.href;
+      node.querySelector('[data-el="home-logo"]').src          = m.home.logo;
+      node.querySelector('[data-el="home-logo"]').alt          = m.home.name;
+      node.querySelector('[data-el="home-name"]').textContent  = m.home.name;
+      node.querySelector('[data-el="score-home"]').textContent = m.score_home ?? "—";
 
-      node.querySelector('[data-el="time"]').textContent = m.time;
-      const leagueLink = node.querySelector('[data-el="league-link"]');
-      leagueLink.href = m.league.href; leagueLink.textContent = m.league.name;
+      // away
+      node.querySelector('[data-el="away-link"]').href         = m.away.href;
+      node.querySelector('[data-el="away-logo"]').src          = m.away.logo;
+      node.querySelector('[data-el="away-logo"]').alt          = m.away.name;
+      node.querySelector('[data-el="away-name"]').textContent  = m.away.name;
+      node.querySelector('[data-el="score-away"]').textContent = m.score_away ?? "—";
 
-      node.querySelector('[data-el="match-link"]').href = m.href;
+      // meta
+      const d = m.date_value ? new Date(m.date_value) : null;
+      node.querySelector('[data-el="date"]').textContent       = d ? fmtDateShortNoYear(d) : "";
+      node.querySelector('[data-el="status"]').textContent     = m.status || "Scheduled";
+
+      const leagueA = node.querySelector('[data-el="league-link"]');
+      if (m.league) { leagueA.href = m.league.href; leagueA.textContent = m.league.name; } else { leagueA.removeAttribute("href"); leagueA.textContent = ""; }
+
+      // optional button
+      const btn = node.querySelector('[data-el="button"]');
+      if (m.button && m.button.url && m.button.label) {
+        btn.href = m.button.url;
+        btn.textContent = m.button.label;
+        btn.hidden = false;
+      } else {
+        btn.hidden = true;
+      }
 
       matchesWrap.appendChild(node);
     });
@@ -172,11 +202,9 @@ function bootAllCalendars() {
   document.querySelectorAll('[data-calendar]').forEach(initCalendar);
 }
 
-// Запускаем в любом случае — и при обычном подключении, и при ленивом import()
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', bootAllCalendars, { once: true });
 } else {
-  // DOM уже готов (например, модуль подгрузили через when() позже)
   bootAllCalendars();
 }
 

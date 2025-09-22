@@ -80,9 +80,30 @@
             }
           ]
         } only %}
-              {% block league_header %}
+        {% set _active_nav = active_nav|default(block('active_nav')) %}
 
-      {% endblock %}
+{% include "../components/header-league/header-league.twig" with {
+  logo: '/assets/images/league6.webp',
+  tag:  'NBA',
+  href: '/league',
+  active_nav: _active_nav,  
+  nav_items: [
+    { key: 'league',     title: 'Home',     url: '/league' },
+    { key: 'calendar', title: 'Calendar', url: '/calendar' },
+    { key: 'lives',    title: 'Lives',    url: '/lives' },
+    { key: 'review',   title: 'Review',   url: '/review' },
+    { key: 'teams',    title: 'Teams',    url: '/teams' },
+    { key: 'news',     title: 'News',     url: '/news' },
+    { key: 'videos',   title: 'Videos',   url: '/videos' },
+    { key: 'player',  title: 'Player',  url: '/player' },
+    { key: 'team',  title: 'Team',  url: '/team' },
+    { key: 'post',  title: 'Post',  url: '/post'},
+    { key: 'video',  title: 'Video',  url: '/video'},
+    { key: 'history',  title: 'History',  url: '/history'}
+
+  ]
+} only %}
+
       {% block content %}
 
       {% endblock %}

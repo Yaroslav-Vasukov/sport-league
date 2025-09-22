@@ -1,152 +1,241 @@
-{% extends "../layouts/_base.html" %} {% block
-title %}Videos — Basketball Today{% endblock %} {% block active_nav
-%}videos{% endblock %} {% block body_class %}page page--videos{% endblock %}
-{% block head_extra %} {% endblock %} 
-{% block content %}
 
-{% include "../components/page-first/page-first.twig" with {
-  title: "Popular videos",
-  crumbs: [
-    { label: "videos" }  
-  ]
-} %}
+{% extends "../layouts/_base-league.html" %} 
+{% block title %}Videos{% endblock %} 
+{% block body_class %}page page--videos{% endblock %}
+{% block active_nav %}videos{% endblock %}
+{% block head_extra %} 
+{% endblock %} 
+{% block content %}
 
 {% set videos = [
   {
-    href: "/videos/123",
-    thumb: "/assets/images/img2.webp",
-    thumb_alt: "video thumbnail",
-    title: "Make Your Picks 🏀",
-    published_at: "2024-11-12",
-    tags: ["highlights"]
+    href: '/video/1',
+    title: 'Derby Drama: City vs United — Full Highlights',
+    thumb_src: '/assets/images/img1.webp',
+    duration: '08:24',
+    date_value: '2025-09-01 19:00',
+    sport: 'Football',
+    league: 'Premier League',
+    views: '12.4K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img3.webp",
-    title: "Get Ready for the Action❗️",
-    published_at: "2024-12-12",
-    tags: ["promo"]
+    href: '/video/2',
+    title: 'Barcelona vs Sevilla: Late Winner and Wild Finish',
+    thumb_src: '/assets/images/img2.webp',
+    duration: '06:52',
+    date_value: '2025-09-02 21:15',
+    sport: 'Football',
+    league: 'LaLiga',
+    views: '9.8K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img4.webp",
-    title: "Cup Play Underway 🏆",
-    published_at: "2024-03-21",
-    tags: ["highlights"]
+    href: '/video/3',
+    title: 'LeBron Triple-Double vs Warriors — Game Recap',
+    thumb_src: '/assets/images/img3.webp',
+    duration: '10:15',
+    date_value: '2025-09-03 05:30',
+    sport: 'Basketball',
+    league: 'NBA',
+    views: '25.1K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img7.webp",
-    title: "Weekly League Pass Watch Guide 📚",
-    published_at: "2024-03-21",
-    tags: ["guide"]
+    href: '/video/4',
+    title: 'Aces Extend Streak: Playoff Statement Game',
+    thumb_src: '/assets/images/img4.webp',
+    duration: '07:03',
+    date_value: '2025-09-04 04:00',
+    sport: 'Basketball',
+    league: 'WNBA',
+    views: '7.2K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img6.webp",
-    title: "Close Call in Indy 👀",
-    published_at: "2025-08-29",
-    tags: ["highlights"]
+    href: '/video/5',
+    title: 'Maple Leafs vs Bruins — OT Classic',
+    thumb_src: '/assets/images/img5.webp',
+    duration: '09:44',
+    date_value: '2025-09-05 23:10',
+    sport: 'Hockey',
+    league: 'NHL',
+    views: '14.6K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img30.webp",
-    title: "Get Ready for the Action❗️",
-    published_at: "2024-12-12",
-    tags: ["promo"]
+    href: '/video/6',
+    title: 'UCL Nights: Real Madrid Clinch Away Win',
+    thumb_src: '/assets/images/img6.webp',
+    duration: '11:20',
+    date_value: '2025-09-06 22:00',
+    sport: 'Football',
+    league: 'UEFA Champions League',
+    views: '31.9K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img31.webp",
-    title: "Cup Play Underway 🏆",
-    published_at: "2024-03-21",
-    tags: ["highlights"]
+    href: '/video/7',
+    title: 'Djokovic Survives Five-Set Epic in Paris',
+    thumb_src: '/assets/images/img7.webp',
+    duration: '05:58',
+    date_value: '2025-09-07 16:20',
+    sport: 'Tennis',
+    league: 'ATP',
+    views: '6.4K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img32.webp",
-    title: "Close Call in Indy 👀",
-    published_at: "2025-08-29",
-    tags: ["highlights"]
+    href: '/video/8',
+    title: 'Świątek Rolls to Title — Best Points',
+    thumb_src: '/assets/images/img8.webp',
+    duration: '04:47',
+    date_value: '2025-09-08 14:40',
+    sport: 'Tennis',
+    league: 'WTA',
+    views: '8.1K views'
   },
   {
-    href: "/videos/123",
-    thumb: "/assets/images/img33.webp",
-    thumb_alt: "video thumbnail",
-    title: "Make Your Picks 🏀",
-    published_at: "2024-11-12",
-    tags: ["highlights"]
+    href: '/video/9',
+    title: 'F1 Monaco: Chaotic Race & Masterclass Win',
+    thumb_src: '/assets/images/img9.webp',
+    duration: '12:36',
+    date_value: '2025-09-09 18:00',
+    sport: 'Motorsport',
+    league: 'F1',
+    views: '19.7K views'
+  },
+    {
+    href: '/video/1',
+    title: 'Derby Drama: City vs United — Full Highlights',
+    thumb_src: '/assets/images/img1.webp',
+    duration: '08:24',
+    date_value: '2025-09-01 19:00',
+    sport: 'Football',
+    league: 'Premier League',
+    views: '12.4K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img13.webp",
-    title: "Get Ready for the Action❗️",
-    published_at: "2024-12-12",
-    tags: ["promo"]
+    href: '/video/2',
+    title: 'Barcelona vs Sevilla: Late Winner and Wild Finish',
+    thumb_src: '/assets/images/img2.webp',
+    duration: '06:52',
+    date_value: '2025-09-02 21:15',
+    sport: 'Football',
+    league: 'LaLiga',
+    views: '9.8K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img12.webp",
-    title: "Cup Play Underway 🏆",
-    published_at: "2024-03-21",
-    tags: ["highlights"]
+    href: '/video/3',
+    title: 'LeBron Triple-Double vs Warriors — Game Recap',
+    thumb_src: '/assets/images/img3.webp',
+    duration: '10:15',
+    date_value: '2025-09-03 05:30',
+    sport: 'Basketball',
+    league: 'NBA',
+    views: '25.1K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img5.webp",
-    title: "Weekly League Pass Watch Guide 📚",
-    published_at: "2024-03-21",
-    tags: ["guide"]
+    href: '/video/4',
+    title: 'Aces Extend Streak: Playoff Statement Game',
+    thumb_src: '/assets/images/img4.webp',
+    duration: '07:03',
+    date_value: '2025-09-04 04:00',
+    sport: 'Basketball',
+    league: 'WNBA',
+    views: '7.2K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img4.webp",
-    title: "Close Call in Indy 👀",
-    published_at: "2025-08-29",
-    tags: ["highlights"]
+    href: '/video/5',
+    title: 'Maple Leafs vs Bruins — OT Classic',
+    thumb_src: '/assets/images/img5.webp',
+    duration: '09:44',
+    date_value: '2025-09-05 23:10',
+    sport: 'Hockey',
+    league: 'NHL',
+    views: '14.6K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img3.webp",
-    title: "Get Ready for the Action❗️",
-    published_at: "2024-12-12",
-    tags: ["promo"]
+    href: '/video/6',
+    title: 'UCL Nights: Real Madrid Clinch Away Win',
+    thumb_src: '/assets/images/img6.webp',
+    duration: '11:20',
+    date_value: '2025-09-06 22:00',
+    sport: 'Football',
+    league: 'UEFA Champions League',
+    views: '31.9K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img2.webp",
-    title: "Cup Play Underway 🏆",
-    published_at: "2024-03-21",
-    tags: ["highlights"]
+    href: '/video/7',
+    title: 'Djokovic Survives Five-Set Epic in Paris',
+    thumb_src: '/assets/images/img7.webp',
+    duration: '05:58',
+    date_value: '2025-09-07 16:20',
+    sport: 'Tennis',
+    league: 'ATP',
+    views: '6.4K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img1.webp",
-    title: "Close Call in Indy 👀",
-    published_at: "2025-08-29",
-    tags: ["highlights"]
+    href: '/video/8',
+    title: 'Świątek Rolls to Title — Best Points',
+    thumb_src: '/assets/images/img8.webp',
+    duration: '04:47',
+    date_value: '2025-09-08 14:40',
+    sport: 'Tennis',
+    league: 'WTA',
+    views: '8.1K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img19.webp",
-    title: "Get Ready for the Action❗️",
-    published_at: "2024-12-12",
-    tags: ["promo"]
+    href: '/video/9',
+    title: 'F1 Monaco: Chaotic Race & Masterclass Win',
+    thumb_src: '/assets/images/img9.webp',
+    duration: '12:36',
+    date_value: '2025-09-09 18:00',
+    sport: 'Motorsport',
+    league: 'F1',
+    views: '19.7K views'
+  },
+  {
+    href: '/video/10',
+    title: 'UFC Title Defense: Makhachev Dominates',
+    thumb_src: '/assets/images/img10.webp',
+    duration: '09:02',
+    date_value: '2025-09-10 23:59',
+    sport: 'MMA',
+    league: 'UFC',
+    views: '22.5K views'
   }
 ] %}
-  {% include "../components/video/video-list.twig" with {
-    teams: teams,
-    per_page: 8,
-    show_filters: false  
-  } %}
+  <section class="page-content">
+    <div class="container">
+      <div class="page-content__inner">
+                     <section class="block">
+              <div class="block__inner">
+                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+                  items: [
+                    { href: "/", icon: "home" },
+                    { label: "Basketball", href: "/basketball" },
+                    { label: "NBA", href: "/league" },
+                    { label: "Videos" }
+                  ]
+                } %}
+              </div>
+            </section>  
+                  <section class="block"
+         data-pagination
+         data-pagination-items=".video-list__grid "
+         data-pagination-item=".card-video"
+         data-pagination-size="8"
+         data-pagination-param="vpage">
+          <div class="block__inner">
+      <div class="video-list__grid video-list__grid--large">
+      {% for v in videos %}
+        {% include "../components/card-video/card-video.twig" with v only %}
+      {% else %}
+        <p class="muted">No Videos.</p>
+      {% endfor %}
+    </div>
+            <nav class="pagination" aria-label="lives pagination"></nav>
+          </div>
+      </section>
+      </div>
+    </div>
+  </section>
 
-{% endblock %} {% block scripts %} {% endblock %}
 
-
-
-
-
-
-
-
-
+{% endblock %} 
+{% block scripts %}   
+{% endblock %}

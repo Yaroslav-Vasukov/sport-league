@@ -5,9 +5,19 @@
   background: $color-light;
   box-shadow: 0 4px 16px rgba($color-dark, 0.5);
   z-index: 100;
-	@media (max-width: 1024px) {
+  --nav-dim: .45;
+	@media (max-width: 1220px) {
 		padding: 8px 0;
 	}
+  &__list:has(.is-active) .header-league__item-link {
+    opacity: var(--nav-dim);
+  }
+  /* активный/hover/focus — всегда 100% */
+  &__list:has(.is-active) .header-league__item-link.is-active,
+  &__list:has(.is-active) .header-league__item-link:hover,
+  &__list:has(.is-active) .header-league__item-link:focus-visible {
+    opacity: 1;
+  }
   &__inner {
 		display: flex;
 		align-items: center;
@@ -50,10 +60,6 @@
     text-decoration: none;
 		margin-bottom: -1px;
 		font-weight: 600;
-  }
-  /* эффект "остальные прозрачные" при ховере блока */
-  &__list:hover .header-league__item-link {
-    opacity: 1;
   }
   &__item-link:hover,
   &__item-link.is-active {
@@ -166,7 +172,7 @@
   }
 
   /* responsive */
-  @media (max-width: 1024px) {
+  @media (max-width: 1220px) {
     &__nav {
       display: none;
     }

@@ -52,7 +52,15 @@
       font-size: 32px;
       z-index: 1;
 		}
-
+      &__date {
+         display: flex;
+         align-items: center;
+      }
+      &__meta {
+         display: flex;
+         align-items: center;
+         gap: 8px;
+      }
 		&__content {
       position: absolute;
       display: flex;
