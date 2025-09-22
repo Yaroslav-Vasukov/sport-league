@@ -1,17 +1,18 @@
 .card-match {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     border-radius: 8px;
-    padding: 8px;
+    padding: 6px;
     border: 1px solid $color-gray;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		&__teams {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      justify-content: space-between;
+      gap: 6px;
       flex-grow: 1;
       border-right: 1px solid $color-gray;
-      padding-right: 8px;
+      padding-right: 6px;
 		}
 
 		&__team {
@@ -25,8 +26,8 @@
 		}
 
 		&__team-logo {
-      height: 32px;
-      width: 32px;
+      height: 24px;
+      width: 24px;
       object-fit: contain;
 		}
 
@@ -47,11 +48,17 @@
 		&__meta {
       display: flex;
       flex-direction: column;
+      min-width: 110px;
       gap: 4px;
       align-items: center;
       justify-content: space-between;
 		}
-
+		&__date {
+      font-size: 14px;
+      color: rgba($color-dark, 0.7);
+      text-align: center;
+      text-align: center;
+      }
 		&__status {
       font-weight: 700;
 		}

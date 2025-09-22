@@ -8,7 +8,7 @@
 {% set _status     = status|default('Scheduled') %}
 {% set _league     = league|default(null) %}
 {% set _date_value = date_value|default(null) %}
-{% set _date_opts  = date_opts|default({ variant:'short', show_icon:true, icon:'calendar_today' }) %}
+{% set _date_opts  = date_opts|default({ variant:'short_no_year', show_icon:true, icon:'calendar_today' }) %}
 {% set _button     = button|default(null) %}
 
 <article class="card-match">

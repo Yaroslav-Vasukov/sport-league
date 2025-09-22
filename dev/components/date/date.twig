@@ -26,6 +26,8 @@
       {% set text = (value|date('d M Y')) ~ ' ' ~ _opts.separator ~ ' ' ~ (value|date('H:i')) %}
     {% elseif _opts.variant == 'short' %}
       {% set text = value|date('d M Y') %}
+      {% elseif _opts.variant == 'short_no_year' %}
+  {% set text = value|date('d M H:i') %}
     {% elseif _opts.variant == 'long' %}
       {% set text = value|date('d F Y, H:i') %}
     {% elseif _opts.variant == 'ago' %}

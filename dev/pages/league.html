@@ -27,7 +27,7 @@
 {% endblock %}
 {% block content %}
 
-{% set matches = [
+{% set games = [
   {
     team_home: { name: "Barcelona", href: "/teams/barcelona", logo: "/assets/images/team1.webp" },
     team_away: { name: "Real Madrid", href: "/teams/real-madrid", logo: "/assets/images/team2.webp" },
@@ -79,8 +79,8 @@
     button: { label: "Match Center", url: "/match/1005" }
   },
   {
-    team_home: { name: "Chelsea", href: "/teams/chelsea", logo: "/assets/images/team11.webp" },
-    team_away: { name: "Arsenal", href: "/teams/arsenal", logo: "/assets/images/team12.webp" },
+    team_home: { name: "Chelsea", href: "/teams/chelsea", logo: "/assets/images/team1.webp" },
+    team_away: { name: "Arsenal", href: "/teams/arsenal", logo: "/assets/images/team2.webp" },
     score_home: 2,
     score_away: 2,
     date_value: "2025-09-25 20:45:00",
@@ -89,8 +89,8 @@
     button: { label: "Match Center", url: "/match/1006" }
   },
   {
-    team_home: { name: "Inter", href: "/teams/inter", logo: "/assets/images/team13.webp" },
-    team_away: { name: "Napoli", href: "/teams/napoli", logo: "/assets/images/team14.webp" },
+    team_home: { name: "Inter", href: "/teams/inter", logo: "/assets/images/team3.webp" },
+    team_away: { name: "Napoli", href: "/teams/napoli", logo: "/assets/images/team4.webp" },
     score_home: 1,
     score_away: 3,
     date_value: "2025-09-26 21:45:00",
@@ -99,8 +99,8 @@
     button: { label: "Match Center", url: "/match/1007" }
   },
   {
-    team_home: { name: "Ajax", href: "/teams/ajax", logo: "/assets/images/team15.webp" },
-    team_away: { name: "Feyenoord", href: "/teams/feyenoord", logo: "/assets/images/team16.webp" },
+    team_home: { name: "Ajax", href: "/teams/ajax", logo: "/assets/images/team5.webp" },
+    team_away: { name: "Feyenoord", href: "/teams/feyenoord", logo: "/assets/images/team1.webp" },
     score_home: 4,
     score_away: 1,
     date_value: "2025-09-27 17:00:00",
@@ -109,8 +109,8 @@
     button: { label: "Match Center", url: "/match/1008" }
   },
   {
-    team_home: { name: "Benfica", href: "/teams/benfica", logo: "/assets/images/team17.webp" },
-    team_away: { name: "Porto", href: "/teams/porto", logo: "/assets/images/team18.webp" },
+    team_home: { name: "Benfica", href: "/teams/benfica", logo: "/assets/images/team7.webp" },
+    team_away: { name: "Porto", href: "/teams/porto", logo: "/assets/images/team8.webp" },
     score_home: 2,
     score_away: 1,
     date_value: "2025-09-28 20:15:00",
@@ -119,8 +119,8 @@
     button: { label: "Match Center", url: "/match/1009" }
   },
   {
-    team_home: { name: "Flamengo", href: "/teams/flamengo", logo: "/assets/images/team19.webp" },
-    team_away: { name: "Palmeiras", href: "/teams/palmeiras", logo: "/assets/images/team20.webp" },
+    team_home: { name: "Flamengo", href: "/teams/flamengo", logo: "/assets/images/team9.webp" },
+    team_away: { name: "Palmeiras", href: "/teams/palmeiras", logo: "/assets/images/team2.webp" },
     score_home: 3,
     score_away: 3,
     date_value: "2025-09-29 22:00:00",
@@ -704,50 +704,9 @@
 
 
 <div class="card-match__grid">
-  {% include "../components/card-match/card-match.twig" with {
-  team_home: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
-  team_away: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" },
-  score_home: 2,
-  score_away: 1,
-  date_value: "2025-09-20 21:45:00",
-  status: "Final",
-  button: { label:"Match Report", href:"/match/1" },
-  league: { name:"La Liga", href:"/leagues/la-liga" }
-
-} %}
-  {% include "../components/card-match/card-match.twig" with {
-  team_home: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
-  team_away: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" },
-  score_home: 2,
-  score_away: 1,
-  date_value: "2025-09-20 21:45:00",
-  status: "Final",
-  button: { label:"Match Report", href:"/match/1" },
-  league: { name:"La Liga", href:"/leagues/la-liga" }
-
-} %}
-  {% include "../components/card-match/card-match.twig" with {
-  team_home: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
-  team_away: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" },
-  score_home: 2,
-  score_away: 1,
-  date_value: "2025-09-20 21:45:00",
-  status: "Final",
-  button: { label:"Match Report", href:"/match/1" },
-  league: { name:"La Liga", href:"/leagues/la-liga" }
-
-} %}
-  {% include "../components/card-match/card-match.twig" with {
-  team_home: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
-  team_away: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" },
-  score_home: 2,
-  score_away: 1,
-  date_value: "2025-09-20 21:45:00",
-  status: "Final",
-  button: { label:"Match Report", href:"/match/1" },
-  league: { name:"La Liga", href:"/leagues/la-liga" }
-
-} %}
+  {% for g in games|slice(0, 4) %}
+    {% include "../components/card-match/card-match.twig" with g only %}
+  {% endfor %}
 </div> 
 
   </div>
