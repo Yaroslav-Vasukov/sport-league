@@ -9,23 +9,6 @@
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
 /> 
 {% endblock %} 
-{% block league_header %}
-  {% include "../components/header-league/header-league.twig" with {
-    logo: '/assets/images/league6.webp',
-    tag:  'NBA',
-    href: '/league',
-    nav_items: [
-      { title: 'Home', url: '/league'},
-      { title: 'Calendar', url: '/calendar'},
-      { title: 'Lives',    url: '/lives'},
-      { title: 'Review',   url: '/review', active: true },
-      { title: 'Teams',    url: '/teams' },
-      { title: 'Players',  url: '/players'},
-      { title: 'News',     url: '/news' },
-      { title: 'Videos',   url: '/videos' }
-    ]
-  } %}
-{% endblock %}
 {% block content %}
 {% set lives = [
   {
@@ -205,7 +188,7 @@
 } only %}
                </div> 
             </section>
-<section class="block " data-swiper>
+<section class="block">
   <div class="block__inner">
     {% include "../components/section-head/section-head.twig" with {
       title: "Popular Lives",
@@ -214,7 +197,14 @@
       link_label: "All Lives"
     } %}
 
-    <div class="swiper home-live-swiper">
+    <div class="swiper home-live-swiper"
+         data-swiper='{
+           "slidesPerView": 1,
+           "spaceBetween": 16,
+           "breakpoints": {
+             "0":  { "slidesPerView": 1 }
+           }
+         }'>
       <div class="swiper-wrapper">
         {% for m in lives %}
           <div class="swiper-slide">
@@ -234,10 +224,8 @@
           <div class="swiper-slide"><p class="muted">No lives.</p></div>
         {% endfor %}
       </div>
-      <div class="home-live-swiper__btns">
-        <div class="swiper-button-prev" aria-label="Previous"></div>
-        <div class="swiper-button-next" aria-label="Next"></div>
-      </div>
+        <button class="swiper-button-prev" data-swiper-prev aria-label="Prev"></button>
+        <button class="swiper-button-next" data-swiper-next aria-label="Next"></button>
     </div>
   </div>
 </section>
@@ -334,7 +322,7 @@
 
 
   {% include "../layouts/hub.twig" with {
-    extra_class: "hub--home",
+    extra_class: "hub--review",
     content: content,
     right: right
   } %}

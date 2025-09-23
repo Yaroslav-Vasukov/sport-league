@@ -5,23 +5,6 @@
 {% block active_nav %}calendar{% endblock %}
 {% block head_extra %} 
 {% endblock %} 
-{% block league_header %}
-  {% include "../components/header-league/header-league.twig" with {
-    logo: '/assets/images/league6.webp',
-    tag:  'NBA',
-    href: '/league',
-    nav_items: [
-      { title: 'Home', url: '/league'},
-      { title: 'Calendar', url: '/calendar', active: true  },
-      { title: 'Lives',    url: '/lives' },
-      { title: 'Review',   url: '/review' },
-      { title: 'Teams',    url: '/teams' },
-      { title: 'Players',  url: '/players'},
-      { title: 'News',     url: '/news' },
-      { title: 'Videos',   url: '/videos' }
-    ]
-  } %}
-{% endblock %}
 {% block content %}
 
   <section class="page-content">

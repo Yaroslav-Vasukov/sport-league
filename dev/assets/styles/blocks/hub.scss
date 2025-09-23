@@ -100,11 +100,7 @@
 /* ===== Вариант без левого сайдбара ===== */
 .hub--no-left {
   .hub__aside--left { display: none !important; }
-  & .hub__aside--right {
-    @media (max-width: 767.98px) {
-      display: none;
-    }
-  }
+
   .hub__grid {
     /* Десктоп: 2 колонки — контент + правый сайдбар */
     grid-template-columns:
@@ -136,3 +132,9 @@
     }
   }
 }
+
+  .hub--review .hub__aside--right {
+    @media (max-width: 767.98px) {
+      display: none;
+    }
+  }

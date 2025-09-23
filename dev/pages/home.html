@@ -430,7 +430,7 @@
   </div>
 </section>
 
-<section class="block " data-swiper>
+<section class="block">
   <div class="block__inner">
     {% include "../components/section-head/section-head.twig" with {
       title: "Popular Lives",
@@ -439,7 +439,14 @@
       link_label: "All Lives"
     } %}
 
-    <div class="swiper home-live-swiper">
+    <div class="swiper home-live-swiper"
+         data-swiper='{
+           "slidesPerView": 1,
+           "spaceBetween": 16,
+           "breakpoints": {
+             "0":  { "slidesPerView": 1 }
+           }
+         }'>
       <div class="swiper-wrapper">
         {% for m in lives %}
           <div class="swiper-slide">
@@ -459,10 +466,8 @@
           <div class="swiper-slide"><p class="muted">No lives.</p></div>
         {% endfor %}
       </div>
-      <div class="home-live-swiper__btns">
-        <div class="swiper-button-prev" aria-label="Previous"></div>
-        <div class="swiper-button-next" aria-label="Next"></div>
-      </div>
+        <button class="swiper-button-prev" data-swiper-prev aria-label="Prev"></button>
+        <button class="swiper-button-next" data-swiper-next aria-label="Next"></button>
     </div>
   </div>
 </section>

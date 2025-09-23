@@ -1,47 +1,45 @@
-.home-live-swiper {
+.swiper {
   width: 100%;
   min-width: 0;      
   overflow: hidden;
   .swiper-slide {
     height: auto;
+    position: relative;
   }
   .card-live {
     height: 100%;
   }
 .swiper-button-prev {
   left: 0;
+  border-radius: 0  50% 50% 0;
 }
 .swiper-button-next {
   right: 0;
+    border-radius:  50% 0  0 50% ;
 }
   .swiper-button-prev,
   .swiper-button-next {
     color: $color-light;
     background-color: $color-primary-dark;
-    height: 32px;
-    width: 32px;
-    border-radius: 4px;
-    position: relative;
-    top: auto;
-    bottom: auto;
-    margin-top: 0;
+    border: none;
+    top: 50%;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
     &::after {
       font-size: 16px;
       font-weight: 700;
       color: $color-light;
     }
+    &:hover {
+      background-color: $color-primary;
+      transition: background-color .3s;
   }
-}
+  }
+  }
 .swiper-button-disabled {
   opacity: 0.8;
   pointer-events: none;
-}
-.home-live-swiper__btns {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px;
-  margin-top: 24px;
 }
 .home-live-swiper .swiper-wrapper,
 .home-live-swiper .swiper-slide {

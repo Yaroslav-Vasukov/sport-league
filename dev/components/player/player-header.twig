@@ -1,0 +1,115 @@
+{# 
+  Player Header Component
+  ВХОДНЫЕ ПАРАМЕТРЫ:
+
+  - name:           "Jaylen Brown"
+  - position:       "SG | SF" ИЛИ ["SG","SF"]
+  - photo:          "/assets/images/player3.webp"
+  - photo_alt:      "player"
+  - bg:             "/assets/images/team4.webp"
+
+  - team: { name, href, logo, logo_alt }
+      пример: { name:"Boston Celtics", href:"#", logo:"/assets/images/team-logo2.webp", logo_alt:"team logo" }
+
+  - bio:  [{ title, label }, ...]
+      пример:
+      [
+        { title:"Height:",    label:"6'6\", 223 lbs" },
+        { title:"Birthdate",  label:"10/24/1996 (28)" },
+        { title:"College",    label:"California" },
+        { title:"Draft Info", label:"2016: Rd 1, Pk 3 (BOS)" },
+        { title:"Status",     label:"GTD" }
+      ]
+
+  - stats_title: "2024-25 regular season stats"
+  - stats: [{ label, number, pos }, ...]
+      пример: [
+        { label:"PPG", number:"24.7", pos:"22nd" },
+        { label:"REB", number:"5.8",  pos:"52nd" },
+        { label:"AST", number:"4.5",  pos:"46th" },
+        { label:"FG%", number:"46.3", pos:"70th" }
+      ]
+
+  - extra_class: строка с доп. классами для корневого .player-header
+#}
+
+{# --- дефолты --- #}
+{% set _name        = name|default('Player Name') %}
+{% set _position    = position is iterable ? position|join(' | ') : (position|default('—')) %}
+{% set _photo       = photo|default('/assets/images/player3.webp') %}
+{% set _photo_alt   = photo_alt|default('player') %}
+{% set _bg          = bg|default('/assets/images/team4.webp') %}
+{% set _team        = team|default(null) %}
+{% set _bio         = bio|default([]) %}
+{% set _stats_title = stats_title|default('Regular season stats') %}
+{% set _stats       = stats|default([]) %}
+{% set _extra       = extra_class|default('') %}
+
+<section class="player-header {{ _extra }}">
+  <div class="container">
+    <div class="player-header__inner">
+      <div class="player-header__person">
+        {% if _bg %}
+          <img src="{{ _bg }}" alt="" class="player-header__bg" loading="lazy" decoding="async">
+        {% endif %}
+
+        {% if _photo %}
+          <img src="{{ _photo }}" alt="{{ _photo_alt }}" class="player-header__photo" loading="lazy" decoding="async">
+        {% endif %}
+
+        <div class="player-header__info">
+          <div class="player-header__name">{{ _name }}</div>
+          {% if _position %}
+            <div class="player-header__position">{{ _position }}</div>
+          {% endif %}
+
+          {% if _team %}
+            <a href="{{ _team.href|default('#') }}" class="player-header__team">
+              {% if _team.logo %}
+                <img
+                  src="{{ _team.logo }}"
+                  alt="{{ _team.logo_alt|default('team logo') }}"
+                  class="player-header__team-logo"
+                  loading="lazy"
+                  decoding="async"
+                >
+              {% endif %}
+              <span class="player-header__team-name">{{ _team.name|default('Team') }}</span>
+            </a>
+          {% endif %}
+        </div>
+
+        {% if _bio and _bio is iterable %}
+          <ul class="player-header__bio">
+            {% for item in _bio %}
+              <li class="player-header__item">
+                {% if item.title %}<span class="player-header__title">{{ item.title }}</span>{% endif %}
+                {% if item.label %}<span class="player-header__label">{{ item.label }}</span>{% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <div class="player-header-stat">
+          {% if _stats_title %}
+            <h3 class="player-header__stat-title">{{ _stats_title }}</h3>
+          {% endif %}
+
+          {% if _stats and _stats is iterable %}
+            <ul class="player-header__stat-list">
+              {% for s in _stats %}
+                <li class="player-header__stat-item">
+                  <span class="player-header__stat-label">{{ s.label|default('—') }}</span>
+                  <span class="player-header__stat-number">{{ s.number|default('—') }}</span>
+                  {% if s.pos is defined and s.pos is not empty %}
+                    <span class="player-header__stat-pos">{{ s.pos }}</span>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

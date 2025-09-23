@@ -157,6 +157,9 @@
       display: grid;
           grid-template-columns: repeat(auto-fill, minmax( 400px, 1fr));
     gap: 24px 16px;
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 }

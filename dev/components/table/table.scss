@@ -77,6 +77,7 @@
   }
 &__body .table__row .table__cell:nth-child(2) {
     border-right: 1px solid rgba($color-dark, .2);
+    
 }
 
 
@@ -152,4 +153,14 @@
       display: none;
     }
   }
-}
+  }
+
+
+     .table--pl-stats .table__head .table__row .table__cell:nth-child(2),
+     .table--pl-stats .table__body .table__row .table__cell:nth-child(2) {
+    position: relative;
+    left: auto;
+    background-color: transparent;
+    z-index: 1;
+    border-right: none;
+  }
