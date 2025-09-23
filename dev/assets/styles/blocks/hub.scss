@@ -79,6 +79,7 @@
     }
     &__aside {
       display: grid;
+            align-items: start;
       grid-template-columns: repeat(auto-fit, minmax( 240px, 1fr));
     gap: 24px 16px;
     }

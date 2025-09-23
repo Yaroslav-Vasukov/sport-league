@@ -1,0 +1,63 @@
+<div class="player-biography">
+
+  {# ===== Biography ===== #}
+  <div class="player-biography__item">
+    <h3 class="player-biography__title">Biography</h3>
+    <ul class="player-biography__list">
+      <li class="player-biography__list-item">
+       <span>Team:</span> <a href="{{ team.href|default('#') }}" class="player-biography__list-link">{{ team.name|default('—') }}</a>
+      </li>
+      <li class="player-biography__list-item"><span>Birthdate:</span> {{ birth_date|default('—') }}</li>
+      <li class="player-biography__list-item"><span>Status:</span> {{ status|default('—') }}</li>
+      <li class="player-biography__list-item"><span>Position:</span> {{ position|default('—') }}</li>
+      <li class="player-biography__list-item"><span>College:</span> {{ college|default('—') }}</li>
+      <li class="player-biography__list-item"><span>Experience:</span> {{ experience|default('—') }}</li>
+      <li class="player-biography__list-item"><span>HT/WT:</span> {{ height|default('—') }} / {{ weight|default('—') }}</li>
+      <li class="player-biography__list-item"><span>Draft Info:</span> {{ draft_info|default('—') }}</li>
+      <li class="player-biography__list-item"><span>Birthplace:</span> {{ birthplace|default('—') }}</li>
+    </ul>
+  </div>
+
+  {# ===== About ===== #}
+  {% if about is defined and about|length %}
+  <div class="player-biography__item">
+    <h3 class="player-biography__title">About</h3>
+    {% for text in about %}
+      <p class="player-biography__text">{{ text }}</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# ===== Career Highlights ===== #}
+  {% if highlights is defined and highlights|length %}
+  <div class="player-biography__item">
+    <h3 class="player-biography__title">Career Highlights</h3>
+    <ul class="player-biography__bot">
+      {% for h in highlights %}
+      <li class="player-biography__bot-item">
+        <span class="material-symbols-outlined player-biography__icon">trophy</span>
+        <div class="player-biography__bot-content">
+          <p class="player-biography__bot-text">{{ h.title }}</p>
+          <p class="player-biography__bot-subtext">{{ h.years }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {# ===== Gallery ===== #}
+  {% if gallery is defined and gallery|length %}
+  <div class="player-biography__item">
+    <h3 class="player-biography__title">Gallery</h3>
+    <div class="player-biography__gallery">
+      {% for img in gallery %}
+        <div class="player-biography__gallery-item">
+          <img src="{{ img.src }}" alt="{{ img.alt|default('') }}" class="player-biography__gallery-img">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+</div>

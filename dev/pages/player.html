@@ -10,7 +10,189 @@
 /> 
 {% endblock %} 
 {% block content %}
-
+{% set lives = [
+  {
+    sport:  'Basketball',
+    league: 'La Liga',
+    time:   '12:34',
+    status: 'live',
+    date_value: '2025-09-15 12:30:00',
+    team1: { name: 'Barcelona',   logo: '/assets/images/team1.webp', href: '/teams/barcelona' },
+    team2: { name: 'Real Madrid', logo: '/assets/images/team2.webp', href: '/teams/real-madrid' },
+    href:  '/match/1'
+  },
+  {
+    sport:  'Basketball',
+    league: 'Premier League',
+    time:   '35:20',
+    status: 'live',
+    date_value: '2025-09-15 11:00:00',
+    team1: { name: 'Arsenal', logo: '/assets/images/team5.webp', href: '/teams/arsenal' },
+    team2: { name: 'Chelsea', logo: '/assets/images/team2.webp', href: '/teams/chelsea' },
+    href:  '/match/2'
+  },
+  {
+    sport:  'Basketball',
+    league: 'NBA',
+    time:   'Q2 08:12',
+    status: 'live',
+    date_value: '2025-09-15 10:00:00',
+    team1: { name: 'Lakers', logo: '/assets/images/team3.webp', href: '/teams/lakers' },
+    team2: { name: 'Celtics', logo: '/assets/images/team2.webp', href: '/teams/celtics' },
+    href:  '/match/3'
+  },
+  {
+    sport:  'Basketball', league: 'Serie A', time: 'HT', status: 'live',
+    date_value: '2025-09-15 09:45:00',
+    team1: { name: 'Inter', logo: '/assets/images/team1.webp', href: '/teams/inter' },
+    team2: { name: 'Milan', logo: '/assets/images/team7.webp', href: '/teams/milan' },
+    href:  '/match/4'
+  },
+  {
+    sport:  'Basketball', league: 'Bundesliga', time: '19:00', status: 'upcoming',
+    date_value: '2025-09-15 19:00:00',
+    team1: { name: 'Bayern', logo: '/assets/images/team1.webp', href: '/teams/bayern' },
+    team2: { name: 'Dortmund', logo: '/assets/images/team4.webp', href: '/teams/bvb' },
+    href:  '/match/5'
+  },
+  {
+    sport:  'Basketball', league: 'EuroLeague', time: 'FT', status: 'finished',
+    date_value: '2025-09-14 21:00:00',
+    team1: { name: 'Real Madrid', logo: '/assets/images/team7.webp', href: '/teams/realm' },
+    team2: { name: 'Barcelona', logo: '/assets/images/team8.webp', href: '/teams/barca' },
+    href:  '/match/6'
+  },
+  {
+    sport:  'Basketball', league: 'Ligue 1', time: '21:45', status: 'upcoming',
+    date_value: '2025-09-15 21:45:00',
+    team1: { name: 'PSG', logo: '/assets/images/team4.webp', href: '/teams/psg' },
+    team2: { name: 'Marseille', logo: '/assets/images/team1.webp', href: '/teams/om' },
+    href:  '/match/7'
+  },
+  {
+    sport:  'Basketball', league: 'NBA', time: 'FT', status: 'finished',
+    date_value: '2025-09-14 18:00:00',
+    team1: { name: 'Ajax', logo: '/assets/images/team6.webp', href: '/teams/ajax' },
+    team2: { name: 'PSV',  logo: '/assets/images/team5.webp',  href: '/teams/psv' },
+    href:  '/match/8'
+  },
+  {
+    sport:  'Basketball', league: 'NBA', time: 'Q3 04:10', status: 'live',
+    date_value: '2025-09-15 07:30:00',
+    team1: { name: 'Warriors', logo: '/assets/images/team4.webp', href: '/teams/warriors' },
+    team2: { name: 'Suns',     logo: '/assets/images/team3.webp',     href: '/teams/suns' },
+    href:  '/match/9'
+  },
+  {
+    sport:  'Basketball', league: 'NBA', time: '22:00', status: 'upcoming',
+    date_value: '2025-09-16 22:00:00',
+    team1: { name: 'Man City', logo: '/assets/images/team2.webp', href: '/teams/mancity' },
+    team2: { name: 'Napoli',   logo: '/assets/images/team1.webp',  href: '/teams/napoli' },
+    href:  '/match/10'
+  }
+] %}
+{% set videos = [
+  {
+    href: '/video/1',
+    title: 'Derby Drama: City vs United — Full Highlights',
+    thumb_src: '/assets/images/img1.webp',
+    duration: '08:24',
+    date_value: '2025-09-01 19:00',
+    sport: 'Football',
+    league: 'Premier League',
+    views: '12.4K views'
+  },
+  {
+    href: '/video/2',
+    title: 'Barcelona vs Sevilla: Late Winner and Wild Finish',
+    thumb_src: '/assets/images/img2.webp',
+    duration: '06:52',
+    date_value: '2025-09-02 21:15',
+    sport: 'Football',
+    league: 'LaLiga',
+    views: '9.8K views'
+  },
+  {
+    href: '/video/3',
+    title: 'LeBron Triple-Double vs Warriors — Game Recap',
+    thumb_src: '/assets/images/img3.webp',
+    duration: '10:15',
+    date_value: '2025-09-03 05:30',
+    sport: 'Basketball',
+    league: 'NBA',
+    views: '25.1K views'
+  },
+  {
+    href: '/video/4',
+    title: 'Aces Extend Streak: Playoff Statement Game',
+    thumb_src: '/assets/images/img4.webp',
+    duration: '07:03',
+    date_value: '2025-09-04 04:00',
+    sport: 'Basketball',
+    league: 'WNBA',
+    views: '7.2K views'
+  },
+  {
+    href: '/video/5',
+    title: 'Maple Leafs vs Bruins — OT Classic',
+    thumb_src: '/assets/images/img5.webp',
+    duration: '09:44',
+    date_value: '2025-09-05 23:10',
+    sport: 'Hockey',
+    league: 'NHL',
+    views: '14.6K views'
+  },
+  {
+    href: '/video/6',
+    title: 'UCL Nights: Real Madrid Clinch Away Win',
+    thumb_src: '/assets/images/img6.webp',
+    duration: '11:20',
+    date_value: '2025-09-06 22:00',
+    sport: 'Football',
+    league: 'UEFA Champions League',
+    views: '31.9K views'
+  },
+  {
+    href: '/video/7',
+    title: 'Djokovic Survives Five-Set Epic in Paris',
+    thumb_src: '/assets/images/img7.webp',
+    duration: '05:58',
+    date_value: '2025-09-07 16:20',
+    sport: 'Tennis',
+    league: 'ATP',
+    views: '6.4K views'
+  },
+  {
+    href: '/video/8',
+    title: 'Świątek Rolls to Title — Best Points',
+    thumb_src: '/assets/images/img8.webp',
+    duration: '04:47',
+    date_value: '2025-09-08 14:40',
+    sport: 'Tennis',
+    league: 'WTA',
+    views: '8.1K views'
+  },
+  {
+    href: '/video/9',
+    title: 'F1 Monaco: Chaotic Race & Masterclass Win',
+    thumb_src: '/assets/images/img9.webp',
+    duration: '12:36',
+    date_value: '2025-09-09 18:00',
+    sport: 'Motorsport',
+    league: 'F1',
+    views: '19.7K views'
+  },
+  {
+    href: '/video/10',
+    title: 'UFC Title Defense: Makhachev Dominates',
+    thumb_src: '/assets/images/img10.webp',
+    duration: '09:02',
+    date_value: '2025-09-10 23:59',
+    sport: 'MMA',
+    league: 'UFC',
+    views: '22.5K views'
+  }
+] %}
 {% set posts = [
   { href: '/post/1',  title: 'Mahomes magic: Chiefs edge Bills in primetime thriller',      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img1.webp',  published_at: '2023-10-01', sport: 'Football',   league: 'NFL' },
   { href: '/post/2',  title: 'Eagles defense smothers Cowboys in statement win',            descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img2.webp',  published_at: '2023-10-02', sport: 'Football',   league: 'NFL' },
@@ -231,6 +413,40 @@
                 } %}
               </div>
             </section>  
+            <section class="block">
+              <div class="block__inner">
+                    <div class="swiper home-live-swiper"
+         data-swiper='{
+           "slidesPerView": 1,
+           "spaceBetween": 16,
+           "breakpoints": {
+             "0":  { "slidesPerView": 1 }
+           }
+         }'>
+      <div class="swiper-wrapper">
+        {% for m in lives %}
+          <div class="swiper-slide">
+            {% include "../components/card-live/card-live.twig" with {
+              sport:  m.sport,
+              league: m.league,
+              sport_href:  m.sport_href,
+              league_href: m.league_href,
+              team1: m.team1,
+              team2: m.team2,
+              time:  m.time,
+              date_value: m.date_value,
+              date_opts: { variant: 'lives', show_icon: true, icon: 'calendar_today' }
+            } only %}
+          </div>
+        {% else %}
+          <div class="swiper-slide"><p class="muted">No lives.</p></div>
+        {% endfor %}
+      </div>
+        <button class="swiper-button-prev" data-swiper-prev aria-label="Prev"></button>
+        <button class="swiper-button-next" data-swiper-next aria-label="Next"></button>
+    </div>
+              </div>
+            </section>
                   <section class="block">
                   <div class="block__inner">
                     {% include "../components/table/table.twig" with {
@@ -295,8 +511,89 @@
     </div>
   </div>
 </section>
+                  <section class="block">
+                  <div class="block__inner">
+    {% include "../components/section-head/section-head.twig" with {
+      title: "Player biography",
+      icon: "person_book"
+    } %}
+    {% include "../components/player/player-biography.twig" with {
+  team:       { name:"GSW", href:"/teams/warriors" },
+  birth_date: "March 14, 1988",
+  status:     "Active",
+  position:   "Point Guard",
+  college:    "Davidson",
+  experience: "15 years",
+  height:     "6'2\"",
+  weight:     "185 lbs",
+  draft_info: "7th by GSW",
+  birthplace: "Akron, Ohio",
+  about: [
+    "The NBA, or National Basketball Association, is the premier professional basketball league in the United States and one of the most recognized sports leagues in the world. It was founded on June 6, 1946, in New York City as the Basketball Association of America (BAA). Three years later, in 1949, it merged with the rival National Basketball League (NBL) to form the NBA. The league started with just 17 teams, but many of those early franchises either folded or relocated, shaping the modern NBA structure over time.",
+    "The 1970s were a time of change and experimentation. The NBA faced competition from the American Basketball Association (ABA), which introduced innovations like the three-point line and a flashier style of play. In 1976, the NBA and ABA merged, bringing new teams and players into the league, including future stars like Julius Erving.",
+    "Out West, the Dallas Mavericks signed Derrick Jones Jr. to diversify their offense and the Golden State Warriors traded for Chris Paul to add veteran leadership. Dillon Brooks, Aaron Holiday and Fred VanVleet joined the Rockets as free agents while the New York Knicks acquired a key piece in their lineup, Donte DiVincenzo, who was reunited with former Villanova teammates Josh Hart and Jalen Brunson. Late into the offseason, Damian Lillard was traded from Portland to the Milwaukee Bucks after 10 seasons with the Blazers.",
+    "In its early years, the NBA was dominated by teams like the Minneapolis Lakers, led by George Mikan, who was the league’s first true superstar. The 1960s saw the rise of the Boston Celtics dynasty, spearheaded by Bill Russell, who helped the team win 11 championships in 13 seasons. During this period, the Celtics' rivalry with the Philadelphia 76ers and players like Wilt Chamberlain added excitement and intensity to the league."
+  ],
+  highlights: [
+    { title:"Finals MVP", years:"2015, 2017, 2018" },
+    { title:"NBA MVP", years:"2015, 2016" },
+    { title:"All-NBA 1st Team", years:"2015–2019" }
+  ],
+  gallery: [
+    { src:"/assets/images/img31.webp", alt:"Curry shooting" },
+    { src:"/assets/images/img33.webp", alt:"Curry shooting" },
+    { src:"/assets/images/img34.webp", alt:"Curry shooting" },
+    { src:"/assets/images/img35.webp", alt:"Curry shooting" },
+    { src:"/assets/images/img32.webp", alt:"Curry dribbling" }
+  ]
+} only %}
 
-      
+          </div>
+          </section>
+
+          
+          <section class="block">
+  <div class="block__inner">
+    {% include "../components/section-head/section-head.twig" with {
+      title: "Popular videos",
+      icon: "play_circle",
+      link_url: "/videos",
+      link_label: "All Videos"
+    } %}
+
+    {# можно ограничить количество: {% set news = posts|slice(0,12) %} #}
+    {% set news = posts %}
+
+    <div class="swiper news-swiper"
+         data-swiper='{
+           "slidesPerView": 1.1,
+           "spaceBetween": 16,
+           "autoHeight": true,
+           "breakpoints": {
+             "0":  { "slidesPerView": 1 },
+             "640":  { "slidesPerView": 2 },
+             "900":  { "slidesPerView": 2 },
+             "1280": { "slidesPerView": 3 }
+           }
+         }'>
+
+      <div class="swiper-wrapper">
+        {% for v in videos %}
+          <div class="swiper-slide">
+            {% include "../components/card-video/card-video.twig" with v only %}
+          </div>
+        {% else %}
+          <div class="swiper-slide"><p class="muted">No videos.</p></div>
+        {% endfor %}
+      </div>
+
+      <div class="news-swiper__nav">
+        <button class="swiper-button-prev" data-swiper-prev aria-label="Prev"></button>
+        <button class="swiper-button-next" data-swiper-next aria-label="Next"></button>
+      </div>
+    </div>
+  </div>
+</section>
   {% endset %}
 
   {% set right %}
@@ -316,6 +613,24 @@
   cols: 1,
   extra_class: "sidebar-block"
 } %}
+
+<section class="block">
+    <div class="block__inner">
+    {% include "../components/section-head/section-head.twig" with {
+      title: "Latest Video",
+      icon: "play_circle",
+    } %}
+    <div class="video-list__grid">
+      {% for v in videos|slice(6, 1) %}
+        {% include "../components/card-video/card-video.twig" with v only %}
+      {% else %}
+        <p class="muted">No Videos.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
   {% endset %}
 
 
