@@ -1,0 +1,68 @@
+
+{% extends "../layouts/_base-league.html" %} 
+{% block title %}History{% endblock %} 
+{% block body_class %}page page--history{% endblock %}
+{% block active_nav %}history{% endblock %}
+{% block head_extra %} 
+{% endblock %} 
+{% block content %}
+
+  <section class="page-content">
+    <div class="container container--small">
+      <div class="page-content__inner">
+                     <section class="block">
+              <div class="block__inner">
+                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+                  items: [
+                    { href: "/", icon: "home" },
+                    { label: "NBA", href: "/league" },
+                    { label: "History" }
+                  ]
+                } %}
+              </div>
+            </section>  
+                     <section class="block">
+              <div class="block__inner">
+                    {% include "../components/section-head/section-head.twig" with {
+      title: "Season Review: 2023-24",
+      icon: "history",
+    } %}
+    {% include "../components/history-content/history-content.twig" with {
+  title: null,
+  sections: [
+    {
+      subtitle: "Start to Finish",
+      image: { src:"/assets/images/img14.webp", alt:"history" },
+      texts: [
+        "With a pair of shrewd offseason moves, the Boston Celtics paved the way for a title run.",
+        "Marcus Smart was traded from the Celtics to the Grizzlies, breaking up Boston’s core group of young stars. The Celtics acquired Kristaps Porzingis from the Grizzlies and Jrue Holiday from the Milwaukee Bucks to add size and depth.",
+        "Out West, the Dallas Mavericks signed Derrick Jones Jr. to diversify their offense and the Golden State Warriors traded for Chris Paul to add veteran leadership. Dillon Brooks, Aaron Holiday and Fred VanVleet joined the Rockets as free agents while the New York Knicks acquired a key piece in their lineup, Donte DiVincenzo, who was reunited with former Villanova teammates Josh Hart and Jalen Brunson. Late into the offseason, Damian Lillard was traded from Portland to the Milwaukee Bucks after 10 seasons with the Blazers.",
+        "This NBA season also included the opportunity for NBA players to compete for another championship, but this time in the middle of the season. The inaugural NBA In-Season Tournament started on Nov. 3. The tournament included all 30 NBA teams with designated regular season games for Group Play. The teams with the best records in Group Play were able to move into knockout rounds with the chance to compete for the NBA Cup.",
+        "The Los Angeles Lakers beat the Indiana Pacers to win the first In-Season Tournament title as LeBron James was named In-Season Tournament MVP. Giannis Antetokounmpo, Anthony Davis, Kevin Durant, Tyrese Haliburton, and LeBron James were named to the In-Season All-Tournament team.",
+        "As the season progressed, young stars continued to show promise as championship contenders. Mavs guard Luka Doncic, the season’s leading scorer, totaled 2,370 points and averaged 33.9 points per game.",
+        "Two big scoring performances marked 2023-24, too. In perhaps the best individual performance of 2023-24, Doncic scored 73 points in a Jan. 26 win against the Atlanta Hawks. That tied for the fourth-most in NBA history and is only surpassed by Hall of Famers Wilt Chamberlain and Kobe Bryant.",
+        "Doncics game came four days after Philadelphia 76ers center Joel Embiid dropped 70 points on the San Antonio Spurs to break Chamberlain’s team record of 68 points set on Dec. 16, 1967.",
+      ]
+    },
+    {
+       subtitle: "End to Finish",
+      image: { src:"/assets/images/img24.webp", alt:"history" },
+      texts: [
+        "At the trade deadline, teams that were looking to gear up for a playoff run added depth. Most notably, the Mavericks acquired P.J. Washington and Daniel Gafford from the Hornets and Wizards, respectively; the Knicks added Bojan Bogdanovic from the Detroit Pistons; and the Celtics brought on Xavier Tillman from the Grizzlies.",
+        "The 2024 NBA All-Star Weekend was hosted in Indianapolis, and the event marked LeBron James’ 20th consecutive All-Star selection, the most for any NBA player. It was also the first All-Star game for the Orlando Magic’s Paolo Banchero, the Toronto Raptors’ Scottie Barnes, the Knicks’ Jalen Brunson and the 76ers’ Tyrese Maxey.",
+        "NBA All-Star Weekend included a new challenge this year with Warriors star Stephen Curry taking on New York Liberty guard Sabrina Ionescu in the inaugural 3-Point Challenge between an NBA and WNBA player. Curry won, 29-26.",
+        "As the playoffs neared, the Warriors, Kings, Pelicans, Lakers, Bulls, Hawks, 76ers and Heat had to compete for the four remaining spots in the playoffs in the Play-In Tournament. The Pelicans and the Lakers advanced to the playoffs in the West while the 76ers and Heat did likewise in the East."
+      ]
+    }
+  ]
+} only %}
+              </div>
+            </section>  
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %} 
+{% block scripts %}   
+{% endblock %}

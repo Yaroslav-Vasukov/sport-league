@@ -1,0 +1,17 @@
+<div class="post-content">
+  {% for section in sections %}
+    {% if section.image %}
+      <img src="{{ section.image.src }}" alt="{{ section.image.alt|default('') }}" class="post-content__image">
+    {% endif %}
+
+    {% if section.title %}
+      <h2 class="post-content__title">{{ section.title }}</h2>
+    {% endif %}
+
+    {% if section.texts is defined and section.texts|length %}
+      {% for text in section.texts %}
+        <p class="post-content__text">{{ text }}</p>
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</div>

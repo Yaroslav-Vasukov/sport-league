@@ -28,6 +28,12 @@
 @use '../../components/player/player-header.scss';
 @use '../../components/player/player-biography.scss';
 
+@use '../../components/team/team-header.scss';
+@use '../../components/team/team-history.scss';
+
+@use '../../components/post-content/post-content.scss';
+@use '../../components/video-content/video-content.scss';
+@use '../../components/history-content/history-content.scss';
 
 
 @use '../styles/partials/content-wrap.scss';

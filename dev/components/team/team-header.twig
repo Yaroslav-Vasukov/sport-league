@@ -1,0 +1,19 @@
+<section class="team-header">
+  <div class="container">
+    <div class="team-header__inner">
+      <div class="team-header__logo">
+        <img src="{{ logo.src|default('/assets/images/team-placeholder.webp') }}"
+             alt="{{ logo.alt|default(name) }}"
+             class="team-header__logo-img">
+      </div>
+      <div class="team-header__info">
+        <h1 class="team-header__name">{{ name|default('Team Name') }}</h1>
+        <p class="team-header__details">
+          {{ city|default('City') }}, {{ state|default('State') }}
+          | Founded: {{ founded|default('—') }}
+          | Stadium: {{ stadium|default('—') }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

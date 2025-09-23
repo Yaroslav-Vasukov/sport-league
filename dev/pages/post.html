@@ -1,169 +1,206 @@
-{% extends "../layouts/_base.html" %} {% block
-title %}single post — Basketball Today{% endblock %} {% block active_nav
-%}post{% endblock %} {% block body_class %}page page--post{% endblock %}
-{% block head_extra %} {% endblock %} 
+
+{% extends "../layouts/_base-league.html" %} 
+{% block title %}Post{% endblock %} 
+{% block body_class %}page page--post{% endblock %}
+{% block active_nav %}post{% endblock %}
+{% block head_extra %} 
+
+{% endblock %} 
 {% block content %}
-
-{% include "../components/page-first/page-first.twig" with {
-  title: "The Chicago Bulls announced its 2025-26",
-  crumbs: [
-    { label: "news", url: "/news" },
-    { label: "The Chicago Bulls announced its 2025-26" }  
-  ]
-} %}
-
- <section class="section section--page-post">
-  <div class="container">
-    <div class="section__inner page-post__inner">
-      <div class="page-post__content">
-       {% include "../components/post/post-single.twig" with {
-  img1_src: "/assets/images/img31.webp",
-  img1_alt: "thumbnail",
-  subtitle1: "The Chicago Bulls announced its 2025-26 regular season schedule presented by ATT today.",
-  text1: "
-The Bulls then return to Chicago for a three-game homestand between Oct. 27 and Oct. 31, highlighted by Chicago’s opening game of the Emirates NBA Cup 2025 on Halloween night against Jalen Bruson, Karl-Anthony Towns and the New York Knicks – as part of motorola razr presents Bulls Cup Nights.
-
-Chicagos home game highlights during the 2025-26 season includes a game against Victor Wembanyama and the San Antonio Spurs on Nov. 10 and a motorola razr Bulls Cup Night matchup versus the Miami Heat on Nov. 21 – Chicago’s second game of NBA Cup play. December’s home slate features matchups against reigning Eastern Conference Champions, the Indiana Pacers, on Dec. 5, a bout with the Stephen Curry-led Golden State Warriors on Dec. 7 and a game against Cleveland’s trio of Donovan Mitchell, Evan Mobley and Darius Garland on Dec. 17.
-
-The Bulls close December and welcome in the New Year with a six-game homestand between Dec. 26 and Jan. 3. This stretch features matchups with Giannis Antetokounmpo and the Milwaukee Bucks on Dec. 27, and the Minnesota Timberwolves along with Anthony Edwards on Dec. 29. Chicago closes this six-game stretch at the United Center with a New Year's Eve contest versus Zion Williamson and the New Orleans Pelicans on Dec. 31, followed by a home back-to-back against Orlando on Jan. 2 and the Charlotte Hornets on Jan. 3. The Bulls will play 13 back-to-backs during the 2025-26 campaign.
-",
-
-  img2_src: "/assets/images/img21.webp",
-  img2_alt: "thumbnail",
-  subtitle2: "The Chicago Bulls announced its 2025-26 regular season schedule presented by ATT today.",
-  text2: "
-The Dallas Mavericks and its trio of Anthony Davis, Kyrie Irving and 2025 No. 1 overall pick Cooper Flagg come to town on Jan. 10, followed by late-January bouts with the Los Angeles Clippers on Jan. 20 and the Boston Celtics on Jan. 24. In the ensuing week, Chicago will host the Los Angeles Lakers and the duo of LeBron James and Luka Dončić on Jan. 26. Nikola Jokićdo and the Denver Nuggets visit the United Center on Feb. 7, while the reigning NBA Champion Oklahoma City Thunder arrive in Chicago for a March 3 matchup with the Bulls. On March 23, the Bulls suit up against the Houston Rockets and newly-acquired 15-time All-Star Kevin Durant to close March’s home slate.
-
-Chicagos 2025-26 road schedule is highlighted by six road trips of at least three games, including a five-game West Coast swing in nine days between March 5 and March 13. This five-game road trip features matchups with the Phoenix Suns (March 5), Sacramento Kings (March 8), Golden State (March 10), Los Angeles Lakers (March 12) and Los Angeles Clippers (March 13). The Bulls will play on the road in eight of its last 11 games to close the 2025-26 campaign, including visits to Oklahoma City (March 27), Memphis Grizzlies (March 28), San Antonio (March 30), New York (Apr. 3) and the season finale in Dallas (Apr. 12).
-
-The Bulls will also play four pool games in the Emirates NBA Cup 2025 this season. Chicago, along with Charlotte, Miami, Milwaukee and New York make up East Group C – one of six pool groupings across the NBA. Following its opening game of NBA Cup 2025 play against New York on Oct. 31, Chicago will visit Milwaukee on Nov. 7, while splitting the last two Group Play games at home versus Miami on Nov. 21 and on the road at Charlotte on Nov. 28.
-"
-} %}
-
-
-      </div>
-      <div class="page-post__aside">
-        <div class="page-post__aside-item">
-          {% include "../components/standings-table/standings-table-min.twig" with {
-  title: "Eastern — Top 6",
-  conference: "east",
-  compact: true,
-  rows: [
+{% set posts = [
+  { href: '/post/1',  title: 'Mahomes magic: Chiefs edge Bills in primetime thriller',      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img1.webp',  published_at: '2023-10-01', sport: 'Football',   league: 'NFL' },
+  { href: '/post/2',  title: 'Eagles defense smothers Cowboys in statement win',            descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img2.webp',  published_at: '2023-10-02', sport: 'Football',   league: 'NFL' },
+  { href: '/post/3',  title: 'Arsenal outlast Spurs in five-goal North London derby',       descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img3.webp',  published_at: '2023-10-03', sport: 'Football',     league: 'Premier League' },
+  { href: '/post/4',  title: 'Barcelona rally to defeat Sevilla with late winner',          descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img4.webp',  published_at: '2023-10-04', sport: 'Football',     league: 'LaLiga' },
+  { href: '/post/5',  title: 'Inter dominate Milan in emphatic Derby della Madonnina',      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img5.webp',  published_at: '2023-10-05', sport: 'Football',     league: 'Serie A' },
+  { href: '/post/6',  title: 'LeBron drops triple-double as Lakers top Warriors',          descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img6.webp',  published_at: '2023-10-06', sport: 'Basketball', league: 'NBA' },
+  { href: '/post/7',  title: 'Aces clinch playoff spot with road blowout',                 descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img7.webp',  published_at: '2023-10-07', sport: 'Basketball', league: 'WNBA' },
+  { href: '/post/8',  title: 'Maple Leafs win OT classic against Bruins',                  descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img8.webp',  published_at: '2023-10-08', sport: 'Basketball',     league: 'NHL' },
+  { href: '/post/9',  title: 'Real Madrid book UCL quarterfinal spot after away win',      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img9.webp',  published_at: '2023-10-09', sport: 'Football',     league: 'UEFA Champions League' },
+  { href: '/post/10', title: 'Bayern cruise past Dortmund in Der Klassiker',                descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img10.webp', published_at: '2023-10-10', sport: 'Football',     league: 'Bundesliga' },
+  { href: '/post/11', title: 'Mbappé brace lifts PSG over Lyon',                            descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img11.webp', published_at: '2023-10-11', sport: 'Football',     league: 'Ligue 1' },
+  { href: '/post/12', title: 'LAFC edge Seattle in wild MLS shootout',                      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img12.webp', published_at: '2023-10-12', sport: 'Football',     league: 'MLS' },
+  { href: '/post/13', title: 'Djokovic survives five-set epic in Paris',                    descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img13.webp', published_at: '2023-10-13', sport: 'Basketball',     league: 'ATP' },
+  { href: '/post/14', title: 'Świątek sweeps to title in Rome',                             descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img14.webp', published_at: '2023-10-14', sport: 'Basketball',     league: 'WTA' },
+  { href: '/post/15', title: 'Verstappen wins chaotic Monaco GP',                           descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img15.webp', published_at: '2023-10-15', sport: 'Basketball', league: 'F1' },
+  { href: '/post/16', title: 'Makhachev retains title with dominant submission',            descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img16.webp', published_at: '2023-10-16', sport: 'Basketball',        league: 'UFC' },
+  { href: '/post/17', title: 'Kohli masterclass lights up IPL chase',                       descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'   ,       thumb: '/assets/images/img17.webp', published_at: '2023-10-17', sport: 'Basketball',    league: 'IPL' },
+  { href: '/post/18', title: 'Yankees power past Red Sox with late homers',                 descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'   ,       thumb: '/assets/images/img1.webp',  published_at: '2023-10-18', sport: 'Basketball',   league: 'MLB' },
+  { href: '/post/19', title: 'Ireland claim dramatic Six Nations victory at Twickenham',     descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img2.webp',  published_at: '2023-10-19', sport: 'Basketball',      league: 'Six Nations' },
+  { href: '/post/20', title: 'Ajax youngsters shine in Eredivisie rout',                     descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,       thumb: '/assets/images/img3.webp',  published_at: '2023-10-20', sport: 'Football',     league: 'Eredivisie' }
+] %}
+  {% set content %}
+             <section class="block">
+              <div class="block__inner">
+                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+                  items: [
+                    { href: "/", icon: "home" },
+                    { label: "NBA", href: "/league" },
+                    { label: "News", href: "/news" },
+                    { label: "Single post" }
+                  ]
+                } %}
+              </div>
+            </section>  
+             <section class="block">
+              <div class="block__inner">
+                {% include "../components/post-content/post-content.twig" with {
+  sections: [
     {
-      pos: 1,
-      team_name: "Celtics",
-      team_href: "/teams/celtics",
-      team_logo: "/assets/images/team1.webp",
-      w: 55, l: 20, strk: "W3"
+      image: { src:"/assets/images/img31.webp", alt:"image" },
+      title: "The Chicago Bulls announced its 2025-26 regular season schedule presented by ATT today.",
+      texts: [
+        "The Bulls then return to Chicago for a three-game homestand between Oct. 27 and Oct. 31, highlighted by Chicago’s opening game of the Emirates NBA Cup 2025 on Halloween night against Jalen Bruson, Karl-Anthony Towns and the New York Knicks – as part of motorola razr presents Bulls Cup Nights.",
+        "Chicagos home game highlights during the 2025-26 season includes a game against Victor Wembanyama and the San Antonio Spurs on Nov. 10 and a motorola razr Bulls Cup Night matchup versus the Miami Heat on Nov. 21 – Chicago’s second game of NBA Cup play. December’s home slate features matchups against reigning Eastern Conference Champions, the Indiana Pacers, on Dec. 5, a bout with the Stephen Curry-led Golden State Warriors on Dec. 7 and a game against Cleveland’s trio of Donovan Mitchell, Evan Mobley and Darius Garland on Dec. 17.",
+        "The Bulls close December and welcome in the New Year with a six-game homestand between Dec. 26 and Jan. 3. This stretch features matchups with Giannis Antetokounmpo and the Milwaukee Bucks on Dec. 27, and the Minnesota Timberwolves along with Anthony Edwards on Dec. 29. Chicago closes this six-game stretch at the United Center with a New Year's Eve contest versus Zion Williamson and the New Orleans Pelicans on Dec. 31, followed by a home back-to-back against Orlando on Jan. 2 and the Charlotte Hornets on Jan. 3. The Bulls will play 13 back-to-backs during the 2025-26 campaign.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      ]
     },
     {
-      pos: 2,
-      team_name: "Bucks",
-      team_href: "/teams/bucks",
-      team_logo: "/assets/images/team2.webp",
-      w: 50, l: 25, strk: "L1"
-    },
-    {
-      pos: 3,
-      team_name: "76ers",
-      team_href: "/teams/76ers",
-      team_logo: "/assets/images/team3.webp",
-      w: 48, l: 27, strk: "W2"
-    },
-    {
-      pos: 4,
-      team_name: "Celtics",
-      team_href: "/teams/celtics",
-      team_logo: "/assets/images/team4.webp",
-      w: 55, l: 20, strk: "W3"
-    },
-    {
-      pos: 5,
-      team_name: "Bucks",
-      team_href: "/teams/bucks",
-      team_logo: "/assets/images/team5.webp",
-      w: 50, l: 25, strk: "L1"
-    },
-    {
-      pos: 6,
-      team_name: "76ers",
-      team_href: "/teams/76ers",
-      team_logo: "/assets/images/team6.webp",
-      w: 48, l: 27, strk: "W2"
+      image: { src:"/assets/images/img25.webp", alt:"image" },
+      title: "The Chicago Bulls announced its 2025-26 regular season schedule presented by ATT today.",
+      texts: [
+        "Chicagos 2025-26 road schedule is highlighted by six road trips of at least three games, including a five-game West Coast swing in nine days between March 5 and March 13. This five-game road trip features matchups with the Phoenix Suns (March 5), Sacramento Kings (March 8), Golden State (March 10), Los Angeles Lakers (March 12) and Los Angeles Clippers (March 13). The Bulls will play on the road in eight of its last 11 games to close the 2025-26 campaign, including visits to Oklahoma City (March 27), Memphis Grizzlies (March 28), San Antonio (March 30), New York (Apr. 3) and the season finale in Dallas (Apr. 12).",
+        "The Bulls will also play four pool games in the Emirates NBA Cup 2025 this season. Chicago, along with Charlotte, Miami, Milwaukee and New York make up East Group C – one of six pool groupings across the NBA. Following its opening game of NBA Cup 2025 play against New York on Oct. 31, Chicago will visit Milwaukee on Nov. 7, while splitting the last two Group Play games at home versus Miami on Nov. 21 and on the road at Charlotte on Nov. 28.",
+        "The Bulls then return to Chicago for a three-game homestand between Oct. 27 and Oct. 31, highlighted by Chicago’s opening game of the Emirates NBA Cup 2025 on Halloween night against Jalen Bruson, Karl-Anthony Towns and the New York Knicks – as part of motorola razr presents Bulls Cup Nights.",
+        "The Bulls close December and welcome in the New Year with a six-game homestand between Dec. 26 and Jan. 3. This stretch features matchups with Giannis Antetokounmpo and the Milwaukee Bucks on Dec. 27, and the Minnesota Timberwolves along with Anthony Edwards on Dec. 29. Chicago closes this six-game stretch at the United Center with a New Year's Eve contest versus Zion Williamson and the New Orleans Pelicans on Dec. 31, followed by a home back-to-back against Orlando on Jan. 2 and the Charlotte Hornets on Jan. 3. The Bulls will play 13 back-to-backs during the 2025-26 campaign."
+      ]
     }
   ]
+} only %}
+              </div>
+            </section>  
+
+
+      <section class="block">
+  <div class="block__inner">
+  {% include "../components/section-head/section-head.twig" with {
+  title: "other News",
+  icon: "breaking_news"
 } %}
-        </div>
-      </div>
-    </div>
-  </div>
- </section>
 
-
-{% set news = [
-  {
-              url: "/news/lebron-extends",
-              thumb: "/assets/images/img6.webp",
-              thumb_alt: "LeBron signs extension",
-              published_at: "2024-12-12",
-              title: "ESPN unveils 25-26 game commentators",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles."
-          },
-          {
-              url: "/news/lebron-extends",
-              thumb: "/assets/images/img17.webp",
-              thumb_alt: "EuroBasket 2025: Standings, schedule and results",
-              published_at: "2024-12-12",
-              title: "LeBron James Signs One-Year Extension With Lakers",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles."
-          },
-          {
-              url: "/news/lebron-extends",
-              thumb: "/assets/images/img28.webp",
-              thumb_alt: "Top 10 goals",
-              published_at: "2024-12-12",
-              title: "LeBron James Signs One-Year Extension With Lakers",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles."
-          },
-          {
-              url: "/news/lebron-extends",
-              thumb: "/assets/images/img18.webp",
-              thumb_alt: "4 lottery teams eyeing a return to playoffs",
-              published_at: "2024-12-12",
-              title: "Film Study: Will new faces help Nuggets' defense?",
-              excerpt: "The 39-year-old veteran has committed to another season with the Lakers, keeping the championship hopes alive in Los Angeles."
-          }
-] %}
-
-
-
-
-
-<section class="section section--news">
-  <div class="container">
-    <div class="section__inner news__inner">
-      {% include "../components/section-head/section-head.twig" with { title:
-      "Breaking News", tag: "h2" } %}
-        <div class="news__grid">
-                   {% for p in news %}
-              {% include "../components/post/post-card.twig" with {
-                url: p.url,
-              thumb: p.thumb,
-              thumb_alt: p.thumb_alt,
-              published_at: p.published_at,
-              title: p.title,
-              excerpt: p.excerpt
-              } %}
-          {% else %}
-            
-              <p class="news__empty">No news yet.</p>
-
-          {% endfor %}
-        </div>
-
-    </div>
+<div class="card-post-list__grid">
+   {% for post in posts|slice(0,4) %}
+    {% include "../components/card-post/card-post.twig" with {
+        href:       post.href,
+        title:      post.title,
+        thumb_src:  post.thumb,
+        date_value: post.published_at,
+        sport:      post.sport|default(null),
+        descr:      post.descr,
+        league:     post.league|default(null)
+      } only %}
+      {% else %}
+        <p class="muted">No posts.</p>
+      {% endfor %}
+</div>
   </div>
 </section>
+  {% endset %}
 
 
-{% endblock %} {% block scripts %} {% endblock %}
+  {% set right %}
+  {% set columns = [
+  { key:'pos',   label:'#',    align:'right', width:'32px',  template:'../table/_cell-number.twig' },
+  { key:'team',   label:'Team',    align:'left',  width:'minmax(40px,1fr)', template:'../table/_cell-team.twig' },
+
+  { key:'w',      label:'W',       align:'right', width:'44px', is_numeric:true, template:'../table/_cell-number.twig' },
+  { key:'l',      label:'L',       align:'right', width:'44px', is_numeric:true, template:'../table/_cell-number.twig' },
+  { key:'pct',    label:'PCT',     align:'right', width:'64px', is_numeric:true, template:'../table/_cell-number.twig' },
+  { key:'pts',    label:'PTS',     align:'right', width:'64px', is_numeric:true, template:'../table/_cell-number.twig' }
+
+] %}
+
+{% set rows = [
+  {
+    pos:1,
+    team: { name:'Dallas Mavericks', logo:'/assets/images/team1.webp', href:'/teams/mavericks' },
+    w:52, l:20, pct:0.722, pts: 124
+  },
+  {
+    pos:2,
+    team: { name:'Boston Celtics', logo:'/assets/images/team2.webp', href:'/teams/celtics' },
+    w:50, l:22, pct:0.694, pts: 120
+  },
+  {
+    pos:3,
+    team: { name:'Denver Nuggets', logo:'/assets/images/team3.webp', href:'/teams/nuggets' },
+    w:48, l:24, pct:0.667, pts: 115
+  },
+  {
+    pos:4,
+    team: { name:'Oklahoma City Thunder', logo:'/assets/images/team4.webp', href:'/teams/thunder' },
+    w:46, l:26, pct:0.639, pts: 110
+  },
+  {
+    pos:5,
+    team: { name:'Milwaukee Bucks', logo:'/assets/images/team5.webp', href:'/teams/bucks' },
+    w:45, l:27, pct:0.625, pts: 105
+  },
+  {
+    pos:6,
+    team: { name:'New York Knicks', logo:'/assets/images/team6.webp', href:'/teams/knicks' },
+    w:43, l:29, pct:0.597, pts: 100
+  },
+  {
+    pos:7,
+    team: { name:'Golden State Warriors', logo:'/assets/images/team7.webp', href:'/teams/warriors' },
+    w:41, l:31, pct:0.569, pts: 95
+  },
+  {
+    pos:8,
+    team: { name:'Miami Heat', logo:'/assets/images/team8.webp', href:'/teams/heat' },
+    w:39, l:33, pct:0.542, pts: 90
+  }
+] %}
+  <div class="block">
+    <div class="block__inner"> 
+      {% include "../components/section-head/section-head.twig" with {
+      title: "Standings",
+      icon: "table_chart",
+    } %}
+    {% include "../components/table/table.twig" with {
+      columns: columns,
+      rows: rows,
+      extra_class: 'table--compact',
+      head_sticky: false,
+      no_results_text: 'No teams',
+      scroll: false
+    } only %}
+    </div>
+  </div>
+
+  {% include "../components/list/list.twig" with {
+  title: "Popular Teams",
+  icon: "groups",
+  teams: [
+    { name: "Roma", url: "/team/roma", logo: "/assets/images/team1.webp" },
+    { name: "Chicago Bulls", url: "/team/roma", logo: "/assets/images/team2.webp" },
+    { name: "Athletic Club", url: "/team/roma", logo: "/assets/images/team3.webp" },
+     { name: "Borrysia", url: "/team/roma", logo: "/assets/images/team4.webp" },
+    { name: "Real Madrid", url: "/team/roma", logo: "/assets/images/team5.webp" },
+    { name: "Barcelona", url: "/team/roma", logo: "/assets/images/team6.webp" },
+    { name: "S.S. Lazio", url: "/team/roma", logo: "/assets/images/team7.webp" },
+    { name: "Milan", url: "/team/milan", logo: "/assets/images/team8.webp" } 
+  ]
+} %}
+  {% endset %}
+
+
+  {% include "../layouts/hub.twig" with {
+    extra_class: "hub--review",
+    content: content,
+    right: right
+  } %}
+
+
+
+
+
+
+
+
+
+{% endblock %} 
+{% block scripts %}   
+{% endblock %}

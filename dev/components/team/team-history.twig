@@ -1,0 +1,64 @@
+<div class="team-history">
+
+  {# ===== Biography ===== #}
+  <div class="team-history__item">
+    <h3 class="team-history__title">details</h3>
+    <ul class="team-history__list">
+      <li class="team-history__list-item">
+       <span>Team:</span> <a href="{{ league.href|default('#') }}" class="team-history__list-link">{{ league.name|default('—') }}</a>
+      </li>
+      <li class="team-history__list-item"><span>Founded:</span> {{ birth_date|default('—') }}</li>
+      <li class="team-history__list-item"><span>Status:</span> {{ status|default('—') }}</li>
+      <li class="team-history__list-item"><span>Arena:</span> {{ position|default('—') }}</li>
+      <li class="team-history__list-item"><span>Trainer:</span> {{ college|default('—') }}</li>
+      <li class="team-history__list-item"><span>Experience:</span> {{ experience|default('—') }}</li>
+      <li class="team-history__list-item"><span>W/L:</span> {{ wins|default('—') }} / {{ losses|default('—') }}</li>
+      <li class="team-history__list-item"><span>Draft Info:</span> {{ draft_info|default('—') }}</li>
+      <li class="team-history__list-item"><span>Rank:</span> {{ birthplace|default('—') }}</li>
+    </ul>
+  </div>
+
+  {# ===== Career Highlights ===== #}
+  {% if highlights is defined and highlights|length %}
+  <div class="team-history__item">
+    <h3 class="team-history__title">Career Highlights</h3>
+    <ul class="team-history__bot">
+      {% for h in highlights %}
+      <li class="team-history__bot-item">
+        <span class="material-symbols-outlined team-history__icon">trophy</span>
+        <div class="team-history__bot-content">
+          <p class="team-history__bot-text">{{ h.title }}</p>
+          <p class="team-history__bot-subtext">{{ h.years }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {# ===== About ===== #}
+  {% if about is defined and about|length %}
+  <div class="team-history__item">
+    <h3 class="team-history__title">About</h3>
+    {% for text in about %}
+      <p class="team-history__text">{{ text }}</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+
+  {# ===== Gallery ===== #}
+  {% if gallery is defined and gallery|length %}
+  <div class="team-history__item">
+    <h3 class="team-history__title">Gallery</h3>
+    <div class="team-history__gallery">
+      {% for img in gallery %}
+        <div class="team-history__gallery-item">
+          <img src="{{ img.src }}" alt="{{ img.alt|default('') }}" class="team-history__gallery-img">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+</div>

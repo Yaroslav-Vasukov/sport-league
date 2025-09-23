@@ -1,0 +1,37 @@
+
+{# ВХОД:
+  - title     : общий заголовок блока (опционально)
+  - sections  : [
+      {
+        image: { src, alt },      # опционально
+        subtitle: 'Season Review: 2023-24',
+        texts: [ '...', '...', ... ]  # массив абзацев
+      },
+      ...
+    ]
+#}
+
+{% set _title = title|default(null) %}
+{% set _sections = sections|default([]) %}
+
+<div class="history-content">
+  {% if _title %}
+    <h2 class="history-content__heading">{{ _title }}</h2>
+  {% endif %}
+
+  {% for s in _sections %}
+    {% if s.subtitle %}
+      <h3 class="history-content__title">{{ s.subtitle }}</h3>
+    {% endif %}
+
+    {% if s.image %}
+      <img src="{{ s.image.src }}" alt="{{ s.image.alt|default('') }}" class="history-content__img" loading="lazy">
+    {% endif %}
+
+    {% if s.texts is defined and s.texts|length %}
+      {% for p in s.texts %}
+        <p class="history-content__text">{{ p }}</p>
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</div>

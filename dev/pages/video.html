@@ -1,153 +1,254 @@
-{% extends "../layouts/_base.html" %} {% block title %}video — Basketball
-Today{% endblock %} {% block active_nav %}video{% endblock %} {% block
-body_class %}page page--video{% endblock %} {% block head_extra %}
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>{% endblock %} {% block content %} {% include
-"../components/page-first/page-first.twig" with { title: "Top 10 scoring
-performances from 2024-25 season", crumbs: [ { label: "videos", url: "/news" },
-{ label: "Top 10 scoring performances from 2024-25 season" } ] } %}
 
-  {% include "../components/video-hub/video-hub.twig" with {
-    main_href:  "/video/123",
-    main_thumb: "/assets/images/img14.webp",
-    main_title: "Top 10 scoring performances from 2024-25 season",
-    main_duration: "07:02",
+{% extends "../layouts/_base-league.html" %} 
+{% block title %}Video{% endblock %} 
+{% block body_class %}page page--video{% endblock %}
+{% block active_nav %}video{% endblock %}
+{% block head_extra %} 
+{% endblock %} 
+{% block content %}
 
-    s1_href:  "/video/201",
-    s1_thumb: "/assets/images/img15.webp",
-    s1_title: "Top 100 Plays of 2024-25 season",
-    s1_duration: "47:57",
-
-    s2_href:  "/video/202",
-    s2_thumb: "/assets/images/img6.webp",
-    s2_title: "USAB Exhibition Scrimmages",
-    s2_duration: "01:13",
-
-    s3_href:  "/video/203",
-    s3_thumb: "/assets/images/img7.webp",
-    s3_title: "Mic’d Up: Training Camp",
-    s3_duration: "09:18",
-
-    s4_href:  "/video/204",
-    s4_thumb: "/assets/images/img8.webp",
-    s4_title: "All-Star Highlights",
-    s4_duration: "12:31"
-  } %}
-
-
-
-
-
-{% set moments = [
+{% set videos = [
   {
-    href: "/videos/123",
-    thumb: "/assets/images/img4.webp",
-    title: "Make Your Picks 🏀",
-    published_at: "2024-11-12"
+    href: '/video/1',
+    title: 'Derby Drama: City vs United — Full Highlights',
+    thumb_src: '/assets/images/img1.webp',
+    duration: '08:24',
+    date_value: '2025-09-01 19:00',
+    sport: 'Football',
+    league: 'Premier League',
+    views: '12.4K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img3.webp",
-    title: "Get Ready for the Action❗️",
-    published_at: "2024-12-12"
+    href: '/video/2',
+    title: 'Barcelona vs Sevilla: Late Winner and Wild Finish',
+    thumb_src: '/assets/images/img2.webp',
+    duration: '06:52',
+    date_value: '2025-09-02 21:15',
+    sport: 'Football',
+    league: 'LaLiga',
+    views: '9.8K views'
   },
   {
-    href: "/videos/125",
-    thumb: "/assets/images/img5.webp",
-    title: "Cup Play Underway 🏆",
-    published_at: "2024-03-21"
+    href: '/video/3',
+    title: 'LeBron Triple-Double vs Warriors — Game Recap',
+    thumb_src: '/assets/images/img3.webp',
+    duration: '10:15',
+    date_value: '2025-09-03 05:30',
+    sport: 'Basketball',
+    league: 'NBA',
+    views: '25.1K views'
   },
   {
-    href: "/videos/123",
-    thumb: "/assets/images/img7.webp",
-    title: "Make Your Picks 🏀",
-    published_at: "2024-11-12"
+    href: '/video/4',
+    title: 'Aces Extend Streak: Playoff Statement Game',
+    thumb_src: '/assets/images/img4.webp',
+    duration: '07:03',
+    date_value: '2025-09-04 04:00',
+    sport: 'Basketball',
+    league: 'WNBA',
+    views: '7.2K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img35.webp",
-    title: "Get Ready for the Action❗️",
-    published_at: "2024-12-12"
+    href: '/video/5',
+    title: 'Maple Leafs vs Bruins — OT Classic',
+    thumb_src: '/assets/images/img5.webp',
+    duration: '09:44',
+    date_value: '2025-09-05 23:10',
+    sport: 'Hockey',
+    league: 'NHL',
+    views: '14.6K views'
   },
   {
-    href: "/videos/125",
-    thumb: "/assets/images/img32.webp",
-    title: "Cup Play Underway 🏆",
-    published_at: "2024-03-21"
+    href: '/video/6',
+    title: 'UCL Nights: Real Madrid Clinch Away Win',
+    thumb_src: '/assets/images/img6.webp',
+    duration: '11:20',
+    date_value: '2025-09-06 22:00',
+    sport: 'Football',
+    league: 'UEFA Champions League',
+    views: '31.9K views'
   },
   {
-    href: "/videos/123",
-    thumb: "/assets/images/img31.webp",
-    title: "Make Your Picks 🏀",
-    published_at: "2024-11-12"
+    href: '/video/7',
+    title: 'Djokovic Survives Five-Set Epic in Paris',
+    thumb_src: '/assets/images/img7.webp',
+    duration: '05:58',
+    date_value: '2025-09-07 16:20',
+    sport: 'Tennis',
+    league: 'ATP',
+    views: '6.4K views'
   },
   {
-    href: "/videos/124",
-    thumb: "/assets/images/img30.webp",
-    title: "Get Ready for the Action❗️",
-    published_at: "2024-12-12"
+    href: '/video/8',
+    title: 'Świątek Rolls to Title — Best Points',
+    thumb_src: '/assets/images/img8.webp',
+    duration: '04:47',
+    date_value: '2025-09-08 14:40',
+    sport: 'Tennis',
+    league: 'WTA',
+    views: '8.1K views'
   },
   {
-    href: "/videos/125",
-    thumb: "/assets/images/img25.webp",
-    title: "Cup Play Underway 🏆",
-    published_at: "2024-03-21"
+    href: '/video/9',
+    title: 'F1 Monaco: Chaotic Race & Masterclass Win',
+    thumb_src: '/assets/images/img9.webp',
+    duration: '12:36',
+    date_value: '2025-09-09 18:00',
+    sport: 'Motorsport',
+    league: 'F1',
+    views: '19.7K views'
+  },
+    {
+    href: '/video/1',
+    title: 'Derby Drama: City vs United — Full Highlights',
+    thumb_src: '/assets/images/img1.webp',
+    duration: '08:24',
+    date_value: '2025-09-01 19:00',
+    sport: 'Football',
+    league: 'Premier League',
+    views: '12.4K views'
   },
   {
-    href: "/videos/126",
-    thumb: "/assets/images/img11.webp",
-    title: "Weekly League Pass Watch Guide 📚",
-    published_at: "2024-03-21"
+    href: '/video/2',
+    title: 'Barcelona vs Sevilla: Late Winner and Wild Finish',
+    thumb_src: '/assets/images/img2.webp',
+    duration: '06:52',
+    date_value: '2025-09-02 21:15',
+    sport: 'Football',
+    league: 'LaLiga',
+    views: '9.8K views'
+  },
+  {
+    href: '/video/3',
+    title: 'LeBron Triple-Double vs Warriors — Game Recap',
+    thumb_src: '/assets/images/img3.webp',
+    duration: '10:15',
+    date_value: '2025-09-03 05:30',
+    sport: 'Basketball',
+    league: 'NBA',
+    views: '25.1K views'
+  },
+  {
+    href: '/video/4',
+    title: 'Aces Extend Streak: Playoff Statement Game',
+    thumb_src: '/assets/images/img4.webp',
+    duration: '07:03',
+    date_value: '2025-09-04 04:00',
+    sport: 'Basketball',
+    league: 'WNBA',
+    views: '7.2K views'
+  },
+  {
+    href: '/video/5',
+    title: 'Maple Leafs vs Bruins — OT Classic',
+    thumb_src: '/assets/images/img5.webp',
+    duration: '09:44',
+    date_value: '2025-09-05 23:10',
+    sport: 'Hockey',
+    league: 'NHL',
+    views: '14.6K views'
+  },
+  {
+    href: '/video/6',
+    title: 'UCL Nights: Real Madrid Clinch Away Win',
+    thumb_src: '/assets/images/img6.webp',
+    duration: '11:20',
+    date_value: '2025-09-06 22:00',
+    sport: 'Football',
+    league: 'UEFA Champions League',
+    views: '31.9K views'
+  },
+  {
+    href: '/video/7',
+    title: 'Djokovic Survives Five-Set Epic in Paris',
+    thumb_src: '/assets/images/img7.webp',
+    duration: '05:58',
+    date_value: '2025-09-07 16:20',
+    sport: 'Tennis',
+    league: 'ATP',
+    views: '6.4K views'
+  },
+  {
+    href: '/video/8',
+    title: 'Świątek Rolls to Title — Best Points',
+    thumb_src: '/assets/images/img8.webp',
+    duration: '04:47',
+    date_value: '2025-09-08 14:40',
+    sport: 'Tennis',
+    league: 'WTA',
+    views: '8.1K views'
+  },
+  {
+    href: '/video/9',
+    title: 'F1 Monaco: Chaotic Race & Masterclass Win',
+    thumb_src: '/assets/images/img9.webp',
+    duration: '12:36',
+    date_value: '2025-09-09 18:00',
+    sport: 'Motorsport',
+    league: 'F1',
+    views: '19.7K views'
+  },
+  {
+    href: '/video/10',
+    title: 'UFC Title Defense: Makhachev Dominates',
+    thumb_src: '/assets/images/img10.webp',
+    duration: '09:02',
+    date_value: '2025-09-10 23:59',
+    sport: 'MMA',
+    league: 'UFC',
+    views: '22.5K views'
   }
 ] %}
-
-<section class="section section--moments">
-  <div class="container">
-    <div class="section__inner moments__inner">
-      {% include "../components/section-head/section-head.twig" with {
-        title: "Another Videos",
-        tag: "h2"
-      } %}
-
-      <div class="swiper moments-swiper" data-swiper>
-        <div class="swiper-wrapper">
-          {% for v in moments %}
-            <div class="swiper-slide">
-              {% include "../components/video/video.twig" with {
-                href: v.href,
-                thumb: v.thumb,
-                thumb_alt: v.thumb_alt|default('video thumbnail'),
-                title: v.title,
-                published_at: v.published_at
-              } %}
-            </div>
-          {% else %}
-            <div class="swiper-slide">
-              <p class="moments__empty">No moments yet.</p>
-            </div>
-          {% endfor %}
-        </div>
-        <div class="swiper-pagination moments-pagination"></div>
-      </div>
+  <section class="page-content">
+    <div class="container">
+      <div class="page-content__inner">
+                     <section class="block">
+              <div class="block__inner">
+                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+                  items: [
+                    { href: "/", icon: "home" },
+                    { label: "NBA", href: "/league" },
+                    { label: "Videos", href: "/videos" },
+                    { label: "Video post" }
+                  ]
+                } %}
+              </div>
+            </section>  
+                     <section class="block">
+              <div class="block__inner">
+               {% include "../components/video-content/video-content.twig" with {
+                 href: "/videos/123",
+                 thumb: { src:"/assets/images/img17.webp", alt:"Highlights" },
+                 title: "Golden State vs Lakers — Full Highlights",
+                 texts: [
+                   "The NBA, or National Basketball Association, is the premier professional basketball league in the United States and one of the most recognized sports leagues in the world. It was founded on June 6, 1946, in New York City as the Basketball Association of America (BAA)."
+                 ],
+                 play_icon: "play_circle",
+                 duration: "08:47",
+                 badge: "HD"
+               } only %}
+              </div>
+            </section>  
+            <section class="block">
+  <div class="block__inner">
+    {% include "../components/section-head/section-head.twig" with {
+      title: "popular Videos",
+      icon: "play_circle",
+    } %}
+    <div class="video-list__grid">
+      {% for v in videos|slice(0, 4) %}
+        {% include "../components/card-video/card-video.twig" with v only %}
+      {% else %}
+        <p class="muted">No Videos.</p>
+      {% endfor %}
     </div>
   </div>
 </section>
+      </div>
+    </div>
+  </section>
 
 
-
-
-
-
-
-
-
-
-
-{% endblock %} {% block scripts %}
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
-></script>
+{% endblock %} 
+{% block scripts %}   
 {% endblock %}

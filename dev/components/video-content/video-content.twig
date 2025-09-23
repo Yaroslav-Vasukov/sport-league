@@ -1,0 +1,44 @@
+{# ВХОД:
+  - href        : ссылка на страницу/видео
+  - thumb       : { src, alt }
+  - title       : строка
+  - texts       : [строка, ...]  — параграфы справа
+  - play_icon   : иконка для material symbols (по умолчанию 'play_circle')
+  - duration    : '12:34' (опционально, бейдж на превью)
+  - badge       : произвольный бейдж (например 'HD') (опционально)
+#}
+
+{% set _href      = href|default('#') %}
+{% set _thumb     = thumb|default({ src:'/assets/images/img17.webp', alt:'video' }) %}
+{% set _title     = title|default('Video Title') %}
+{% set _texts     = texts|default([]) %}
+{% set _icon      = play_icon|default('play_circle') %}
+{% set _duration  = duration|default(null) %}
+{% set _badge     = badge|default(null) %}
+
+<div class="video-content">
+  <div class="video-content__left">
+    <a href="{{ _href }}" class="video-content__video-link" aria-label="Open video: {{ _title }}">
+      <img src="{{ _thumb.src }}" alt="{{ _thumb.alt|default('') }}" class="video-content__video" loading="lazy">
+      <span class="video-content__play material-symbols-outlined">{{ _icon }}</span>
+
+      {% if _duration %}
+        <span class="video-content__duration">{{ _duration }}</span>
+      {% endif %}
+
+      {% if _badge %}
+        <span class="video-content__badge">{{ _badge }}</span>
+      {% endif %}
+    </a>
+  </div>
+
+  <div class="video-content__right">
+    <h2 class="video-content__title">{{ _title }}</h2>
+
+    {% if _texts|length %}
+      {% for t in _texts %}
+        <p class="video-content__descr">{{ t }}</p>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
